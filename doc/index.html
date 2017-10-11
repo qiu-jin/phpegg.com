@@ -328,87 +328,63 @@
   
   <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>phpegg是一个轻量级php框架，但是功能丰富，支持Standard Rest Inline Jsonrpc Micro Grpc等多种应用模式，并集成多种功能驱动，包含了数据库 缓存 存储 邮件 短信 RPC等，并且框架本身耦合度低，各应用模式之间无依赖关系，功能驱动之间也少有依赖，框架初始化时只加载了少量的核心php文件，用户完全可以根据自己的需求定制框架，灵活 高性能 并且功能丰富。</p>
 <h2 id="应用模式"><a href="#应用模式" class="headerlink" title="应用模式"></a>应用模式</h2><ul>
-<li><p>Standard</p>
-<blockquote>
-<p>默认推荐的标准MVC应用模式，适用于网站页面开发，同时也适用于少量接口开发。</p>
-</blockquote>
+<li><p><code>Standard</code> 默认推荐的标准MVC应用模式，适用于网站页面开发，同时也适用于少量接口开发。</p>
 </li>
-<li><p>Rest</p>
-<blockquote>
-<p>RESTful风格模式，适用于开发RESTful风格的API接口，常用于对外的服务。</p>
-</blockquote>
+<li><p><code>Rest</code> RESTful风格模式，适用于开发RESTful风格的API接口，常用于对外的服务。</p>
 </li>
-<li>Inline<blockquote>
-<p>调用过程式控制器代码，适用于开发简单应用，即可用于网站页面开发也可用于接口开发。</p>
-</blockquote>
+<li><p><code>Inline</code> 调用过程式控制器代码，适用于开发简单应用，即可用于网站页面开发也可用于接口开发。</p>
 </li>
-<li>Jsonrpc<blockquote>
-<p>jsonrpc协议模式，常用于开发对内的服务接口，相较于Rest灵活高效。</p>
-</blockquote>
+<li><p><code>Jsonrpc</code> jsonrpc协议模式，常用于开发对内的服务接口，相较于Rest灵活高效。</p>
 </li>
-<li>Micro<blockquote>
-<p>微框架模式，高度灵活，自由组合功能，适用于开发一些小应用。</p>
-</blockquote>
+<li><p><code>Micro</code> 微框架模式，高度灵活，自由组合功能，适用于开发一些小应用。</p>
 </li>
-<li><p>Grpc</p>
-<blockquote>
-<p>grpc协议模式（实验性），适用于开发使用protobuf scheme规范的接口。</p>
-</blockquote>
+<li><p><code>Grpc</code> grpc协议模式（实验性），适用于开发使用protobuf scheme规范的接口。</p>
 </li>
-<li><p>View</p>
-<blockquote>
-<p>视图驱动模式（未完成）</p>
-</blockquote>
+<li><p><code>View</code> 视图驱动模式（未完成）</p>
 </li>
-<li>Cli<blockquote>
-<p>命令行模式（未开始）</p>
-</blockquote>
+<li><p><code>Cli</code> 命令行模式（未完成）</p>
 </li>
-<li>自定义模式<blockquote>
-<p>用户可以自己实现和使用一个继承<code>framework\App</code>基类，并实现<code>dispatch</code> <code>call</code> <code>error</code> <code>response</code>等方法的应用模式类。</p>
-</blockquote>
+<li><p><code>自定义模式</code> 用户可以自己实现和使用一个继承<code>framework\App</code>基类，并实现<code>dispatch</code> <code>call</code> <code>error</code> <code>response</code>等方法的应用模式类。</p>
 </li>
-<li>无应用模式<blockquote>
-<p>不使用任何应用模式，只需调用<code>framework\App::boot()</code>初始化环境，就可以编写代码。</p>
-</blockquote>
+<li><p><code>无应用模式</code> 不使用任何应用模式，只需调用<code>framework\App::boot()</code>初始化环境，就可以编写代码。</p>
 </li>
 </ul>
 <p>另外为了实现不同模式应用之间的相互调用，框架在rpc driver中实现了一套rpc client driver来远程调用服务。</p>
 <h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><ul>
-<li><p>Config 配置处理</p>
+<li><p><code>Config</code> 配置处理</p>
 </li>
-<li><p>Loader 类加载处理</p>
+<li><p><code>Loader</code> 类加载处理</p>
 </li>
-<li><p>Hook 事件处理</p>
+<li><p><code>Hook</code> 事件处理</p>
 </li>
-<li><p>Error 错误处理</p>
+<li><p><code>Error</code> 错误处理</p>
 </li>
-<li><p>Logger 日志处理</p>
+<li><p><code>Logger</code> 日志处理</p>
 </li>
-<li><p>Router 路由处理</p>
+<li><p><code>Router</code> 路由处理</p>
 </li>
-<li><p>Container 容器</p>
+<li><p><code>Container</code> 容器</p>
 </li>
-<li><p>View 视图处理</p>
+<li><p><code>View</code> 视图处理</p>
 </li>
-<li><p>Validator 验证器</p>
+<li><p><code>Validator</code> 验证器</p>
 </li>
-<li><p>Auth 认证处理</p>
+<li><p><code>Auth</code> 认证处理</p>
 </li>
-<li><p>Http</p>
+<li><p><code>Http</code></p>
 <ul>
-<li>Client HTTP请求客户端</li>
-<li>Request HTTP请求信息</li>
-<li>Response HTTP响应</li>
-<li>Cookie</li>
-<li>Session</li>
-<li>Uploaded</li>
-<li>UserAgent</li>
+<li><code>Client</code> HTTP请求客户端</li>
+<li><code>Request</code> HTTP请求信息</li>
+<li><code>Response</code> HTTP响应</li>
+<li><code>Cookie</code></li>
+<li><code>Session</code></li>
+<li><code>Uploaded</code></li>
+<li><code>UserAgent</code></li>
 </ul>
 </li>
 </ul>
 <h2 id="功能驱动"><a href="#功能驱动" class="headerlink" title="功能驱动"></a>功能驱动</h2><ul>
-<li>db 数据库</li>
+<li><code>db</code> 数据库</li>
 </ul>
 <table>
 <thead>
@@ -449,7 +425,7 @@
 </tbody>
 </table>
 <ul>
-<li>cache 缓存</li>
+<li><code>cache</code> 缓存</li>
 </ul>
 <table>
 <thead>
@@ -486,7 +462,7 @@
 </tbody>
 </table>
 <ul>
-<li>storage 存储</li>
+<li><code>storage</code> 存储</li>
 </ul>
 <table>
 <thead>
@@ -527,7 +503,7 @@
 </tbody>
 </table>
 <ul>
-<li>logger 日志</li>
+<li><code>logger</code> 日志</li>
 </ul>
 <table>
 <thead>
@@ -556,7 +532,7 @@
 </tbody>
 </table>
 <ul>
-<li>rpc RPC</li>
+<li><code>rpc</code> RPC</li>
 </ul>
 <table>
 <thead>
@@ -589,7 +565,7 @@
 </tbody>
 </table>
 <ul>
-<li>email 邮件</li>
+<li><code>email</code> 邮件</li>
 </ul>
 <table>
 <thead>
@@ -618,7 +594,7 @@
 </tbody>
 </table>
 <ul>
-<li>sms 短信</li>
+<li><code>sms</code> 短信</li>
 </ul>
 <table>
 <thead>
@@ -651,7 +627,7 @@
 </tbody>
 </table>
 <ul>
-<li>captcha 验证码</li>
+<li><code>captcha</code> 验证码</li>
 </ul>
 <table>
 <thead>
@@ -676,7 +652,7 @@
 </tbody>
 </table>
 <ul>
-<li>geoip IP定位</li>
+<li><code>geoip</code> IP定位</li>
 </ul>
 <table>
 <thead>
@@ -701,7 +677,7 @@
 </tbody>
 </table>
 <ul>
-<li>crypt 加解密</li>
+<li><code>crypt</code> 加解密</li>
 </ul>
 <table>
 <thead>
@@ -722,7 +698,7 @@
 </tbody>
 </table>
 <ul>
-<li>search 搜索</li>
+<li><code>search</code> 搜索</li>
 </ul>
 <table>
 <thead>
@@ -739,7 +715,7 @@
 </tbody>
 </table>
 <ul>
-<li>data 非关系数据库</li>
+<li><code>data</code> 非关系数据库</li>
 </ul>
 <table>
 <thead>
@@ -764,7 +740,7 @@
 </tbody>
 </table>
 <ul>
-<li>queue 队列</li>
+<li><code>queue</code> 队列</li>
 </ul>
 <table>
 <thead>
