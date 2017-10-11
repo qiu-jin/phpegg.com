@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>事件 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/start.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+                <li><h3>应用</h3></li>
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/standard.html" class="sidebar-link">标准应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/rest.html" class="sidebar-link">Rest应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link current">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+                <li><h3>驱动</h3></li>
+              
+              
+            
+            <li>
+              <a href="/doc/cache.html" class="sidebar-link">安装</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar hook-doc">
+
+  
+    <h1>事件</h1>
+  
+  <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>Hook提供一种将用户代码注入到一次请求的生命周期各个阶段的方法。</p>
+<p>框架已内置6个hook标签，可以在hook配置项里配置listen标签执行的代码。</p>
+<p>boot</p>
+<blockquote>
+<p>触发在应用初始化后，App::boot()后，可以用于添加一些环境初始化代码，如时区设置等。</p>
+</blockquote>
+<p>start</p>
+<blockquote>
+<p>触发在应用实例化后，App::start()后，可以用于添加一些dispatch代码，例如权限验证，Csrf检查。</p>
+</blockquote>
+<p>request</p>
+<blockquote>
+<p>触发在获取request信息时，可以用于修改或过滤一些request信息，比如trim所有post的空白字符。</p>
+</blockquote>
+<p>response</p>
+<blockquote>
+<p>触发在设置response数据时，可以用于修改response数据，比如添加一个公共的response header头，或压缩数据等。</p>
+</blockquote>
+<p>exit</p>
+<blockquote>
+<p>触发在发送应用结束阶段，也就是register_shutdown_function后，在这阶段框架会释放所有资源，例如容器中保存的类实例，然后刷新输出缓冲，发送response给客户端。</p>
+</blockquote>
+<p>close</p>
+<blockquote>
+<p>触发在链接断开后，也就是执行fastcgi_finish_request()后，在此阶段客户端已经接收到了响应并断开了链接，可以将一些比较耗时的操作如发送邮件等放在此阶段执行。</p>
+</blockquote>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>添加hook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// $name标签名，$call执行方法，$priority优先级</div><div class="line">Hook::add($name, $call, $priority = 10);</div></pre></td></tr></table></figure>
+<p>监听hook</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hook::listen($name, ...$params);</div></pre></td></tr></table></figure>
+<p>清除</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hook::clear($name);</div></pre></td></tr></table></figure>
+  
+    <div class="guide-links">
+      
+        <span>← <a href="/doc/loader.html">类加载</a></span>
+      
+      
+        <span style="float: right;"><a href="/doc/error.html">错误处理</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>

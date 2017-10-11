@@ -1,0 +1,825 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>介绍 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link current">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/start.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+                <li><h3>应用</h3></li>
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/standard.html" class="sidebar-link">标准应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/rest.html" class="sidebar-link">Rest应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+                <li><h3>驱动</h3></li>
+              
+              
+            
+            <li>
+              <a href="/doc/cache.html" class="sidebar-link">安装</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar index-doc">
+
+  
+    <h1>介绍</h1>
+  
+  <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>phpegg是一个轻量级php框架，但是功能丰富，支持Standard Rest Inline Jsonrpc Micro Grpc等多种应用模式，并集成多种功能驱动，包含了数据库 缓存 存储 邮件 短信 RPC等，并且框架本身耦合度低，各应用模式之间无依赖关系，功能驱动之间也少有依赖，框架初始化时只加载了少量的核心php文件，用户完全可以根据自己的需求定制框架，灵活 高性能 并且功能丰富。</p>
+<h2 id="应用模式"><a href="#应用模式" class="headerlink" title="应用模式"></a>应用模式</h2><ul>
+<li><p>Standard</p>
+<blockquote>
+<p>默认推荐的标准MVC应用模式，适用于网站页面开发，同时也适用于少量接口开发。</p>
+</blockquote>
+</li>
+<li><p>Rest</p>
+<blockquote>
+<p>RESTful风格模式，适用于开发RESTful风格的API接口，常用于对外的服务。</p>
+</blockquote>
+</li>
+<li>Inline<blockquote>
+<p>调用过程式控制器代码，适用于开发简单应用，即可用于网站页面开发也可用于接口开发。</p>
+</blockquote>
+</li>
+<li>Jsonrpc<blockquote>
+<p>jsonrpc协议模式，常用于开发对内的服务接口，相较于Rest灵活高效。</p>
+</blockquote>
+</li>
+<li>Micro<blockquote>
+<p>微框架模式，高度灵活，自由组合功能，适用于开发一些小应用。</p>
+</blockquote>
+</li>
+<li><p>Grpc</p>
+<blockquote>
+<p>grpc协议模式（实验性），适用于开发使用protobuf scheme规范的接口。</p>
+</blockquote>
+</li>
+<li><p>View</p>
+<blockquote>
+<p>视图驱动模式（未完成）</p>
+</blockquote>
+</li>
+<li>Cli<blockquote>
+<p>命令行模式（未开始）</p>
+</blockquote>
+</li>
+<li>自定义模式<blockquote>
+<p>用户可以自己实现和使用一个继承<code>framework\App</code>基类，并实现<code>dispatch</code> <code>call</code> <code>error</code> <code>response</code>等方法的应用模式类。</p>
+</blockquote>
+</li>
+<li>无应用模式<blockquote>
+<p>不使用任何应用模式，只需调用<code>framework\App::boot()</code>初始化环境，就可以编写代码。</p>
+</blockquote>
+</li>
+</ul>
+<p>另外为了实现不同模式应用之间的相互调用，框架在rpc driver中实现了一套rpc client driver来远程调用服务。</p>
+<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><ul>
+<li><p>Config 配置处理</p>
+</li>
+<li><p>Loader 类加载处理</p>
+</li>
+<li><p>Hook 事件处理</p>
+</li>
+<li><p>Error 错误处理</p>
+</li>
+<li><p>Logger 日志处理</p>
+</li>
+<li><p>Router 路由处理</p>
+</li>
+<li><p>Container 容器</p>
+</li>
+<li><p>View 视图处理</p>
+</li>
+<li><p>Validator 验证器</p>
+</li>
+<li><p>Auth 认证处理</p>
+</li>
+<li><p>Http</p>
+<ul>
+<li>Client HTTP请求客户端</li>
+<li>Request HTTP请求信息</li>
+<li>Response HTTP响应</li>
+<li>Cookie</li>
+<li>Session</li>
+<li>Uploaded</li>
+<li>UserAgent</li>
+</ul>
+</li>
+</ul>
+<h2 id="功能驱动"><a href="#功能驱动" class="headerlink" title="功能驱动"></a>功能驱动</h2><ul>
+<li>db 数据库</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mysqli</td>
+<td>基于php mysqli扩展，支持一些特有的mysql方法</td>
+</tr>
+<tr>
+<td>Mysql</td>
+<td>基于php pdo_mysql扩展</td>
+</tr>
+<tr>
+<td>Pgsql</td>
+<td>基于php pdo_pgsql扩展（粗略测试）</td>
+</tr>
+<tr>
+<td>Sqlite</td>
+<td>基于php pdo_sqlite扩展（粗略测试）</td>
+</tr>
+<tr>
+<td>Sqlsrv</td>
+<td>在win系统下使用pdo_sqlsrv扩展，类unix系统下使用pdo_odbc扩展（无环境，未测试）</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>基于php pdo_oci扩展（无环境，未测试）</td>
+</tr>
+<tr>
+<td>Cluster</td>
+<td>基于Mysqli，支持设置多个数据库服务器，实现读写分离主从分离，原理是根据SQL的SELECT INSERT等语句将请求分配到不同的服务器。（无环境，未测试）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>cache 缓存</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apc</td>
+<td>基于php apcu扩展的单机共享内存缓存</td>
+</tr>
+<tr>
+<td>Db</td>
+<td>使用关系数据库缓存数据</td>
+</tr>
+<tr>
+<td>File</td>
+<td>使用文件保存缓存数据</td>
+</tr>
+<tr>
+<td>Memcached</td>
+<td>使用Memcached服务缓存数据</td>
+</tr>
+<tr>
+<td>Opcache</td>
+<td>将缓存数据写入php文件，使用php Opcache来缓存数据</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>使用Redis服务缓存数据</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>storage 存储</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local</td>
+<td>本地文件处理简单适配封装</td>
+</tr>
+<tr>
+<td>Ftp</td>
+<td>基于ftp协议，需要php ftp扩展</td>
+</tr>
+<tr>
+<td>Sftp</td>
+<td>基于ssh协议，需要php ssh2扩展</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>亚马逊s3服务</td>
+</tr>
+<tr>
+<td>Oss</td>
+<td>阿里云oss服务</td>
+</tr>
+<tr>
+<td>Qiniu</td>
+<td>七牛云存储</td>
+</tr>
+<tr>
+<td>Webdav</td>
+<td>基于Webdav协议，兼容多种网盘，如Box OneDrive Pcloud 坚果云</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>logger 日志</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Console</td>
+<td>日志发送到浏览器控制台，Firefox可直接使用Chrome需安装chromelogger插件</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>日志发送到邮件</td>
+</tr>
+<tr>
+<td>File</td>
+<td>日志写入文件</td>
+</tr>
+<tr>
+<td>Queue</td>
+<td>日志发送到队列（坑）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>rpc RPC</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jsonrpc</td>
+<td>Jsonrpc协议rpc客户端</td>
+</tr>
+<tr>
+<td>Http</td>
+<td>rpc调用风格的httpClient封装</td>
+</tr>
+<tr>
+<td>Rest</td>
+<td>rpc调用风格的Rest httpClient封装</td>
+</tr>
+<tr>
+<td>Thrift</td>
+<td>Thrift rpc客户端</td>
+</tr>
+<tr>
+<td>Grpc</td>
+<td>Grpc rpc客户端</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>email 邮件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smtp</td>
+<td>基于Smtp协议发送邮件</td>
+</tr>
+<tr>
+<td>Sendmail</td>
+<td>使用php mail函数发送邮件（服务器需已装postfix等邮件服务器并已开放相应端口）</td>
+</tr>
+<tr>
+<td>Mailgun</td>
+<td>使用Mailgun提供的邮件发送服务</td>
+</tr>
+<tr>
+<td>Sendcloud</td>
+<td>使用Sendcloud提供的邮件发送服务 </td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>sms 短信</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alidayu</td>
+<td>阿里大于短信服务</td>
+</tr>
+<tr>
+<td>Aliyun</td>
+<td>阿里云短信服务</td>
+</tr>
+<tr>
+<td>Baidu</td>
+<td>百度云短信服务（暂无企业账户，未测试）</td>
+</tr>
+<tr>
+<td>Qcloud</td>
+<td>腾讯云短信服务</td>
+</tr>
+<tr>
+<td>Yuntongxun</td>
+<td>容联云通讯短信服务</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>captcha 验证码</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image</td>
+<td>使用gregwar/captcha包</td>
+</tr>
+<tr>
+<td>Recaptcha</td>
+<td>google recaptcha     </td>
+</tr>
+<tr>
+<td>Geetest</td>
+<td>极验验证</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>geoip IP定位</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baidu</td>
+<td>Baidu地图IP定位接口，优点几乎不限请求，缺点无法定位国外ip</td>
+</tr>
+<tr>
+<td>Ipip</td>
+<td>Ipip IP定位，有在线api接口和离线数据库两种使用方式</td>
+</tr>
+<tr>
+<td>Maxmind</td>
+<td>Maxmind IP定位，有在线api接口和离线数据库两种使用方式</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>crypt 加解密</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Openssl</td>
+<td>基于php openssl扩展 </td>
+</tr>
+<tr>
+<td>Sodium</td>
+<td>基于php libsodium扩展 </td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>search 搜索</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elastic</td>
+<td>基于Elastic rest接口 （待完善）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>data 非关系数据库</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cassandra</td>
+<td>使用datastax扩展（坑）</td>
+</tr>
+<tr>
+<td>Mongo</td>
+<td>使用MongoDB扩展（待完善）</td>
+</tr>
+<tr>
+<td>Hbase</td>
+<td>使用Thrift Rpc客户端（坑）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>queue 队列</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redis</td>
+<td>使用redis list类型实现简单队列（坑）</td>
+</tr>
+<tr>
+<td>Amqp</td>
+<td>基于Amqp协议RabbitMQ服务（坑）</td>
+</tr>
+<tr>
+<td>Beanstalkd</td>
+<td>pda/pheanstalk包（坑）</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>php-rdkafka扩展（坑）</td>
+</tr>
+</tbody>
+</table>
+
+  
+    <div class="guide-links">
+      
+      
+        <span style="float: right;"><a href="/doc/installation.html">安装</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>

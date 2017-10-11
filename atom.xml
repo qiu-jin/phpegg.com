@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>phpegg</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://phpegg.com/"/>
+  <updated>2017-10-11T07:56:21.000Z</updated>
+  <id>http://phpegg.com/</id>
+  
+  <author>
+    <name>Qiu Jin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://phpegg.com/2017/10/10/index/"/>
+    <id>http://phpegg.com/2017/10/10/index/</id>
+    <published>2017-10-10T12:26:10.000Z</published>
+    <updated>2017-10-11T07:56:21.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

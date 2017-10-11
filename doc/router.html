@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>路由 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/start.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+                <li><h3>应用</h3></li>
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/standard.html" class="sidebar-link">标准应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/rest.html" class="sidebar-link">Rest应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link current">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+                <li><h3>驱动</h3></li>
+              
+              
+            
+            <li>
+              <a href="/doc/cache.html" class="sidebar-link">安装</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar router-doc">
+
+  
+    <h1>路由</h1>
+  
+  <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p> Url Path匹配规则</p>
+<ul>
+<li>匹配规则和URL路径以/分隔为多个单元，循环匹配</li>
+<li>规则单元为* ：匹配一个URL单元所有字符串，记录匹配内容为整个路径单元。</li>
+<li>规则单元为～ ：匹配所有URL单元字符串并结束匹配，记录匹配内容所有单元字符串。</li>
+<li>规则单元首字符为: ：自定义的匹配规则，其后的字符串对应一个函数或静态方法，回调处理返回true为匹配成功，记录匹配内容为整个URL路径单元。</li>
+<li>规则单元首尾字符为() ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</li>
+<li>规则单元为其他字符串 ：匹配规则单元和URL路径单元必须完全相同，不记录匹配内容。</li>
+<li>匹配结果以 $1 $2 $3 等变量按序调用，顺序为从左到右的匹配单元循环匹配递加记录（如果正则匹配中有多个()匹配，则此单元递加记录多个匹配内容）</li>
+</ul>
+<p>如下面的路由规则表</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="string">'User'</span> =&gt; <span class="string">'User::index()'</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 参数规则有2种，同时只能用一种</span></div><div class="line">    <span class="comment">// 顺序参数</span></div><div class="line">    <span class="string">'User/*/name'</span> =&gt; <span class="string">'User::getName($1)'</span>,</div><div class="line">    <span class="comment">// 键值参数</span></div><div class="line">    <span class="comment">//'User/*/name' =&gt; 'User::getName(id = $1)',</span></div><div class="line">]</div></pre></td></tr></table></figure>
+<p>如请求 /User/1/name 被User/*/name匹配。</p>
+<p>匹配成功后，对应规则表值User::getName($1)如有参数部分($1)，匹配命中内容以 $1 $2 $3 等变量形式将参数值抽出（这里$1值为1）。</p>
+<p>然后将参数和匹配规则表的值一起返回给各应用模式的调度器处理（示例返回[‘User::getName’, [1]]）。</p>
+
+  
+    <div class="guide-links">
+      
+        <span>← <a href="/doc/logger.html">日志</a></span>
+      
+      
+        <span style="float: right;"><a href="/doc/view.html">视图</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>
