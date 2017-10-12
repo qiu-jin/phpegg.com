@@ -410,7 +410,7 @@
 <p>查询结果返回数组或null</p>
 <h4 id="2-find方法"><a href="#2-find方法" class="headerlink" title="2 find方法"></a>2 <code>find</code>方法</h4><p><code>find</code>方法查询多条数据记录。</p>
 <p><code>find</code>方法有一个可选参数，用来限定查询数据的条数，可以取代<code>limit</code>使用。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 查询最近10个注册用户的用户名</span></div><div class="line">$db-&gt;user-&gt;select(<span class="string">'name'</span>)-&gt;order(<span class="string">'id'</span>, <span class="keyword">true</span>)-&gt;find(<span class="number">10</span>);</div></pre></td></tr></table></figure>
 <h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><h4 id="1-insert方法"><a href="#1-insert方法" class="headerlink" title="1 insert方法"></a>1 <code>insert</code>方法</h4><p>插入一条数据</p>
 <p><code>insert</code>方法有2个参数，第一个参数是要插入的数据，第二个参数决定是否返回<code>insert_id</code>（默认为<code>false</code>不返回）</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;insert([</div><div class="line">    <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="string">'title'</span>   =&gt; <span class="string">'测试标题'</span>,</div><div class="line">    <span class="string">'content'</span> =&gt; <span class="string">'测试内容'</span>,</div><div class="line">]);</div></pre></td></tr></table></figure>
@@ -439,23 +439,23 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">max</td>
+<td style="text-align:left"><code>max</code></td>
 <td style="text-align:left">最大值</td>
 </tr>
 <tr>
-<td style="text-align:left">min</td>
+<td style="text-align:left"><code>min</code></td>
 <td style="text-align:left">最小值</td>
 </tr>
 <tr>
-<td style="text-align:left">sum</td>
+<td style="text-align:left"><code>sum</code></td>
 <td style="text-align:left">求和</td>
 </tr>
 <tr>
-<td style="text-align:left">avg</td>
+<td style="text-align:left"><code>avg</code></td>
 <td style="text-align:left">求积</td>
 </tr>
 <tr>
-<td style="text-align:left">count</td>
+<td style="text-align:left"><code>count</code></td>
 <td style="text-align:left">记录数</td>
 </tr>
 </tbody>
