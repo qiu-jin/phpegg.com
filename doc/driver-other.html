@@ -494,6 +494,83 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'image'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'image'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 验证码图片src</span></div><div class="line">        <span class="string">'src'</span>       =&gt; <span class="string">'/captcha.php'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 提交表单post name，用来验证信息</span></div><div class="line">        <span class="string">'name'</span>      =&gt; <span class="string">'image-captcha'</span> <span class="comment">//默认</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'recaptcha'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'recaptcha'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 帐号 sitekey</span></div><div class="line">        <span class="string">'acckey'</span>	=&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 secret key</span></div><div class="line">        <span class="string">'seckey'</span>	=&gt; <span class="string">'your_seckey'</span>,</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'geetest'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'geetest'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 captchaid</span></div><div class="line">        <span class="string">'acckey'</span>	=&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 secret key</span></div><div class="line">        <span class="string">'seckey'</span>	=&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// script 脚本访问地址</span></div><div class="line">        <span class="string">'script'</span>    =&gt; <span class="string">'https://static.geetest.com/static/tools/gt.js'</span> <span class="comment">//默认</span></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
 <p><strong>使用示例</strong></p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$captcha-&gt;verify();</div></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elastic</td>
+<td>基于Elastic rest接口 （待完善）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">	<span class="string">'elastic'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'elastic'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span></div><div class="line">	]</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用id获取一条数据</span></div><div class="line">$search-&gt;index-&gt;get($id);</div><div class="line"><span class="comment">// 使用elastic原生query语法搜索</span></div><div class="line">$search-&gt;index-&gt;search($query);</div><div class="line"><span class="comment">// 更新设置指定id数据</span></div><div class="line">$search-&gt;index-&gt;put($id, $data);</div><div class="line"><span class="comment">// 添加索引数据</span></div><div class="line">$search-&gt;index-&gt;index($data);</div><div class="line"><span class="comment">// 更新数据，使用query语法</span></div><div class="line">$search-&gt;index-&gt;update($query, $data);</div><div class="line"><span class="comment">// 使用query语法删除</span></div><div class="line">$search-&gt;index-&gt;delete($query);</div></pre></td></tr></table></figure>
+<h2 id="非关系数据库"><a href="#非关系数据库" class="headerlink" title="非关系数据库"></a>非关系数据库</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cassandra</td>
+<td>使用datastax扩展（坑）</td>
+</tr>
+<tr>
+<td>Mongo</td>
+<td>使用MongoDB扩展（待完善）</td>
+</tr>
+<tr>
+<td>Hbase</td>
+<td>使用Thrift Rpc客户端（坑）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'mongo'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'mongo'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器uri</span></div><div class="line">        <span class="string">'uri'</span>       =&gt; <span class="string">'mongodb://127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 数据库名</span></div><div class="line">        <span class="string">'dbname'</span>    =&gt; <span class="string">'test'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'hbase'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'hbase'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器地址</span></div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt;  <span class="number">9090</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务scheme文件（thrift）</span></div><div class="line">        <span class="string">'service_schemes'</span>  =&gt; [</div><div class="line">            <span class="string">'prefix'</span>    =&gt; [</div><div class="line">                <span class="string">'Hbase'</span> =&gt; APP_DIR.<span class="string">'scheme/thrift/Hbase/'</span></div><div class="line">            ],</div><div class="line">            <span class="string">'files'</span>     =&gt; [</div><div class="line">                APP_DIR.<span class="string">'scheme/thrift/Hbase/Types'</span></div><div class="line">            ]</div><div class="line">        ]</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// mongodb</span></div><div class="line"><span class="comment">// 使用id获取一条数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;get($id);</div><div class="line"><span class="comment">// 查找数据，使用mongodb原生filter options语法</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;find($filter, $options);</div><div class="line"><span class="comment">// 获取数据记录数</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;count($filter, $options);</div><div class="line"><span class="comment">// 插入数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;insert($data);</div><div class="line"><span class="comment">// 更新数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;update($data, $filter, $options);</div><div class="line"><span class="comment">// 更新指定id数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;upsert($id, $data);</div><div class="line"><span class="comment">// 删除</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;delete($filter, $options);</div></pre></td></tr></table></figure>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redis</td>
+<td>使用redis list类型实现简单队列（坑）</td>
+</tr>
+<tr>
+<td>Amqp</td>
+<td>基于Amqp协议RabbitMQ服务（坑）</td>
+</tr>
+<tr>
+<td>Beanstalkd</td>
+<td>pda/pheanstalk包（坑）</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>php-rdkafka扩展（坑）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'redis'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'redis'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="comment">//'port'    =&gt; '',</span></div><div class="line">        <span class="string">'database'</span>  =&gt; <span class="number">9</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'beanstalkd'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'beanstalkd'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="comment">//'port'    =&gt; '',</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'amqp'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'amqp'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="string">'5672'</span>,</div><div class="line">        <span class="string">'vhost'</span>     =&gt; <span class="string">'/'</span>,</div><div class="line">        <span class="string">'login'</span>     =&gt; <span class="string">'guest'</span>,</div><div class="line">        <span class="string">'password'</span>  =&gt; <span class="string">'guest'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'kafka'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'kafka'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'hosts'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="string">'9092'</span>,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 生产者推送一条信息</span></div><div class="line">$queue-&gt;producer($job)-&gt;push($message);</div><div class="line"><span class="comment">// 消费者拉取一条信息</span></div><div class="line">$queue-&gt;consumer($job)-&gt;pull();</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
