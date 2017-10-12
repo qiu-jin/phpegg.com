@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>RPC — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/start.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+                <li><h3>应用</h3></li>
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/standard.html" class="sidebar-link">标准</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/rest.html" class="sidebar-link">Rest</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-query1.html" class="sidebar-link">连表查询</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+                <li><h3>驱动</h3></li>
+              
+              
+            
+            <li>
+              <a href="/doc/cache.html" class="sidebar-link">缓存</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/storage.html" class="sidebar-link">存储</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/rpc.html" class="sidebar-link current">RPC</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/email.html" class="sidebar-link">邮件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/sms.html" class="sidebar-link">短信</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar rpc-doc">
+
+  
+    <h1>RPC</h1>
+  
+  <h2 id="驱动类型"><a href="#驱动类型" class="headerlink" title="驱动类型"></a>驱动类型</h2><table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jsonrpc</td>
+<td>Jsonrpc协议rpc客户端</td>
+</tr>
+<tr>
+<td>Http</td>
+<td>rpc调用风格的httpClient封装</td>
+</tr>
+<tr>
+<td>Rest</td>
+<td>rpc调用风格的Rest httpClient封装</td>
+</tr>
+<tr>
+<td>Thrift</td>
+<td>Thrift rpc客户端</td>
+</tr>
+<tr>
+<td>Grpc</td>
+<td>Grpc rpc客户端</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    </div><div class="line">    <span class="string">'standard'</span>=&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'http'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'http://standard.example.com'</span>,</div><div class="line"></div><div class="line">        <span class="string">'response_decode'</span> =&gt; <span class="string">'json'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'rest'</span>=&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'rest'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'http://rest.example.com'</span>,</div><div class="line"></div><div class="line">        <span class="string">'response_decode'</span> =&gt; <span class="string">'json'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'jsonrpc'</span>=&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'jsonrpc'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'http://jsonrpc.example.com'</span>,</div><div class="line"></div><div class="line">        <span class="comment">//'requset_serialize' =&gt; 'msgpack_serialize',</span></div><div class="line">        <span class="comment">//'response_unserialize' =&gt; 'msgpack_unserialize',</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'grpc'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'grpc'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt;  <span class="number">50051</span>,</div><div class="line">        <span class="string">'prefix'</span>    =&gt; <span class="string">'TestGrpc'</span>,</div><div class="line">        <span class="string">'auto_bind_param'</span>  =&gt; <span class="keyword">true</span>,</div><div class="line">        <span class="string">'service_schemes'</span>  =&gt; [</div><div class="line">            <span class="string">'prefix'</span>    =&gt; [</div><div class="line">                <span class="string">'TestGrpc'</span> =&gt; APP_DIR.<span class="string">'scheme/grpc/TestGrpc/'</span></div><div class="line">            ],</div><div class="line">            <span class="string">'map'</span>       =&gt; [</div><div class="line">                <span class="string">'GPBMetadata\User'</span> =&gt; APP_DIR.<span class="string">'scheme/grpc/GPBMetadata/User'</span></div><div class="line">            ]</div><div class="line">        ]</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'thrift'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'thrift'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt;  <span class="number">9090</span>,</div><div class="line">        <span class="string">'prefix'</span>    =&gt; <span class="string">'pingpong_thrift'</span>,</div><div class="line">        <span class="string">'service_schemes'</span>  =&gt; [</div><div class="line">            <span class="string">'prefix'</span>    =&gt; [</div><div class="line">                <span class="string">'pingpong_thrift'</span> =&gt; APP_DIR.<span class="string">'resource/thrift/pingpong_thrift/'</span></div><div class="line">            ],</div><div class="line">            <span class="string">'files'</span>       =&gt; [</div><div class="line">                APP_DIR.<span class="string">'resource/thrift/pingpong_thrift/Types'</span></div><div class="line">            ]</div><div class="line">        ]</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'zhihu'</span>=&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'rest'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'https://www.zhihu.com/api/v4'</span>,</div><div class="line">        <span class="string">'headers'</span>   =&gt; [</div><div class="line">            <span class="string">'Authorization:oauth your_key'</span></div><div class="line">        ],</div><div class="line">        <span class="string">'response_decode'</span> =&gt; <span class="string">'json'</span>,</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'github'</span>=&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'rest'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'https://api.github.com'</span>,</div><div class="line">        <span class="string">'headers'</span>   =&gt; [</div><div class="line">            <span class="string">'Accept: application/vnd.github.v3+json'</span>,</div><div class="line">            <span class="string">'User-Agent: test'</span>,</div><div class="line">            <span class="string">'Authorization: Basic your_key'</span></div><div class="line">        ],</div><div class="line">        <span class="string">'curlopt'</span>   =&gt; [</div><div class="line">            <span class="string">'timeout'</span>   =&gt; <span class="number">10</span></div><div class="line">        ],</div><div class="line">        <span class="string">'response_decode'</span> =&gt; <span class="string">'json'</span>,</div><div class="line">    ],</div><div class="line"></div><div class="line">];</div></pre></td></tr></table></figure>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 知乎rest api调用</span></div><div class="line">$zhihu-&gt;answers-&gt;get($id);</div><div class="line"></div><div class="line"><span class="comment">// jsonrcp 服务调用</span></div><div class="line">$jsonrpc-&gt;User-&gt;getName($id);</div><div class="line"></div><div class="line"><span class="comment">// jsonrcp 服务批量调用</span></div><div class="line">$jsonrpc-&gt;batch()</div><div class="line">        -&gt;User-&gt;getName(<span class="number">1</span>)</div><div class="line">        -&gt;User-&gt;getName(<span class="number">2</span>)</div><div class="line">        -&gt;User-&gt;getName(<span class="number">3</span>)</div><div class="line">        -&gt;call();</div><div class="line"></div><div class="line"><span class="comment">// thrift 服务调用，使用thriftpy创建的测试服务</span></div><div class="line">$thrift-&gt;PingPong-&gt;add(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">// grpc 服务调用</span></div><div class="line">$grpc-&gt;User-&gt;getName($id);</div></pre></td></tr></table></figure>
+  
+    <div class="guide-links">
+      
+        <span>← <a href="/doc/storage.html">存储</a></span>
+      
+      
+        <span style="float: right;"><a href="/doc/email.html">邮件</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>
