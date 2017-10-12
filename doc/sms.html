@@ -323,7 +323,7 @@
               
             
             <li>
-              <a href="/doc/db-query1.html" class="sidebar-link">连表查询</a>
+              <a href="/doc/db-query2.html" class="sidebar-link">连表查询</a>
             </li>
           
             
@@ -393,6 +393,19 @@
               <a href="/doc/sms.html" class="sidebar-link current">短信</a>
             </li>
           
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-other.html" class="sidebar-link">其它</a>
+            </li>
+          
         </ul>
     </div>
   </div>
@@ -435,12 +448,14 @@
 </tbody>
 </table>
 <h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'alidayu'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'alidayu'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'acckey'</span>    =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        <span class="string">'seckey'</span>    =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        <span class="string">'signname'</span>  =&gt; <span class="string">'大鱼测试'</span>,</div><div class="line">        <span class="string">'template'</span>  =&gt; [</div><div class="line">            <span class="string">'register'</span>  =&gt; <span class="string">'service_template_id'</span></div><div class="line">        ],</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'aliyun'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'aliyun'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'acckey'</span>    =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        <span class="string">'seckey'</span>    =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        <span class="string">'signname'</span>  =&gt; <span class="string">'短信测试'</span>,</div><div class="line">        <span class="string">'template'</span>  =&gt; [</div><div class="line">            <span class="string">'register'</span>  =&gt; <span class="string">'service_template_id'</span></div><div class="line">        ],</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'baidu'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'baidu'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'acckey'</span>    =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        <span class="string">'seckey'</span>    =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        <span class="string">'template'</span>  =&gt; [</div><div class="line">            <span class="string">'register'</span>  =&gt; <span class="string">'service_template_id'</span></div><div class="line">        ],</div><div class="line">        <span class="comment">//（可选配置）服务域名</span></div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'sms.bj.baidubce.com'</span>, <span class="comment">//默认</span></div><div class="line">        <span class="comment">//（可选配置）签名有效期（秒）</span></div><div class="line">        <span class="string">'expiration'</span>=&gt; <span class="number">180</span> <span class="comment">//默认</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'qcloud'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'qcloud'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'acckey'</span>    =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        <span class="string">'seckey'</span>    =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        <span class="string">'signname'</span>  =&gt; <span class="string">'短信测试'</span>,</div><div class="line">        <span class="string">'template'</span>  =&gt; [</div><div class="line">            <span class="string">'register'</span>  =&gt; <span class="string">'验证码:&#123;code&#125;，您正在进行身份验证，此短信验证码&#123;time&#125;分钟内有效,请勿转发他人。'</span></div><div class="line">        ],</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'yuntongxun'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'yuntongxun'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'appkey'</span>    =&gt; <span class="string">'your_appkey'</span>,</div><div class="line">        <span class="string">'acckey'</span>    =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        <span class="string">'seckey'</span>    =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        <span class="string">'template'</span>  =&gt; [</div><div class="line">            <span class="string">'register'</span>  =&gt; <span class="string">'service_template_id'</span></div><div class="line">        ],</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"><span class="comment"> * 发送短信</span></div><div class="line"><span class="comment"> * $to 接受短信手机号</span></div><div class="line"><span class="comment"> * $template 短信模版id</span></div><div class="line"><span class="comment"> * $data 短信内容变量</span></div><div class="line"><span class="comment"> */</span></div><div class="line">$sms-&gt;send(<span class="string">'1520000000'</span>, <span class="string">'register'</span>, [<span class="string">'code'</span> =&gt; rand(<span class="number">1000</span>, <span class="number">9999</span>)]);</div></pre></td></tr></table></figure>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/* </span></div><div class="line"><span class="comment"> * 发送短信</span></div><div class="line"><span class="comment"> * $to 接受短信手机号</span></div><div class="line"><span class="comment"> * $template 短信模版id</span></div><div class="line"><span class="comment"> * $data 短信内容变量</span></div><div class="line"><span class="comment"> */</span></div><div class="line">$sms-&gt;send(<span class="string">'1520000000'</span>, <span class="string">'register'</span>, [<span class="string">'code'</span> =&gt; rand(<span class="number">1000</span>, <span class="number">9999</span>)]);</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
         <span>← <a href="/doc/email.html">邮件</a></span>
       
+      
+        <span style="float: right;"><a href="/doc/driver-other.html">其它</a> →</span>
       
     </div>
   
