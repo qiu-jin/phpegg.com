@@ -291,11 +291,13 @@
               
               
               
+                <li><h3>数据库</h3></li>
+              
               
               
             
             <li>
-              <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
+              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
             </li>
           
             
@@ -304,13 +306,11 @@
               
               
               
-                <li><h3>数据库</h3></li>
-              
               
               
             
             <li>
-              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+              <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
             </li>
           
             
@@ -423,9 +423,9 @@
 <blockquote>
 <p>直接加载的文件</p>
 </blockquote>
-<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>框架支持<code>composer</code>，可以方便的引用第三方扩展，框架的部分模块也使用了composer，不过框架核心并不依赖composer，在不使用composer时也可以正常使用框架。</p>
-<p>composer 默认关闭，如过要启用composer请设置环境常量<code>ENDOR_DIR</code>，值为composer vendor目录。</p>
-<p>composer autoload的优先级小于<code>framework\core\Loader::autoload</code></p>
+<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>框架支持<code>composer</code>并默认开启，可以方便的引用第三方扩展。不过框架核心并不依赖<code>composer</code>，在不需要使用时可以设置关闭。</p>
+<p>环境常量配置<code>ENDOR_DIR</code>可以指定<code>composer vendor</code>目录，如果不设置此常量配置或为<code>null</code>可以关闭<code>composer</code>使用。</p>
+<p>另外<code>composer autoload</code>的优先级小于<code>framework\core\Loader::autoload</code>。</p>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>添加loader规则</p>
 <blockquote>
 <p>规则有4种 <code>prefix</code> <code>map</code> <code>alias</code> <code>files</code></p>
