@@ -409,7 +409,7 @@
 <ul>
 <li>php &gt;= 7.0</li>
 <li>CURL PHP Extension</li>
-<li>POD/MYQSLI PHP Extension</li>
+<li>PDO/MYSQLI PHP Extension</li>
 </ul>
 </blockquote>
 <p><strong>下载安装</strong></p>
@@ -420,9 +420,9 @@
 <p>使用<a href="https://getcomposer.org/" target="_blank" rel="external">composer</a>安装。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">composer create-project --prefer-dist qiu-jin/phpegg</div></pre></td></tr></table></figure>
 <p><em>3 Git安装</em></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone git@github.com:qiu-jin/phpegg.git</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/qiu-jin/phpegg.git</div></pre></td></tr></table></figure>
 <p><strong>服务器配置</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Apache</div><div class="line">DocumentRoot /your_app_path/public</div><div class="line">		</div><div class="line">&lt;Directory &quot;/your_app_path/public&quot;&gt;</div><div class="line">		Options +FollowSymLinks</div><div class="line">		RewriteEngine On</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</div><div class="line">		RewriteRule ^ index.php [L]</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Apache</div><div class="line"></div><div class="line">&lt;Directory &quot;/your_app_path/public&quot;&gt;</div><div class="line">		Options +FollowSymLinks</div><div class="line">		RewriteEngine On</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</div><div class="line">		RewriteRule ^ index.php [L]</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Nginx</div><div class="line">server &#123;</div><div class="line">        listen 80;</div><div class="line">        root /your_app_path/public;</div><div class="line">        location / &#123;</div><div class="line">                try_files $uri $uri/ /index.php?$query_string;</div><div class="line">        &#125;</div><div class="line">        location ~ \.php$ &#123;</div><div class="line">                include /etc/nginx/fastcgi.conf;</div><div class="line">                fastcgi_pass unix:/run/php/php7.0-fpm.sock;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
   

@@ -474,17 +474,17 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[<span class="string">'='</span>, <span class="string">'!='</span>, <span class="string">'&gt;'</span>, <span class="string">'&gt;='</span>, <span class="string">'&lt;'</span>, <span class="string">'&lt;='</span>, <span class="string">'LIKE'</span>, <span class="string">'IN'</span>, <span class="string">'IS'</span>, <span class="string">'BETWEEN'</span>]</div></pre></td></tr></table></figure>
 <h2 id="其它子句"><a href="#其它子句" class="headerlink" title="其它子句"></a>其它子句</h2><h5 id="1-select子句"><a href="#1-select子句" class="headerlink" title="1 select子句"></a>1 <code>select</code>子句</h5><p>指定查询需要的字段，1到无穷参数，每个参数为字段。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'email'</span>)-&gt;find();</div></pre></td></tr></table></figure>
-<p>另外当参数为一个数组且有2个元素时，为设置字段别名，第1个元素为字段名，第2个元素为别名。</p>
+<p>另外当参数为数组且有2个元素时，为设置字段别名，第1个元素为字段名，第2个元素为别名。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, [<span class="string">'name'</span>, <span class="string">'user_name'</span>])-&gt;find();</div></pre></td></tr></table></figure>
-<p>另外当参数为一个数组且3个元素时，为设置字段聚合方法，，第1个元素为字段名，第2个元素聚合方法，第3个元素为别名。</p>
+<p>另外当参数为数组且3个元素时，为设置字段聚合方法，，第1个元素为字段名，第2个元素聚合方法，第3个元素为别名。</p>
 <p>通常需要配合<code>group</code>使用</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;select([<span class="string">'user_id'</span>, <span class="string">'count'</span>, <span class="string">'user_post_count'</span>])-&gt;group(<span class="string">'user_id'</span>)-&gt;find();</div></pre></td></tr></table></figure>
 <h5 id="2-order子句"><a href="#2-order子句" class="headerlink" title="2 order子句"></a>2 <code>order</code>子句</h5><p>指定查询排序，支持多个子句组合。</p>
-<p><code>order</code>有2个参数，第一个参数指定要排序的字段，第二参数决定排序类型（默认为false从小到大排序）</p>
+<p><code>order</code>有2个参数，第一个参数指定要排序的字段，第二参数决定排序类型（默认为false）为true时为DESC排序。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;order(<span class="string">'name'</span>)-&gt;order(<span class="string">'id'</span>, <span class="keyword">true</span>)-&gt;find();</div></pre></td></tr></table></figure>
 <h5 id="3-limit"><a href="#3-limit" class="headerlink" title="3 limit"></a>3 <code>limit</code></h5><p>限定查询结果</p>
 <p><code>limit</code>有1个参数时，限定只查询对应数目的结果。有2个参数时，第1个参数为起始数，第2个参数为限定查询结果数。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;limit(<span class="number">10</span>)-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;post-&gt;limit(<span class="number">10</span>, <span class="number">10</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 查询前10个用户</span></div><div class="line">$db-&gt;user-&gt;limit(<span class="number">10</span>)-&gt;find();</div><div class="line"><span class="comment">// 查询前11－20主题贴</span></div><div class="line">$db-&gt;post-&gt;limit(<span class="number">10</span>, <span class="number">10</span>)-&gt;find();</div></pre></td></tr></table></figure>
 <h5 id="4-page"><a href="#4-page" class="headerlink" title="4 page"></a>4 <code>page</code></h5><p><code>page</code>方法与<code>limit</code>类似，用于分页查询。</p>
 <p>page方法第1个参数为页数，第2个参数为一页的记录数（默认为30）</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 查询第31到60条记录</span></div><div class="line">$db-&gt;post-&gt;page(<span class="number">2</span>)-&gt;find();</div></pre></td></tr></table></figure>
