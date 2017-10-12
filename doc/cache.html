@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>安装 — PHPEGG</title>
+    <title>缓存 — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -83,7 +83,7 @@
               
             
             <li>
-              <a href="/doc/installation.html" class="sidebar-link current">安装</a>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
             </li>
           
             
@@ -338,7 +338,20 @@
               
             
             <li>
-              <a href="/doc/cache.html" class="sidebar-link current">安装</a>
+              <a href="/doc/cache.html" class="sidebar-link current">缓存</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/storage.html" class="sidebar-link">存储</a>
             </li>
           
         </ul>
@@ -350,13 +363,49 @@
 <div class="content doc with-sidebar cache-doc">
 
   
-    <h1>安装</h1>
+    <h1>缓存</h1>
   
-  <p>安装</p>
-
+  <h2 id="驱动类型"><a href="#驱动类型" class="headerlink" title="驱动类型"></a>驱动类型</h2><table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apc</td>
+<td>基于php apcu扩展的单机共享内存缓存</td>
+</tr>
+<tr>
+<td>Db</td>
+<td>使用关系数据库缓存数据</td>
+</tr>
+<tr>
+<td>File</td>
+<td>使用文件保存缓存数据</td>
+</tr>
+<tr>
+<td>Memcached</td>
+<td>使用Memcached服务缓存数据</td>
+</tr>
+<tr>
+<td>Opcache</td>
+<td>将缓存数据写入php文件，使用php Opcache来缓存数据</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>使用Redis服务缓存数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'apc'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'apc'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 缓存key前缀，防止冲突。</span></div><div class="line">        <span class="string">'prefix'</span>    =&gt; <span class="string">'test'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">         * 是否调用clear方法清除所有缓存</span></div><div class="line"><span class="comment">         * 为true时清除所有缓存，会影响其它apc缓存实例。</span></div><div class="line"><span class="comment">         * 为false时，使用迭代器删除有prefix的key的缓存，需要迭代处理缓存较大时可能效率低。</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'global_clear'</span> =&gt; <span class="keyword">false</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'db'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'db'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* 缓存数据库</span></div><div class="line"><span class="comment">         * 值为数组时使用数组配置（参考db配置）</span></div><div class="line"><span class="comment">         * 值为字符串时直接使用db配置中的同名db实例</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'db'</span>        =&gt; <span class="string">'mysql'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* 缓存表名</span></div><div class="line"><span class="comment">         * key char(128) NOT NULL PRIMARY KEY</span></div><div class="line"><span class="comment">         * value BLOB</span></div><div class="line"><span class="comment">         * expiration int(11)</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'table'</span>     =&gt; <span class="string">'cache'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/*（可选配置）</span></div><div class="line"><span class="comment">         * 设置缓存值的序列化和反序列化处理器</span></div><div class="line"><span class="comment">         * 在apc memcached redis opcache等驱动有自己内置序列化和反序列化处理，所以不需要此设置</span></div><div class="line"><span class="comment">         * 如果缓存值没有数组等复合类型只有字符串等，也可以不设置此项</span></div><div class="line"><span class="comment">         * 除了json serialize等内置序列化和反序列化处理器，也可以安装扩展支持igbinary msgpack等协议</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'serializer'</span> =&gt; [<span class="string">'jsonencode'</span>, <span class="string">'jsondecode'</span>], <span class="comment">//默认为空</span></div><div class="line">        </div><div class="line">        <span class="comment">/*（可选配置）</span></div><div class="line"><span class="comment">         * 设置gc处理器触发几率，值为0.0001到1之间</span></div><div class="line"><span class="comment">         * apc memcached redis等驱动有自己的gc处理，所以不需要此设置</span></div><div class="line"><span class="comment">         * file opcache等驱动还需要gc_maxlife配置来配合处理gc</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="comment">//'gc_random'  =&gt; '' </span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'file'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'file'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 缓存文件保存目录。</span></div><div class="line">        <span class="string">'dir'</span>       =&gt; APP_DIR.<span class="string">'storage/cache/file/'</span>,</div><div class="line"></div><div class="line">         <span class="comment">// （可选配置）缓存最大生存时间，大于此时间的文件会在触发gc后被删除</span></div><div class="line">        <span class="string">'gc_maxlife'</span> =&gt; <span class="number">86400</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'memcached'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'memcached'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 服务器地址，多个以逗号分隔</span></div><div class="line">        <span class="string">'hosts'</span>     =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="number">11211</span>, <span class="comment">//默认值</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）用户名</span></div><div class="line">        <span class="comment">// 'username'  =&gt; '', </span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）密码</span></div><div class="line">        <span class="comment">// 'password'  =&gt; '', </span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）超时设置</span></div><div class="line">        <span class="comment">// 'timeout =&gt; ''</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）options设置</span></div><div class="line">        <span class="comment">// 'options =&gt; ''</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'opcache'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'opcache'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// PHP缓存文件保存目录。</span></div><div class="line">        <span class="string">'dir'</span>       =&gt; APP_DIR.<span class="string">'storage/cache/php/'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）缓存最大生存时间，大于此时间的文件会在触发gc后被删除</span></div><div class="line">       <span class="string">'gc_maxlife'</span> =&gt; <span class="number">86400</span>, <span class="comment">//默认值</span></div><div class="line"></div><div class="line">       <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">        * 为true时将var_export不支持的数据类型过滤处理，如object转为array，resource设为null等</span></div><div class="line"><span class="comment">        * 为false不做处理，有不支持的数据类型时会产生php错误，请谨慎使用。</span></div><div class="line"><span class="comment">        */</span></div><div class="line">       <span class="string">'filter_value'</span> =&gt; <span class="keyword">false</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'redis'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'redis'</span>,</div><div class="line">   </div><div class="line">        <span class="comment">// Redis服务器器地址</span></div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="number">6379</span>, <span class="comment">//默认值</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）database</span></div><div class="line">        <span class="comment">//'database'  =&gt; ''</span></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 设置缓存值</span></div><div class="line">$cache-&gt;set($key, $value, $ttl ＝ <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 检查缓存是否存在</span></div><div class="line">$cache-&gt;has($key);</div><div class="line"></div><div class="line"><span class="comment">// 获取缓存值</span></div><div class="line">$cache-&gt;get($key, $default = <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 获取并删除缓存值</span></div><div class="line">$cache-&gt;pull($key);</div><div class="line"></div><div class="line"><span class="comment">// 删除缓存</span></div><div class="line">$cache-&gt;delete($key);</div><div class="line"></div><div class="line"><span class="comment">// 批量获取</span></div><div class="line">$cache-&gt;getMultiple($keys);</div><div class="line"></div><div class="line"><span class="comment">// 批量设置</span></div><div class="line">$cache-&gt;setMultiple($values, $ttl = <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 批量删除</span></div><div class="line">$cache-&gt;deleteMultiple($keys);</div><div class="line"></div><div class="line"><span class="comment">// 清除所有缓存</span></div><div class="line">$cache-&gt;clear();</div><div class="line"></div><div class="line"><span class="comment">// 自增，目前只有apc redis memcached支持</span></div><div class="line">$cache-&gt;increment($key, $value = <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// 自减，目前只有apc redis memcached支持</span></div><div class="line">$cache-&gt;decrement($key, $value = <span class="number">1</span>);</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
+      
+        <span style="float: right;"><a href="/doc/storage.html">存储</a> →</span>
       
     </div>
   

@@ -338,7 +338,20 @@
               
             
             <li>
-              <a href="/doc/cache.html" class="sidebar-link">安装</a>
+              <a href="/doc/cache.html" class="sidebar-link">缓存</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/storage.html" class="sidebar-link">存储</a>
             </li>
           
         </ul>
@@ -353,7 +366,7 @@
     <h1>数据操作</h1>
   
   <h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><h4 id="1-get方法"><a href="#1-get方法" class="headerlink" title="1 get方法"></a>1 <code>get</code>方法</h4><p>查询一条数据记录，在生成<code>SQL</code>时会自动加上<code>LIMIT 1</code></p>
-<p><code>get</code>方法有2个可选参数，第一个参数指定主键值，第一个参数指定主键名（默认为<code>i</code>）,如果设定了参数会覆盖<code>where</code>方法的设置。</p>
+<p><code>get</code>方法有2个可选参数，第1个参数指定主键值，第2个参数指定主键名（默认为<code>id</code>）,如果设定了参数会覆盖<code>where</code>方法的设置。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;get(<span class="number">1</span>);</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;get();</div></pre></td></tr></table></figure>
 <p>查询结果返回数组或null</p>
 <h4 id="2-find方法"><a href="#2-find方法" class="headerlink" title="2 find方法"></a>2 <code>find</code>方法</h4><p><code>find</code>方法查询多条数据记录。</p>
