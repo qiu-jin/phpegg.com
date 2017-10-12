@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>Rest应用 — PHPEGG</title>
+    <title>Rest — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -124,7 +124,7 @@
               
             
             <li>
-              <a href="/doc/standard.html" class="sidebar-link">标准应用</a>
+              <a href="/doc/standard.html" class="sidebar-link">标准</a>
             </li>
           
             
@@ -137,7 +137,7 @@
               
             
             <li>
-              <a href="/doc/rest.html" class="sidebar-link current">Rest应用</a>
+              <a href="/doc/rest.html" class="sidebar-link current">Rest</a>
             </li>
           
             
@@ -324,7 +324,7 @@
 <div class="content doc with-sidebar rest-doc">
 
   
-    <h1>Rest应用</h1>
+    <h1>Rest</h1>
   
   <h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//app/demo/public/index_rest.php</span></div><div class="line"></div><div class="line"><span class="keyword">include</span> <span class="string">'../../../framework/app.php'</span>;</div><div class="line"></div><div class="line">framework\App::start(<span class="string">'Rest'</span>, [</div><div class="line">    <span class="string">'default_dispatch_param_mode'</span> =&gt; <span class="number">1</span>,    </div><div class="line">])-&gt;run();</div></pre></td></tr></table></figure>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 调度模式，支持default resource route组合</span></div><div class="line">    <span class="string">'dispatch_mode'</span>     =&gt; [<span class="string">'default'</span>],</div><div class="line">    <span class="comment">// 控制器namespace</span></div><div class="line">    <span class="string">'controller_ns'</span>     =&gt; <span class="string">'controller'</span>,</div><div class="line">    <span class="comment">// 控制器类namespace深度，0为不确定</span></div><div class="line">    <span class="string">'controller_depth'</span>  =&gt; <span class="number">1</span>,</div><div class="line">    <span class="comment">// 控制器类名后缀</span></div><div class="line">    <span class="string">'controller_suffix'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">// request参数是否转为控制器方法参数</span></div><div class="line">    <span class="string">'bind_request_params'</span>   =&gt; <span class="keyword">null</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 默认调度的路径转为驼峰风格</span></div><div class="line">    <span class="string">'default_dispatch_to_camel'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">/* 默认调度的参数模式</span></div><div class="line"><span class="comment">     * 0 无参数</span></div><div class="line"><span class="comment">     * 1 顺序参数</span></div><div class="line"><span class="comment">     * 2 键值参数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'default_dispatch_param_mode'</span> =&gt; <span class="number">0</span>,</div><div class="line">    <span class="comment">// 默认调度下允许的HTTP方法</span></div><div class="line">    <span class="string">'default_dispatch_http_methods'</span> =&gt; [<span class="string">'GET'</span>, <span class="string">'POST'</span>, <span class="string">'PUT'</span>, <span class="string">'DELETE'</span>, <span class="string">'PATCH'</span><span class="comment">/*, 'HEAD', 'OPTIONS'*/</span>],</div><div class="line">    </div><div class="line">    <span class="comment">// 资源调度默认路由表</span></div><div class="line">    <span class="string">'resource_dispatch_routes'</span>=&gt; [</div><div class="line">        <span class="string">'/'</span>     =&gt; [<span class="string">'GET'</span> =&gt; <span class="string">'index'</span>, <span class="string">'POST'</span> =&gt; <span class="string">'create'</span>],</div><div class="line">        <span class="string">'*'</span>     =&gt; [<span class="string">'GET'</span> =&gt; <span class="string">'show'</span>,  <span class="string">'PUT'</span>  =&gt; <span class="string">'update'</span>, <span class="string">'DELETE'</span> =&gt; <span class="string">'destroy'</span>],</div><div class="line">        <span class="string">'create'</span>=&gt; [<span class="string">'GET'</span> =&gt; <span class="string">'new'</span>],</div><div class="line">        <span class="string">'*/edit'</span>=&gt; [<span class="string">'GET'</span> =&gt; <span class="string">'edit'</span>]</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="comment">/* 路由调度的参数模式</span></div><div class="line"><span class="comment">     * 0 无参数</span></div><div class="line"><span class="comment">     * 1 循序参数</span></div><div class="line"><span class="comment">     * 2 键值参数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'route_dispatch_param_mode'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="comment">// 路由调度的路由表</span></div><div class="line">    <span class="string">'route_dispatch_routes'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">// 路由调启是否用动作路由</span></div><div class="line">    <span class="string">'route_dispatch_action_route'</span> =&gt; <span class="keyword">false</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
@@ -359,7 +359,7 @@
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/standard.html">标准应用</a></span>
+        <span>← <a href="/doc/standard.html">标准</a></span>
       
       
         <span style="float: right;"><a href="/doc/micro.html">微应用</a> →</span>
