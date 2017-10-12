@@ -291,13 +291,11 @@
               
               
               
-                <li><h3>数据库</h3></li>
-              
               
               
             
             <li>
-              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+              <a href="/doc/db-querys.html" class="sidebar-link">安装</a>
             </li>
           
             
@@ -306,11 +304,13 @@
               
               
               
+                <li><h3>数据库</h3></li>
+              
               
               
             
             <li>
-              <a href="/doc/db-querys.html" class="sidebar-link">安装</a>
+              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
             </li>
           
             
@@ -352,31 +352,31 @@
   
     <h1>数据操作</h1>
   
-  <h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><h4 id="1-get方法"><a href="#1-get方法" class="headerlink" title="1 get方法"></a>1 get方法</h4><p>查询一条数据记录，在生成SQL时会自动加上LIMIT 1</p>
-<p>get方法有2个可选参数，第一个参数指定主键值，第一个参数指定主键名（默认为id）,如果设定了参数会覆盖where方法的设置。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;get(1);</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(&apos;id&apos;, 1)-&gt;get();</div></pre></td></tr></table></figure>
+  <h2 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h2><h4 id="1-get方法"><a href="#1-get方法" class="headerlink" title="1 get方法"></a>1 <code>get</code>方法</h4><p>查询一条数据记录，在生成<code>SQL</code>时会自动加上<code>LIMIT 1</code></p>
+<p><code>get</code>方法有2个可选参数，第一个参数指定主键值，第一个参数指定主键名（默认为<code>i</code>）,如果设定了参数会覆盖<code>where</code>方法的设置。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;get(<span class="number">1</span>);</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;get();</div></pre></td></tr></table></figure>
 <p>查询结果返回数组或null</p>
-<h4 id="2-find方法"><a href="#2-find方法" class="headerlink" title="2 find方法"></a>2 find方法</h4><p>find方法查询多条数据记录。</p>
-<p>find方法有一个可选参数，用来限定查询数据的条数，可以取代limit使用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;user-&gt;find(1);</div></pre></td></tr></table></figure>
-<h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><h4 id="1-insert方法"><a href="#1-insert方法" class="headerlink" title="1 insert方法"></a>1 insert方法</h4><p>插入一条数据</p>
-<p>insert方法有2个参数，第一个参数是要插入的数据，第二个参数决定是否返回insert_id（默认为false不返回）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;insert([</div><div class="line">    &apos;user_id&apos; =&gt; 1,</div><div class="line">    &apos;title&apos;   =&gt; &apos;测试标题&apos;,</div><div class="line">    &apos;content&apos; =&gt; &apos;测试内容&apos;,</div><div class="line">]);</div></pre></td></tr></table></figure>
-<h4 id="2-insertAll方法"><a href="#2-insertAll方法" class="headerlink" title="2 insertAll方法"></a>2 insertAll方法</h4><p>批量插入多条数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;insertAll([</div><div class="line">    [</div><div class="line">        &apos;user_id&apos; =&gt; 1,</div><div class="line">        &apos;title&apos; =&gt; &apos;测试标题1&apos;,</div><div class="line">        &apos;content&apos; =&gt; &apos;测试内容1&apos;,</div><div class="line">    ],</div><div class="line">    [</div><div class="line">        &apos;user_id&apos; =&gt; 1,</div><div class="line">        &apos;title&apos; =&gt; &apos;测试标题2&apos;,</div><div class="line">        &apos;content&apos; =&gt; &apos;测试内容2&apos;,</div><div class="line">    ],</div><div class="line">    [</div><div class="line">        &apos;user_id&apos; =&gt; 1,</div><div class="line">        &apos;title&apos; =&gt; &apos;测试标题3&apos;,</div><div class="line">        &apos;content&apos; =&gt; &apos;测试内容3&apos;,</div><div class="line">    ],</div><div class="line">]);</div></pre></td></tr></table></figure>
-<h4 id="3-replace方法"><a href="#3-replace方法" class="headerlink" title="3 replace方法"></a>3 replace方法</h4><p>替换插入或更新数据</p>
-<p>replace方法使用 REPLACE INTO 语句来替换插入或更新数据</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> $db-&gt;post-&gt;replace([</div><div class="line">    &apos;id&apos;      =&gt; 1</div><div class="line">    &apos;user_id&apos; =&gt; 1,</div><div class="line">    &apos;title&apos;   =&gt; &apos;测试标题&apos;,</div><div class="line">    &apos;content&apos; =&gt; &apos;测试内容&apos;,</div><div class="line">]);</div></pre></td></tr></table></figure>
-<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><h4 id="1-update"><a href="#1-update" class="headerlink" title="1 update"></a>1 update</h4><p>更新一到多条数据</p>
-<p>update方法有3个参数，第1个参数是要更新的数据，后2个参数可选，分别用来指定主键值和主键名，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;update([&apos;content&apos; =&gt; &apos;更新内容&apos;], 1);</div><div class="line"></div><div class="line">$db-&gt;post-&gt;where(&apos;id&apos;, 1)-&gt;update([&apos;content&apos; =&gt; &apos;更新内容&apos;]);</div></pre></td></tr></table></figure>
+<h4 id="2-find方法"><a href="#2-find方法" class="headerlink" title="2 find方法"></a>2 <code>find</code>方法</h4><p><code>find</code>方法查询多条数据记录。</p>
+<p><code>find</code>方法有一个可选参数，用来限定查询数据的条数，可以取代<code>limit</code>使用。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<h2 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h2><h4 id="1-insert方法"><a href="#1-insert方法" class="headerlink" title="1 insert方法"></a>1 <code>insert</code>方法</h4><p>插入一条数据</p>
+<p><code>insert</code>方法有2个参数，第一个参数是要插入的数据，第二个参数决定是否返回<code>insert_id</code>（默认为<code>false</code>不返回）</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;insert([</div><div class="line">    <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="string">'title'</span>   =&gt; <span class="string">'测试标题'</span>,</div><div class="line">    <span class="string">'content'</span> =&gt; <span class="string">'测试内容'</span>,</div><div class="line">]);</div></pre></td></tr></table></figure>
+<h4 id="2-insertAll方法"><a href="#2-insertAll方法" class="headerlink" title="2 insertAll方法"></a>2 <code>insertAll</code>方法</h4><p>批量插入多条数据</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;insertAll([</div><div class="line">    [</div><div class="line">        <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">        <span class="string">'title'</span> =&gt; <span class="string">'测试标题1'</span>,</div><div class="line">        <span class="string">'content'</span> =&gt; <span class="string">'测试内容1'</span>,</div><div class="line">    ],</div><div class="line">    [</div><div class="line">        <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">        <span class="string">'title'</span> =&gt; <span class="string">'测试标题2'</span>,</div><div class="line">        <span class="string">'content'</span> =&gt; <span class="string">'测试内容2'</span>,</div><div class="line">    ],</div><div class="line">    [</div><div class="line">        <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">        <span class="string">'title'</span> =&gt; <span class="string">'测试标题3'</span>,</div><div class="line">        <span class="string">'content'</span> =&gt; <span class="string">'测试内容3'</span>,</div><div class="line">    ],</div><div class="line">]);</div></pre></td></tr></table></figure>
+<h4 id="3-replace方法"><a href="#3-replace方法" class="headerlink" title="3 replace方法"></a>3 <code>replace</code>方法</h4><p>替换插入或更新数据</p>
+<p><code>replace</code>方法使用 <code>REPLACE INTO</code> 语句来替换插入或更新数据</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"> $db-&gt;post-&gt;replace([</div><div class="line">    <span class="string">'id'</span>      =&gt; <span class="number">1</span></div><div class="line">    <span class="string">'user_id'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="string">'title'</span>   =&gt; <span class="string">'测试标题'</span>,</div><div class="line">    <span class="string">'content'</span> =&gt; <span class="string">'测试内容'</span>,</div><div class="line">]);</div></pre></td></tr></table></figure>
+<h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><h4 id="1-update"><a href="#1-update" class="headerlink" title="1 update"></a>1 <code>update</code></h4><p>更新一到多条数据</p>
+<p><code>update</code>方法有3个参数，第1个参数是要更新的数据，后2个参数可选，分别用来指定主键值和主键名，</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;update([<span class="string">'content'</span> =&gt; <span class="string">'更新内容'</span>], <span class="number">1</span>);</div><div class="line"></div><div class="line">$db-&gt;post-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;update([<span class="string">'content'</span> =&gt; <span class="string">'更新内容'</span>]);</div></pre></td></tr></table></figure>
 <p>执行结果返回更新数据条数</p>
-<h4 id="2-updateAuto"><a href="#2-updateAuto" class="headerlink" title="2 updateAuto"></a>2 updateAuto</h4><p>自增 自减方式自动更新数据</p>
-<p>updateAuto方法有2个参数，第1个参数是要自动更新的数据，第2个参数是普通更新数据（默认为空）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 帐号积分加1</div><div class="line">$db-&gt;account-&gt;where(&apos;id&apos;, 1)-&gt;updateAuto([&apos;score&apos; =&gt; 1]);</div><div class="line"></div><div class="line">// foo加1，bar加2，baz减1</div><div class="line">$db-&gt;table-&gt;updateAuto([&apos;foo&apos; =&gt; 1, &apos;bar&apos; =&gt; 2, &apos;baz&apos; =&gt; -1]);</div></pre></td></tr></table></figure>
-<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><h4 id="1-delete"><a href="#1-delete" class="headerlink" title="1 delete"></a>1 delete</h4><p>删除一到多条数据记录</p>
-<p>delete方法有2个可选参数，第一个参数指定主键值，第一个参数指定主键名（默认为id）,如果设定了参数会覆盖where方法的设置。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 删除id为1的用户</div><div class="line">$db-&gt;user-&gt;delete(1);</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(&apos;id&apos;, 1)-&gt;delete();</div></pre></td></tr></table></figure>
+<h4 id="2-updateAuto"><a href="#2-updateAuto" class="headerlink" title="2 updateAuto"></a>2 <code>updateAuto</code></h4><p>自增 自减方式自动更新数据</p>
+<p><code>updateAuto</code>方法有2个参数，第1个参数是要自动更新的数据，第2个参数是普通更新数据（默认为空）</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 帐号积分加1</span></div><div class="line">$db-&gt;account-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;updateAuto([<span class="string">'score'</span> =&gt; <span class="number">1</span>]);</div><div class="line"></div><div class="line"><span class="comment">// foo加1，bar加2，baz减1</span></div><div class="line">$db-&gt;table-&gt;updateAuto([<span class="string">'foo'</span> =&gt; <span class="number">1</span>, <span class="string">'bar'</span> =&gt; <span class="number">2</span>, <span class="string">'baz'</span> =&gt; <span class="number">-1</span>]);</div></pre></td></tr></table></figure>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><h4 id="1-delete"><a href="#1-delete" class="headerlink" title="1 delete"></a>1 <code>delete</code></h4><p>删除一到多条数据记录</p>
+<p><code>delete</code>方法有2个可选参数，第一个参数指定主键值，第一个参数指定主键名（默认为<code>id</code>）,如果设定了参数会覆盖<code>where</code>方法的设置。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 删除id为1的用户</span></div><div class="line">$db-&gt;user-&gt;delete(<span class="number">1</span>);</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;delete();</div></pre></td></tr></table></figure>
 <p>执行结果返回删除数据条数</p>
 <h2 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h2><table>
 <thead>
@@ -408,37 +408,37 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 最大积分数</div><div class="line">$db-&gt;account-&gt;max(&apos;score&apos;)</div><div class="line"> </div><div class="line">// 用户主题数</div><div class="line">$db-&gt;post-&gt;where(&apos;user_id&apos;, 1)-&gt;count()</div></pre></td></tr></table></figure>
-<h2 id="Where子句"><a href="#Where子句" class="headerlink" title="Where子句"></a>Where子句</h2><p>使用where与whereOr方法</p>
-<p>where子句支持多种参数组合来构造查询条件</p>
-<h5 id="3个参数"><a href="#3个参数" class="headerlink" title="3个参数"></a>3个参数</h5><p>where子句使用3 个参数时，第1个参数是字段名，第2个参数为运算符，第3个参数对应的值。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;where(&apos;user_id&apos;, &apos;&gt;&apos;, 10)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="2个参数"><a href="#2个参数" class="headerlink" title="2个参数"></a>2个参数</h5><p>where子句使用2个参数时，第1个参数是字段名，第2个参数对应的值，这里只是把运算符=省略了</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 如下2行代码作用相同，只是第一个省略了运算符=</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(&apos;id&apos;, 1)-&gt;get();</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(&apos;id&apos;, &apos;=&apos;, 1)-&gt;get();</div></pre></td></tr></table></figure>
-<h5 id="1个参数"><a href="#1个参数" class="headerlink" title="1个参数"></a>1个参数</h5><p>where子句使用1个参数时，参数值必须为数组，使用数组来构造查询条件。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//查询用户1于2017-10-01后发表的所有主题</div><div class="line"></div><div class="line">$db-&gt;post-&gt;where([</div><div class="line">    [&apos;id&apos;, &apos;=&apos;, 1]</div><div class="line">    [&apos;time&apos;, &apos;&gt;&apos;, &apos;2017-10-01&apos;]</div><div class="line">])-&gt;find();</div><div class="line"></div><div class="line"></div><div class="line">//查询用户1或用户2或用户3的所有主题，为了防止OR作为键名冲突可在其后加#数字。</div><div class="line">$db-&gt;post-&gt;where([</div><div class="line">    [&apos;id&apos;, &apos;=&apos;, 1]</div><div class="line">    &apos;OR&apos; =&gt; [&apos;id&apos;, &apos;=&apos;, 2]</div><div class="line">    &apos;OR#3&apos; =&gt; [&apos;id&apos;, &apos;=&apos;, 3]</div><div class="line">])-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="使用多个where-whereOr子句"><a href="#使用多个where-whereOr子句" class="headerlink" title="使用多个where whereOr子句"></a>使用多个where whereOr子句</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;where(&apos;id&apos;, 1)-&gt;where(&apos;time&apos;, &apos;&gt;&apos;, &apos;2017-10-01&apos;)-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;post-&gt;where(&apos;id&apos;, 1)-&gt;whereOr(&apos;id&apos;, 2)-&gt;find();</div></pre></td></tr></table></figure>
-<p>where子句支持的运算符</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">[&apos;=&apos;, &apos;!=&apos;, &apos;&gt;&apos;, &apos;&gt;=&apos;, &apos;&lt;&apos;, &apos;&lt;=&apos;, &apos;LIKE&apos;, &apos;IN&apos;, &apos;IS&apos;, &apos;BETWEEN&apos;]</div></pre></td></tr></table></figure>
-<h2 id="其它子句"><a href="#其它子句" class="headerlink" title="其它子句"></a>其它子句</h2><h5 id="1-select子句"><a href="#1-select子句" class="headerlink" title="1 select子句"></a>1 select子句</h5><p>指定查询需要的字段，1到无穷参数，每个参数为字段。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(&apos;id&apos;, &apos;name&apos;, &apos;email)-&gt;find();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 最大积分数</span></div><div class="line">$db-&gt;account-&gt;max(<span class="string">'score'</span>)</div><div class="line"> </div><div class="line"><span class="comment">// 用户主题数</span></div><div class="line">$db-&gt;post-&gt;where(<span class="string">'user_id'</span>, <span class="number">1</span>)-&gt;count()</div></pre></td></tr></table></figure>
+<h2 id="Where子句"><a href="#Where子句" class="headerlink" title="Where子句"></a>Where子句</h2><p>使用<code>where</code>与<code>whereOr</code>方法</p>
+<p><code>where</code>子句支持多种参数组合来构造查询条件</p>
+<h5 id="3个参数"><a href="#3个参数" class="headerlink" title="3个参数"></a>3个参数</h5><p><code>where</code>子句使用3 个参数时，第1个参数是字段名，第2个参数为运算符，第3个参数对应的值。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;where(<span class="string">'user_id'</span>, <span class="string">'&gt;'</span>, <span class="number">10</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="2个参数"><a href="#2个参数" class="headerlink" title="2个参数"></a>2个参数</h5><p><code>where</code>子句使用2个参数时，第1个参数是字段名，第2个参数对应的值，这里只是把运算符=省略了</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 如下2行代码作用相同，只是第一个省略了运算符=</span></div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;get();</div><div class="line"></div><div class="line">$db-&gt;user-&gt;where(<span class="string">'id'</span>, <span class="string">'='</span>, <span class="number">1</span>)-&gt;get();</div></pre></td></tr></table></figure>
+<h5 id="1个参数"><a href="#1个参数" class="headerlink" title="1个参数"></a>1个参数</h5><p><code>where</code>子句使用1个参数时，参数值必须为数组，使用数组来构造查询条件。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//查询用户1于2017-10-01后发表的所有主题</span></div><div class="line"></div><div class="line">$db-&gt;post-&gt;where([</div><div class="line">    [<span class="string">'id'</span>, <span class="string">'='</span>, <span class="number">1</span>]</div><div class="line">    [<span class="string">'time'</span>, <span class="string">'&gt;'</span>, <span class="string">'2017-10-01'</span>]</div><div class="line">])-&gt;find();</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//查询用户1或用户2或用户3的所有主题，为了防止OR作为键名冲突可在其后加#数字。</span></div><div class="line">$db-&gt;post-&gt;where([</div><div class="line">    [<span class="string">'id'</span>, <span class="string">'='</span>, <span class="number">1</span>]</div><div class="line">    <span class="string">'OR'</span> =&gt; [<span class="string">'id'</span>, <span class="string">'='</span>, <span class="number">2</span>]</div><div class="line">    <span class="string">'OR#3'</span> =&gt; [<span class="string">'id'</span>, <span class="string">'='</span>, <span class="number">3</span>]</div><div class="line">])-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="使用多个where-whereOr子句"><a href="#使用多个where-whereOr子句" class="headerlink" title="使用多个where whereOr子句"></a>使用多个<code>where</code> <code>whereOr</code>子句</h5><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;where(<span class="string">'time'</span>, <span class="string">'&gt;'</span>, <span class="string">'2017-10-01'</span>)-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;post-&gt;where(<span class="string">'id'</span>, <span class="number">1</span>)-&gt;whereOr(<span class="string">'id'</span>, <span class="number">2</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<p><code>where</code>子句支持的运算符</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[<span class="string">'='</span>, <span class="string">'!='</span>, <span class="string">'&gt;'</span>, <span class="string">'&gt;='</span>, <span class="string">'&lt;'</span>, <span class="string">'&lt;='</span>, <span class="string">'LIKE'</span>, <span class="string">'IN'</span>, <span class="string">'IS'</span>, <span class="string">'BETWEEN'</span>]</div></pre></td></tr></table></figure>
+<h2 id="其它子句"><a href="#其它子句" class="headerlink" title="其它子句"></a>其它子句</h2><h5 id="1-select子句"><a href="#1-select子句" class="headerlink" title="1 select子句"></a>1 <code>select</code>子句</h5><p>指定查询需要的字段，1到无穷参数，每个参数为字段。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'email)-&gt;find();</span></div></pre></td></tr></table></figure>
 <p>另外当参数为一个数组且有2个元素时，为设置字段别名，第1个元素为字段名，第2个元素为别名。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(&apos;id&apos;, [&apos;name&apos;, &apos;user_name&apos;])-&gt;find();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, [<span class="string">'name'</span>, <span class="string">'user_name'</span>])-&gt;find();</div></pre></td></tr></table></figure>
 <p>另外当参数为一个数组且3个元素时，为设置字段聚合方法，，第1个元素为字段名，第2个元素聚合方法，第3个元素为别名。</p>
-<p>通常需要配合group使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;select([&apos;user_id&apos;, &apos;count&apos;, &apos;user_post_count&apos;])-&gt;group(&apos;user_id&apos;)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="2-order子句"><a href="#2-order子句" class="headerlink" title="2 order子句"></a>2 order子句</h5><p>指定查询排序，支持多个子句组合。</p>
-<p>order有2个参数，第一个参数指定要排序的字段，第二参数决定排序类型（默认为false从小到大排序）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;order(&apos;name&apos;)-&gt;order(&apos;id&apos;, true)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="3-limit"><a href="#3-limit" class="headerlink" title="3 limit"></a>3 limit</h5><p>限定查询结果</p>
-<p>limit有1个参数时，限定只查询对应数目的结果。有2个参数时，第1个参数为起始数，第2个参数为限定查询结果数。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;limit(10)-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;post-&gt;limit(10, 10)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="4-page"><a href="#4-page" class="headerlink" title="4 page"></a>4 page</h5><p>page方法与limit类似，用于分页查询。</p>
+<p>通常需要配合<code>group</code>使用</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;post-&gt;select([<span class="string">'user_id'</span>, <span class="string">'count'</span>, <span class="string">'user_post_count'</span>])-&gt;group(<span class="string">'user_id'</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="2-order子句"><a href="#2-order子句" class="headerlink" title="2 order子句"></a>2 <code>order</code>子句</h5><p>指定查询排序，支持多个子句组合。</p>
+<p><code>order</code>有2个参数，第一个参数指定要排序的字段，第二参数决定排序类型（默认为false从小到大排序）</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;order(<span class="string">'name'</span>)-&gt;order(<span class="string">'id'</span>, <span class="keyword">true</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="3-limit"><a href="#3-limit" class="headerlink" title="3 limit"></a>3 <code>limit</code></h5><p>限定查询结果</p>
+<p><code>limit</code>有1个参数时，限定只查询对应数目的结果。有2个参数时，第1个参数为起始数，第2个参数为限定查询结果数。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;limit(<span class="number">10</span>)-&gt;find();</div><div class="line"></div><div class="line">$db-&gt;post-&gt;limit(<span class="number">10</span>, <span class="number">10</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="4-page"><a href="#4-page" class="headerlink" title="4 page"></a>4 <code>page</code></h5><p><code>page</code>方法与<code>limit</code>类似，用于分页查询。</p>
 <p>page方法第1个参数为页数，第2个参数为一页的记录数（默认为30）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 查询第31到60条记录</div><div class="line">$db-&gt;post-&gt;page(2)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="5-group"><a href="#5-group" class="headerlink" title="5 group"></a>5 group</h5><p>用于分组查询</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 查询每个用户发帖数</div><div class="line"></div><div class="line">$db-&gt;post-&gt;select([&apos;user_id&apos;, &apos;count&apos;, &apos;user_post_count&apos;])-&gt;group(&apos;user_id&apos;)-&gt;find();</div></pre></td></tr></table></figure>
-<h5 id="6-having"><a href="#6-having" class="headerlink" title="6 having"></a>6 having</h5><p>having与where类似只作用于group。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 查询第31到60条记录</span></div><div class="line">$db-&gt;post-&gt;page(<span class="number">2</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="5-group"><a href="#5-group" class="headerlink" title="5 group"></a>5 <code>group</code></h5><p>用于分组查询</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 查询每个用户发帖数</span></div><div class="line"></div><div class="line">$db-&gt;post-&gt;select([<span class="string">'user_id'</span>, <span class="string">'count'</span>, <span class="string">'user_post_count'</span>])-&gt;group(<span class="string">'user_id'</span>)-&gt;find();</div></pre></td></tr></table></figure>
+<h5 id="6-having"><a href="#6-having" class="headerlink" title="6 having"></a>6 <code>having</code></h5><p><code>having</code>与<code>where</code>类似只作用于<code>group</code>。</p>
 
   
     <div class="guide-links">
