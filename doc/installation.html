@@ -427,13 +427,19 @@
 </ul>
 </blockquote>
 <p><strong>下载安装</strong></p>
-<p><em>1 直接下载安装</em></p>
+<ul>
+<li>下载安装</li>
+</ul>
 <p>直接下载源代码解压安装。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">wget https://github.com/qiu-jin/phpegg/archive/master.zip</div></pre></td></tr></table></figure>
-<p><em>2 Composer安装</em></p>
+<ul>
+<li>Composer安装</li>
+</ul>
 <p>使用<a href="https://getcomposer.org/" target="_blank" rel="external">composer</a>安装。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">composer create-project --prefer-dist qiu-jin/phpegg</div></pre></td></tr></table></figure>
-<p><em>3 Git安装</em></p>
+<ul>
+<li>Git安装</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/qiu-jin/phpegg.git</div></pre></td></tr></table></figure>
 <p><strong>服务器配置</strong></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Apache</div><div class="line"></div><div class="line">&lt;Directory &quot;/your_app_path/public&quot;&gt;</div><div class="line">		Options +FollowSymLinks</div><div class="line">		RewriteEngine On</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</div><div class="line">		RewriteRule ^ index.php [L]</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure>
