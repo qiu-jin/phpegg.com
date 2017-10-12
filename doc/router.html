@@ -326,21 +326,21 @@
   
     <h1>路由</h1>
   
-  <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p> Url Path匹配规则</p>
+  <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p> <code>Url Path</code>匹配规则</p>
 <ul>
-<li>匹配规则和URL路径以/分隔为多个单元，循环匹配</li>
-<li>规则单元为* ：匹配一个URL单元所有字符串，记录匹配内容为整个路径单元。</li>
-<li>规则单元为～ ：匹配所有URL单元字符串并结束匹配，记录匹配内容所有单元字符串。</li>
-<li>规则单元首字符为: ：自定义的匹配规则，其后的字符串对应一个函数或静态方法，回调处理返回true为匹配成功，记录匹配内容为整个URL路径单元。</li>
-<li>规则单元首尾字符为() ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</li>
+<li>匹配规则和URL路径以<code>/</code>分隔为多个单元，循环匹配</li>
+<li>规则单元为<code>*</code> ：匹配一个URL单元所有字符串，记录匹配内容为整个路径单元。</li>
+<li>规则单元为<code>～</code> ：匹配所有URL单元字符串并结束匹配，记录匹配内容所有单元字符串。</li>
+<li>规则单元首字符为<code>:</code> ：自定义的匹配规则，其后的字符串对应一个函数或静态方法，回调处理返回<code>true</code>为匹配成功，记录匹配内容为整个URL路径单元。</li>
+<li>规则单元首尾字符为<code>()</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</li>
 <li>规则单元为其他字符串 ：匹配规则单元和URL路径单元必须完全相同，不记录匹配内容。</li>
-<li>匹配结果以 $1 $2 $3 等变量按序调用，顺序为从左到右的匹配单元循环匹配递加记录（如果正则匹配中有多个()匹配，则此单元递加记录多个匹配内容）</li>
+<li>匹配结果以 <code>$1 $2 $3</code> 等变量按序调用，顺序为从左到右的匹配单元循环匹配递加记录（如果正则匹配中有多个()匹配，则此单元递加记录多个匹配内容）</li>
 </ul>
 <p>如下面的路由规则表</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="string">'User'</span> =&gt; <span class="string">'User::index()'</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 参数规则有2种，同时只能用一种</span></div><div class="line">    <span class="comment">// 顺序参数</span></div><div class="line">    <span class="string">'User/*/name'</span> =&gt; <span class="string">'User::getName($1)'</span>,</div><div class="line">    <span class="comment">// 键值参数</span></div><div class="line">    <span class="comment">//'User/*/name' =&gt; 'User::getName(id = $1)',</span></div><div class="line">]</div></pre></td></tr></table></figure>
-<p>如请求 /User/1/name 被User/*/name匹配。</p>
-<p>匹配成功后，对应规则表值User::getName($1)如有参数部分($1)，匹配命中内容以 $1 $2 $3 等变量形式将参数值抽出（这里$1值为1）。</p>
-<p>然后将参数和匹配规则表的值一起返回给各应用模式的调度器处理（示例返回[‘User::getName’, [1]]）。</p>
+<p>如请求 <code>/User/1/name</code> 被<code>User/*/name</code>匹配。</p>
+<p>匹配成功后，对应规则表值<code>User::getName($1)</code>如有参数部分<code>($1)</code>，匹配命中内容以 <code>$1 $2 $3</code> 等变量形式将参数值抽出（这里<code>$1</code>值为<code>1</code>）。</p>
+<p>然后将参数和匹配规则表的值一起返回给各应用模式的调度器处理（示例返回<code>[&#39;User::getName&#39;, [1]]</code>）。</p>
 
   
     <div class="guide-links">

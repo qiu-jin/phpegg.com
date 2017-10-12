@@ -328,21 +328,21 @@
   
   <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>视图有2种使用方式</p>
 <p>1 隐式调用</p>
-<p>在Standard Inline等默认支持视图的应用模式下，如启用了视图（enable_view为true），应用控制器的return数据会传递给默认的视图文件（不同应用模式下调用默认的视图文件的规则不一样，具体请参考各应用模式章节），然后输出html。</p>
+<p>在<code>Standard</code> <code>Inline</code>等默认支持视图的应用模式下，如启用了视图（<code>enable_view</code>为<code>true</code>），应用控制器的<code>return</code>数据会传递给默认的视图文件（不同应用模式下调用默认的视图文件的规则不一样，具体请参考各应用模式章节），然后输出html。</p>
 <blockquote>
-<p>隐式调用下，在控制器不用显示调用任何view方法，正常return数据即可。</p>
+<p>隐式调用下，在控制器不用显示调用任何<code>view</code>方法，正常<code>return</code>数据即可。</p>
 </blockquote>
 <p>2 显式调用</p>
-<p>调用view方法，指定视图文件和数据</p>
+<p>调用<code>view</code>方法，指定视图文件和数据</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用view()辅助函数</span></div><div class="line">view(<span class="string">'/home/index'</span>, $vars);</div><div class="line"></div><div class="line"><span class="comment">// 使用response</span></div><div class="line">Response::view(<span class="string">'/home/index'</span>, $vars);</div><div class="line"></div><div class="line"><span class="comment">// 使用视图魔术方法，下面会说明</span></div><div class="line">View::success();</div><div class="line"></div><div class="line"><span class="comment">// 输出错误页面</span></div><div class="line">View::error($code, $message)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>注意在Standard Inline等应用模式下也可以显式调用view方法，因为有时候可能默认调用的视图文件并不是想要的。</p>
+<p>注意在<code>Standard</code> <code>Inline</code>等应用模式下也可以显式调用<code>view</code>方法，因为有时候可能默认调用的视图文件并不是想要的。</p>
 </blockquote>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 视图文件目录</span></div><div class="line">	<span class="string">'dir'</span> =&gt; APP_DIR.<span class="string">'view/'</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// （可选配置）视图主题</span></div><div class="line">    <span class="comment">//'theme' =&gt; '';</span></div><div class="line">    </div><div class="line">    <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">     * 自定义的错误页面文件路径</span></div><div class="line"><span class="comment">     * 如未设置，默认使用framework\extend\view\Error类方法</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'error'</span> =&gt; [</div><div class="line">        <span class="comment">//'404' =&gt; '/error/404',</span></div><div class="line">        <span class="comment">//'500' =&gt; '/error/500',</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="comment">// （可选配置）视图魔术方法的页面文件路径与默认参数</span></div><div class="line">    <span class="string">'methods'</span> =&gt; [</div><div class="line">        <span class="comment">//'success' =&gt; ['/method/success', 'message' =&gt; '操作成功', 'backto' =&gt; '/'],</span></div><div class="line">        <span class="comment">//'failure' =&gt; ['/method/failure', 'message' =&gt; '操作失败', 'backto' =&gt; '/'],</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">     * 启用视图模版</span></div><div class="line"><span class="comment">     * 此配置只要非null，即使是空数组也会启用模版（使用默认设置）</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'template'</span> =&gt; [</div><div class="line">        <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">         * 模版文件文件目录</span></div><div class="line"><span class="comment">         * 如未设置，默认使用视图文件目录</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'dir'</span> =&gt; APP_DIR.<span class="string">'storage/view/'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）模版文件后缀</span></div><div class="line">        <span class="string">'ext'</span> =&gt; <span class="string">'.htm'</span>, <span class="comment">//默认值</span></div><div class="line">    ]</div><div class="line">];</div></pre></td></tr></table></figure>
 <h2 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h2><p>用户可以制作更美观的404 500等错误提示页面来替代默认的页面</p>
-<p>error配置指定error code调用的页面文件路径</p>
+<p>error配置指定<code>error code</code>调用的页面文件路径</p>
 <h2 id="视图魔术方法"><a href="#视图魔术方法" class="headerlink" title="视图魔术方法"></a>视图魔术方法</h2><p>视图魔术方法提供调用View方法的方式来输出视图。</p>
-<p>调用View::success() 相当于调用view(‘/method/success’, [‘message’ =&gt; ‘操作成功’, ‘backto’ =&gt; ‘/‘])</p>
+<p>调用<code>View::success()</code> 相当于调用<code>view(&#39;/method/success&#39;, [&#39;message&#39; =&gt; &#39;操作成功&#39;, &#39;backto&#39; =&gt; &#39;/&#39;])</code></p>
 <p>对一些常用的提示页面使用视图魔术方法会非常方便，当视图文件和默认参数需要改变时，修改配置文件即可，不用修改业务代码。</p>
 <h2 id="视图模版"><a href="#视图模版" class="headerlink" title="视图模版"></a>视图模版</h2><p>在启用视图模版配置的情况下，每次应用请求都会检查视图文件和模版文件的更新时间，当视图文件不存在或比模版文件旧时，会使用模版编译处理器将模版文件编译成视图文件保存到视图文件目录。</p>
 <p>模版编译处理器生成的视图文件不依赖模版类的任何方法，所以如果用户对性能比较敏感，可以在测试环境将模版文件先编译好，然后把生成的视图文件传到生产服务器，生产服务器不启用视图模版（可以避免由检查文件更新时间产生的多次文件IO）。</p>

@@ -326,10 +326,10 @@
   
     <h1>类加载</h1>
   
-  <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始化时会读取loader配置，提供数据给Loader::autoload，配置项如下。</p>
+  <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始化时会读取<code>loader</code>配置，提供数据给<code>Loader::autoload</code>，配置项如下。</p>
 <p>prefix</p>
 <blockquote>
-<p>prefix可以看作PSR-4的子集, 但是不支持多级namespace的规则，只看namespace 头部prefix部分实现加载规则，在应用规划合理的情况下基本满足需求。</p>
+<p><code>prefix</code>可以看作<code>PSR-4</code>的子集, 但是不支持多级<code>namespace</code>的规则，只看<code>namespace</code> 头部<code>prefix</code>部分实现加载规则，在应用规划合理的情况下基本满足需求。</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 默认设置</span></div><div class="line">[</div><div class="line">    <span class="string">'app'</span> =&gt; APP_DIR,</div><div class="line">    <span class="string">'framework'</span> =&gt; FW_DIR</div><div class="line">]</div></pre></td></tr></table></figure>
 <p>alias</p>
@@ -345,12 +345,12 @@
 <blockquote>
 <p>直接加载的文件</p>
 </blockquote>
-<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>框架支持composer，可以方便的引用第三方扩展，框架的部分模块也使用了composer，不过框架核心并不依赖composer，在不使用composer时也可以正常使用框架。</p>
-<p>composer 默认关闭，如过要启用composer请设置环境常量VENDOR_DIR，值为composer vendor目录。</p>
-<p>composer autoload的优先级小于framework\core\Loader::autoload</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>添加oader规则</p>
+<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>框架支持<code>composer</code>，可以方便的引用第三方扩展，框架的部分模块也使用了composer，不过框架核心并不依赖composer，在不使用composer时也可以正常使用框架。</p>
+<p>composer 默认关闭，如过要启用composer请设置环境常量<code>ENDOR_DIR</code>，值为composer vendor目录。</p>
+<p>composer autoload的优先级小于<code>framework\core\Loader::autoload</code></p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>添加loader规则</p>
 <blockquote>
-<p>规则有4种 prefix map alias files</p>
+<p>规则有4种 <code>prefix</code> <code>map</code> <code>alias</code> <code>files</code></p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">Loader::add(<span class="keyword">array</span> $rules, $type = <span class="string">'prefix'</span>);</div></pre></td></tr></table></figure>
 
