@@ -404,7 +404,7 @@
   
     <h1>连表查询</h1>
   
-  <h2 id="特点简介"><a href="#特点简介" class="headerlink" title="特点简介"></a>特点简介</h2><p>使用联表查询可以用简单易懂的语法写出功能强大的联表操作，支持一对一，多对一，一对多，多对多等多种数据表关联，并且自动优化生成的SQL，既有提高开发效率，又提升代码运行效率。</p>
+  <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>使用联表查询可以用简单易懂的语法写出功能强大的联表操作，支持一对一，多对一，一对多，多对多等多种数据表关联，并且自动优化生成的SQL，既提高开发效率又提升代码运行效率。</p>
 <blockquote>
 <p>联表查询类似于<code>ActiveRecord</code>型的<code>ORM</code>中的<code>hasOne hasMany belongsTo belongsToMany</code>等设定，相对 <code>ORM</code> 优点是不用生成大量对象，也不用写 <code>model</code> 模型代码定义每个表和表之间关系。</p>
 </blockquote>
@@ -510,12 +510,12 @@
 </li>
 </ol>
 <h2 id="关联字段"><a href="#关联字段" class="headerlink" title="关联字段"></a>关联字段</h2><p>当使用多个数据表进行联表查询时，表与表之间的关系时如何确定的，是通过什么字段将表关联起来的的呢？</p>
-<p>#####<code>on</code>方法</p>
-<p>为了处理这个问题，每个联表方法都有自己特有从属<code>on</code>方法，此方法就是用来指定关联字段的关联字段。</p>
+<p><strong><code>on</code>方法</strong></p>
+<p>为了处理这个问题，每个联表方法都有自己特有从属<code>on</code>方法，此方法就是用来指定表之间的关联字段。</p>
 <p>如例：查询一个主题贴及其发表者</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;with(<span class="string">'post'</span>)-&gt;on(<span class="string">'id'</span>, <span class="string">'user_id'</span>)-&gt;get($user_id)</div></pre></td></tr></table></figure>
 <p>例中的post表和user表的关联字段就使用了<code>on</code>方法指定<code>user.id</code>关联<code>post.user_id</code>。</p>
-<p>#####默认关联</p>
+<p><strong>默认关联</strong></p>
 <p>默认关联规则为：主表的<code>id</code>字段默认关联从表中的<code>主表名＋id</code>的字段。</p>
 <p>使用默认关联的规则，大部分情况下我们都无需使用<code>on</code>方法来指定关联字段，只要表与表之间符合默认关联的规则就可以省略<code>on</code>方法。</p>
 <p>如上一个例子，我们也可以这样写。</p>
