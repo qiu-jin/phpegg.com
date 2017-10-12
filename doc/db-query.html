@@ -473,7 +473,7 @@
 <p><code>where</code>子句支持的运算符</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[<span class="string">'='</span>, <span class="string">'!='</span>, <span class="string">'&gt;'</span>, <span class="string">'&gt;='</span>, <span class="string">'&lt;'</span>, <span class="string">'&lt;='</span>, <span class="string">'LIKE'</span>, <span class="string">'IN'</span>, <span class="string">'IS'</span>, <span class="string">'BETWEEN'</span>]</div></pre></td></tr></table></figure>
 <h2 id="其它子句"><a href="#其它子句" class="headerlink" title="其它子句"></a>其它子句</h2><h5 id="1-select子句"><a href="#1-select子句" class="headerlink" title="1 select子句"></a>1 <code>select</code>子句</h5><p>指定查询需要的字段，1到无穷参数，每个参数为字段。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'email)-&gt;find();</span></div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, <span class="string">'name'</span>, <span class="string">'email'</span>)-&gt;find();</div></pre></td></tr></table></figure>
 <p>另外当参数为一个数组且有2个元素时，为设置字段别名，第1个元素为字段名，第2个元素为别名。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;select(<span class="string">'id'</span>, [<span class="string">'name'</span>, <span class="string">'user_name'</span>])-&gt;find();</div></pre></td></tr></table></figure>
 <p>另外当参数为一个数组且3个元素时，为设置字段聚合方法，，第1个元素为字段名，第2个元素聚合方法，第3个元素为别名。</p>
