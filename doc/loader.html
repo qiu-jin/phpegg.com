@@ -419,21 +419,29 @@
     <h1>类加载</h1>
   
   <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始化时会读取<code>loader</code>配置，提供数据给<code>Loader::autoload</code>，配置项如下。</p>
-<p>prefix</p>
+<ul>
+<li><code>prefix</code></li>
+</ul>
 <blockquote>
 <p><code>prefix</code>可以看作<code>PSR-4</code>的子集, 但是不支持多级<code>namespace</code>的规则，只看<code>namespace</code> 头部<code>prefix</code>部分实现加载规则，在应用规划合理的情况下基本满足需求。</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 默认设置</span></div><div class="line">[</div><div class="line">    <span class="string">'app'</span> =&gt; APP_DIR,</div><div class="line">    <span class="string">'framework'</span> =&gt; FW_DIR</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>alias</p>
+<ul>
+<li><code>alias</code></li>
+</ul>
 <blockquote>
 <p>类别名，简写类名</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 默认设置</span></div><div class="line">[</div><div class="line">    <span class="string">'App'</span>       =&gt; <span class="string">'framework\App'</span>,</div><div class="line">    <span class="string">'View'</span>      =&gt; <span class="string">'framework\core\View'</span>,</div><div class="line">    <span class="string">'Getter'</span>    =&gt; <span class="string">'framework\core\Getter'</span>,</div><div class="line">    <span class="string">'Validator'</span> =&gt; <span class="string">'framework\core\Validator'</span>,</div><div class="line">    <span class="string">'Client'</span>    =&gt; <span class="string">'framework\core\http\Client'</span>,</div><div class="line">    <span class="string">'Request'</span>   =&gt; <span class="string">'framework\core\http\Request'</span>,</div><div class="line">    <span class="string">'Response'</span>  =&gt; <span class="string">'framework\core\http\Response'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>map</p>
+<ul>
+<li><code>map</code></li>
+</ul>
 <blockquote>
 <p>一个类名对应文件名的集合，在少部分类名不规范时使用</p>
 </blockquote>
-<p>files</p>
+<ul>
+<li><code>files</code></li>
+</ul>
 <blockquote>
 <p>直接加载的文件</p>
 </blockquote>
