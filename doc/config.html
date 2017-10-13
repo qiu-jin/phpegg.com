@@ -423,29 +423,41 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">APP</span>\<span class="title">ENV</span>;</div><div class="line"></div><div class="line"><span class="comment">//开启严格错误模式</span></div><div class="line"><span class="keyword">const</span> STRICT_ERROR_MODE = <span class="keyword">true</span>;</div><div class="line"></div><div class="line"><span class="comment">//配置文件目录，优先于单一配置文件</span></div><div class="line"><span class="keyword">const</span> CONFIG_DIR = APP_DIR.<span class="string">'config/'</span>;</div><div class="line"></div><div class="line"><span class="comment">//单一配置文件（小应用可以把所有配置放到单一配置文件中）</span></div><div class="line"><span class="comment">//const CONFIG_FILE = APP_DIR.'config.php';</span></div><div class="line"></div><div class="line"><span class="comment">//composer vendor目录</span></div><div class="line"><span class="comment">//const VENDOR_DIR = ROOT_DIR.'vendor/';</span></div></pre></td></tr></table></figure>
 <p>调用时可以使用辅助函数<code>env()</code>和方法<code>Config::env()</code>，当然也可以直接使用常量名。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">echo</span> env(<span class="string">'CONFIG_DIR'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> Config::env(<span class="string">'CONFIG_DIR'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> APP\ENV\CONFIG_DIR;</div></pre></td></tr></table></figure>
-<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><p>获取配置值</p>
+<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><ul>
+<li>获取配置值</li>
+</ul>
 <blockquote>
 <p>支持多级配置，用句号分隔，下面的示例是获取<code>config</code>目录下的<code>foo.php</code> 文件<code>return</code> 数组的<code>$return[&#39;bar&#39;][&#39;baz&#39;]</code>值。</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用辅助函数</span></div><div class="line">config(<span class="string">'foo.bar.baz'</span>);</div><div class="line"></div><div class="line">Config::get(<span class="string">'foo.bar.baz'</span>);</div></pre></td></tr></table></figure>
-<p>获取环境配置值</p>
+<ul>
+<li>获取环境配置值</li>
+</ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">env($name);</div><div class="line"></div><div class="line">Config::env($name);</div></pre></td></tr></table></figure>
-<p>检查配置是否存在</p>
+<ul>
+<li>检查配置是否存在</li>
+</ul>
 <blockquote>
 <p>支持多级配置</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">Config::has($name);</div></pre></td></tr></table></figure>
-<p>设置配置值</p>
+<ul>
+<li>设置配置值</li>
+</ul>
 <blockquote>
 <p>支持多级配置</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">Config::set($name, $value);</div></pre></td></tr></table></figure>
-<p>获取配置第一项值（数组中第一个值）</p>
+<ul>
+<li>获取配置第一项值（数组中第一个值）</li>
+</ul>
 <blockquote>
 <p>不支持多级配置</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">Config::first($name);</div></pre></td></tr></table></figure>
-<p>获取配置随机项值（数组中随机值）</p>
+<ul>
+<li>获取配置随机项值（数组中随机值）</li>
+</ul>
 <blockquote>
 <p>不支持多级配置</p>
 </blockquote>

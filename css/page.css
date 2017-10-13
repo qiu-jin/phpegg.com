@@ -1281,9 +1281,9 @@ ul.demo li {
   margin: 2em 0;
   padding-left: 20px;
   border-left: 4px solid #1e88e5;
+  background-color: #f8f8f8;
 }
 .content blockquote p {
-  font-weight: 600;
   margin-left: 0;
   margin-bottom: 0;
   padding-bottom: 0;
