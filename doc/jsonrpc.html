@@ -425,7 +425,7 @@
 <blockquote>
 <p>如<code>&quot;method&quot;: &quot;foo.Bar.baz&quot;</code> 会调用<code>app\controller\foo\Bar::baz()</code></p>
 </blockquote>
-<p><code>controller_ns</code>与<code>controller_suffix</code>配置说明参考<a href="app_standard.md">standard模式</a></p>
+<p><code>controller_ns</code>与<code>controller_suffix</code>配置说明参考<a href="standard.html">standard模式</a></p>
 <p><code>request_unserialize</code>（默认为<code>jsondecode</code>）与<code>response_serialize</code>（默认为<code>jsonencode</code>）配置，用来处理请求数据的反序列化和响应数据序列化，虽然jsonrpc2.0协议规定使用json来编解码请求和响应，但是为了提高编解码效率和减少传输数据大小，我们还可以igbinary msgpack等协议来编解码请求和响应（需要安装对应扩展）。</p>
 <p>如需设置特定<code>content_type</code>响应header头，可使用<code>response_content_type</code>配置（默认为空）</p>
 <p>jsonrpc模式支持单控制器方法调用和批量调用，其由<code>batch_max_num</code>配置控制（默认为1），为1时不支持批量调用，为0时支持无上限的批量调用，为大于1的整数时控制器方法调用次数不能大于<code>batch_max_num</code>（对外提供接口时，如需开启批量调用，请设置一个合适的<code>batch_max_num</code>值防止cc攻击）。</p>
