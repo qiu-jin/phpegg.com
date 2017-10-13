@@ -230,7 +230,7 @@ code {
   color: #687168;
   padding: 3px 5px;
   margin: 0 2px;
-  border-radius: 2px;
+  border-radius: 0.5em;
   white-space: nowrap;
 }
 em {
