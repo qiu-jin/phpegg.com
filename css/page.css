@@ -51,13 +51,13 @@ pre .tex .special {
   color: #2973b7;
 }
 pre .class .title {
-  color: #42b983;
+  color: #1e88e5;
 }
 pre .symbol,
 pre .symbol .string,
 pre .value,
 pre .regexp {
-  color: #42b983;
+  color: #1e88e5;
 }
 pre .title {
   color: #a6e22e;
@@ -86,7 +86,7 @@ pre .apache .tag,
 pre .apache .cbracket,
 pre .tex .command,
 pre .prompt {
-  color: #42b983;
+  color: #1e88e5;
 }
 pre .comment,
 pre .java .annotation,
@@ -244,14 +244,14 @@ a.button {
   border-radius: 2em;
   display: inline-block;
   color: #fff;
-  background-color: #4fc08d;
+  background-color: #3092e7;
   transition: all 0.15s ease;
   box-sizing: border-box;
-  border: 1px solid #4fc08d;
+  border: 1px solid #3092e7;
 }
 a.button.white {
   background-color: #fff;
-  color: #42b983;
+  color: #1e88e5;
 }
 .highlight {
   overflow-x: auto;
@@ -373,7 +373,7 @@ a.button.white {
   display: block;
 }
 #nav .nav-dropdown a:hover {
-  color: #42b983;
+  color: #1e88e5;
 }
 #nav .arrow {
   display: inline-block;
@@ -473,7 +473,7 @@ body.docs #nav {
   content: "";
   width: 0;
   height: 0;
-  border-left: 5px solid #42b983;
+  border-left: 5px solid #1e88e5;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
   position: absolute;
@@ -486,7 +486,7 @@ body.docs #nav {
 }
 .nav-link:hover,
 .nav-link.current {
-  border-bottom: 3px solid #42b983;
+  border-bottom: 3px solid #1e88e5;
 }
 .nav-link.team,
 .nav-link.contribute {
@@ -496,7 +496,7 @@ body.docs #nav {
   position: absolute;
   top: 3px;
   left: 110%;
-  background-color: #42b983;
+  background-color: #1e88e5;
   color: #fff;
   line-height: 16px;
   height: 16px;
@@ -522,7 +522,7 @@ body.docs #nav {
   vertical-align: middle !important;
 }
 .search-query:focus {
-  border-color: #42b983;
+  border-color: #1e88e5;
 }
 #logo {
   display: inline-block;
@@ -811,7 +811,7 @@ ul.demo li {
 }
 .sidebar .sidebar-link.current {
   font-weight: 600;
-  color: #42b983;
+  color: #1e88e5;
 }
 .sidebar .sidebar-link.new:after {
   content: "NEW";
@@ -819,7 +819,7 @@ ul.demo li {
   font-size: 10px;
   font-weight: 600;
   color: #fff;
-  background-color: #42b983;
+  background-color: #1e88e5;
   line-height: 14px;
   padding: 0 4px;
   border-radius: 3px;
@@ -829,11 +829,11 @@ ul.demo li {
   top: -1px;
 }
 .sidebar .sidebar-link:hover {
-  border-bottom: 2px solid #42b983;
+  border-bottom: 2px solid #1e88e5;
 }
 .sidebar .section-link.active {
   font-weight: bold;
-  color: #42b983;
+  color: #1e88e5;
 }
 .sidebar .main-menu {
   margin-bottom: 20px;
@@ -857,10 +857,10 @@ ul.demo li {
   display: inline-block;
 }
 .sidebar .become-backer {
-  border: 1px solid #42b983;
+  border: 1px solid #1e88e5;
   border-radius: 2em;
   display: inline-block;
-  color: #42b983;
+  color: #1e88e5;
   font-size: 0.8em;
   width: 125px;
   padding: 4px 0;
@@ -1109,10 +1109,10 @@ ul.demo li {
   color: #a67878;
 }
 .style-guide .style-example.example-good {
-  background: #eaedec;
+  background: #e9ecef;
 }
 .style-guide .style-example.example-good h4 {
-  color: #677b72;
+  color: #627687;
 }
 .style-guide details,
 .style-guide .style-enforcement {
@@ -1151,13 +1151,13 @@ ul.demo li {
   background-color: #f8f8f8;
   border-radius: 2px;
   font-size: 0.9em;
-  color: #677b72;
+  color: #627687;
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.1em 0.4em;
 }
 .style-guide a > .style-rule-tag {
-  color: #42b983;
+  color: #1e88e5;
 }
 .style-guide sup {
   text-transform: uppercase;
@@ -1249,7 +1249,7 @@ ul.demo li {
 }
 .content h3:after {
   content: "#";
-  color: #42b983;
+  color: #1e88e5;
   position: absolute;
   left: -0.7em;
   bottom: -2px;
@@ -1274,13 +1274,13 @@ ul.demo li {
   position: inherit;
 }
 .content a {
-  color: #42b983;
+  color: #1e88e5;
   font-weight: 600;
 }
 .content blockquote {
   margin: 2em 0;
   padding-left: 20px;
-  border-left: 4px solid #42b983;
+  border-left: 4px solid #1e88e5;
 }
 .content blockquote p {
   font-weight: 600;
@@ -1360,12 +1360,12 @@ ul.demo li {
   background-color: #f66;
 }
 .content p.success {
-  border-left-color: #42b983;
+  border-left-color: #1e88e5;
 }
 .content p.success:before {
   content: "\f00c";
   font-family: FontAwesome;
-  background-color: #42b983;
+  background-color: #1e88e5;
 }
 .guide-links {
   margin-top: 2em;
@@ -1416,7 +1416,7 @@ ul.demo li {
   }
   .nav-link:hover,
   .nav-link.current {
-    border-bottom: 2px solid #42b983;
+    border-bottom: 2px solid #1e88e5;
   }
   #mobile-bar {
     display: block;
