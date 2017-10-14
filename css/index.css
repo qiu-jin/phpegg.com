@@ -553,8 +553,9 @@ body.docs #nav {
   margin-top: 0.5em;
 }
 .sidebar .sidebar-inner {
-  width: 260px;
+  width: 200px;
   padding: 40px 20px 60px 60px;
+  border-right: 1px solid #e6e6e6;
 }
 .sidebar .version-select {
   vertical-align: middle;

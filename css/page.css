@@ -795,6 +795,7 @@ ul.demo li {
 .sidebar .sidebar-inner {
   width: 200px;
   padding: 40px 20px 60px 60px;
+  border-right: 1px solid #e6e6e6;
 }
 .sidebar .version-select {
   vertical-align: middle;
