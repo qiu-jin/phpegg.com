@@ -444,17 +444,17 @@
   
   <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>PHPEGG应用基类提供了一套接口，</p>
 <h2 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h2><ul>
-<li><code>dispatch</code></li>
+<li><strong><code>dispatch</code></strong></li>
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 应用调度方法，调度失败返回false</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
 <p>调度处理：需要从请求<code>Request</code>信息（通常在<code>Request</code>的<code>url</code>中）里获取请求需要调度应用代码的信息，并验证是否有效，如果调度成功返回含有调度信息的数组，否则返回false。</p>
 <ul>
-<li><code>call</code></li>
+<li><strong><code>call</code></strong></li>
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 调用应用</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
 <p>调用应用代码：在<code>dispatch</code>调度成功后，使用调度信息调用应用代码，并返回应用代码的<code>return</code>值.</p>
 <ul>
-<li><code>error</code></li>
+<li><strong><code>error</code></strong></li>
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 错误处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($code, $message)</span></span>;</div></pre></td></tr></table></figure>
 <p>错误处理：当应用出现错误时发送错误响应，通常有以下3种情况用到。</p>
@@ -466,10 +466,9 @@
 <p class="tip">另外用户也可以自己使用<code>App::setErrorHandler()</code>注册错误处理器来覆盖默认的<code>error</code>方法</p>
 
 <ul>
-<li><code>response</code></li>
-<li><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 响应处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">response</span><span class="params">($return)</span></span>;</div></pre></td></tr></table></figure>
-</li>
+<li><strong><code>response</code></strong></li>
 </ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 响应处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">response</span><span class="params">($return)</span></span>;</div></pre></td></tr></table></figure>
 <p>响应处理：接收<code>call</code>方法的<code>return</code>值，处理成<code>json</code> <code>html</code>等格式内容，然后将内容响应给请求者。</p>
 <p class="tip">另外用户也可以自己设置<code>App::run($return_handler)</code>方法的<code>$return_handler</code>参数来设定一个<code>return</code>处理器，既可以用来处理修改<code>return</code>数据，也可以覆盖默认的<code>response</code>方法</p>
 
