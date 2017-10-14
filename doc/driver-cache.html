@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>缓存 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/quickstart.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app.html" class="sidebar-link">综述</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-standard.html" class="sidebar-link">标准</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-rest.html" class="sidebar-link">Rest</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-custom.html" class="sidebar-link">自定义</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-join-query.html" class="sidebar-link">连表查询</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-cache.html" class="sidebar-link current">缓存</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-storage.html" class="sidebar-link">存储</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-rpc.html" class="sidebar-link">RPC</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-email.html" class="sidebar-link">邮件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-sms.html" class="sidebar-link">短信</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-other.html" class="sidebar-link">其它</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar driver-cache-doc">
+
+  
+    <h1>缓存</h1>
+  
+  <h2 id="驱动类型"><a href="#驱动类型" class="headerlink" title="驱动类型"></a>驱动类型</h2><table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apc</td>
+<td>基于php apcu扩展的单机共享内存缓存</td>
+</tr>
+<tr>
+<td>Db</td>
+<td>使用关系数据库缓存数据</td>
+</tr>
+<tr>
+<td>File</td>
+<td>使用文件保存缓存数据</td>
+</tr>
+<tr>
+<td>Memcached</td>
+<td>使用Memcached服务缓存数据</td>
+</tr>
+<tr>
+<td>Opcache</td>
+<td>将缓存数据写入php文件，使用php Opcache来缓存数据</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>使用Redis服务缓存数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line"></div><div class="line">    <span class="string">'apc'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'apc'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 缓存key前缀，防止冲突。</span></div><div class="line">        <span class="string">'prefix'</span>    =&gt; <span class="string">'test'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">         * 是否调用clear方法清除所有缓存</span></div><div class="line"><span class="comment">         * 为true时清除所有缓存，会影响其它apc缓存实例。</span></div><div class="line"><span class="comment">         * 为false时，使用迭代器删除有prefix的key的缓存，需要迭代处理缓存较大时可能效率低。</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'global_clear'</span> =&gt; <span class="keyword">false</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'db'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'db'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* 缓存数据库</span></div><div class="line"><span class="comment">         * 值为数组时使用数组配置（参考db配置）</span></div><div class="line"><span class="comment">         * 值为字符串时直接使用db配置中的同名db实例</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'db'</span>        =&gt; <span class="string">'mysql'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/* 缓存表名</span></div><div class="line"><span class="comment">         * key char(128) NOT NULL PRIMARY KEY</span></div><div class="line"><span class="comment">         * value BLOB</span></div><div class="line"><span class="comment">         * expiration int(11)</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'table'</span>     =&gt; <span class="string">'cache'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">/*（可选配置）</span></div><div class="line"><span class="comment">         * 设置缓存值的序列化和反序列化处理器</span></div><div class="line"><span class="comment">         * 在apc memcached redis opcache等驱动有自己内置序列化和反序列化处理，所以不需要此设置</span></div><div class="line"><span class="comment">         * 如果缓存值没有数组等复合类型只有字符串等，也可以不设置此项</span></div><div class="line"><span class="comment">         * 除了json serialize等内置序列化和反序列化处理器，也可以安装扩展支持igbinary msgpack等协议</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'serializer'</span> =&gt; [<span class="string">'jsonencode'</span>, <span class="string">'jsondecode'</span>], <span class="comment">//默认为空</span></div><div class="line">        </div><div class="line">        <span class="comment">/*（可选配置）</span></div><div class="line"><span class="comment">         * 设置gc处理器触发几率，值为0.0001到1之间</span></div><div class="line"><span class="comment">         * apc memcached redis等驱动有自己的gc处理，所以不需要此设置</span></div><div class="line"><span class="comment">         * file opcache等驱动还需要gc_maxlife配置来配合处理gc</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="comment">//'gc_random'  =&gt; '' </span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'file'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'file'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 缓存文件保存目录。</span></div><div class="line">        <span class="string">'dir'</span>       =&gt; APP_DIR.<span class="string">'storage/cache/file/'</span>,</div><div class="line"></div><div class="line">         <span class="comment">// （可选配置）缓存最大生存时间，大于此时间的文件会在触发gc后被删除</span></div><div class="line">        <span class="string">'gc_maxlife'</span> =&gt; <span class="number">86400</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'memcached'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'memcached'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 服务器地址，多个以逗号分隔</span></div><div class="line">        <span class="string">'hosts'</span>     =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="number">11211</span>, <span class="comment">//默认值</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）用户名</span></div><div class="line">        <span class="comment">// 'username'  =&gt; '', </span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）密码</span></div><div class="line">        <span class="comment">// 'password'  =&gt; '', </span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）超时设置</span></div><div class="line">        <span class="comment">// 'timeout =&gt; ''</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）options设置</span></div><div class="line">        <span class="comment">// 'options =&gt; ''</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'opcache'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'opcache'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// PHP缓存文件保存目录。</span></div><div class="line">        <span class="string">'dir'</span>       =&gt; APP_DIR.<span class="string">'storage/cache/php/'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）缓存最大生存时间，大于此时间的文件会在触发gc后被删除</span></div><div class="line">       <span class="string">'gc_maxlife'</span> =&gt; <span class="number">86400</span>, <span class="comment">//默认值</span></div><div class="line"></div><div class="line">       <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">        * 为true时将var_export不支持的数据类型过滤处理，如object转为array，resource设为null等</span></div><div class="line"><span class="comment">        * 为false不做处理，有不支持的数据类型时会产生php错误，请谨慎使用。</span></div><div class="line"><span class="comment">        */</span></div><div class="line">       <span class="string">'filter_value'</span> =&gt; <span class="keyword">false</span> <span class="comment">//默认值</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'redis'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'redis'</span>,</div><div class="line">   </div><div class="line">        <span class="comment">// Redis服务器器地址</span></div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="number">6379</span>, <span class="comment">//默认值</span></div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）database</span></div><div class="line">        <span class="comment">//'database'  =&gt; ''</span></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 设置缓存值</span></div><div class="line">$cache-&gt;set($key, $value, $ttl ＝ <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 检查缓存是否存在</span></div><div class="line">$cache-&gt;has($key);</div><div class="line"></div><div class="line"><span class="comment">// 获取缓存值</span></div><div class="line">$cache-&gt;get($key, $default = <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 获取并删除缓存值</span></div><div class="line">$cache-&gt;pull($key);</div><div class="line"></div><div class="line"><span class="comment">// 删除缓存</span></div><div class="line">$cache-&gt;delete($key);</div><div class="line"></div><div class="line"><span class="comment">// 批量获取</span></div><div class="line">$cache-&gt;getMultiple($keys);</div><div class="line"></div><div class="line"><span class="comment">// 批量设置</span></div><div class="line">$cache-&gt;setMultiple($values, $ttl = <span class="keyword">null</span>);</div><div class="line"></div><div class="line"><span class="comment">// 批量删除</span></div><div class="line">$cache-&gt;deleteMultiple($keys);</div><div class="line"></div><div class="line"><span class="comment">// 清除所有缓存</span></div><div class="line">$cache-&gt;clear();</div><div class="line"></div><div class="line"><span class="comment">// 自增，目前只有apc redis memcached支持</span></div><div class="line">$cache-&gt;increment($key, $value = <span class="number">1</span>);</div><div class="line"></div><div class="line"><span class="comment">// 自减，目前只有apc redis memcached支持</span></div><div class="line">$cache-&gt;decrement($key, $value = <span class="number">1</span>);</div></pre></td></tr></table></figure>
+  
+    <div class="guide-links">
+      
+      
+        <span style="float: right;"><a href="/doc/driver-storage.html">存储</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>

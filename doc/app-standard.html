@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>标准 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/index.html" class="sidebar-link">介绍</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/installation.html" class="sidebar-link">安装</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/quickstart.html" class="sidebar-link">开始应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app.html" class="sidebar-link">综述</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-standard.html" class="sidebar-link current">标准</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-rest.html" class="sidebar-link">Rest</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-micro.html" class="sidebar-link">微应用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-inline.html" class="sidebar-link">inline</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-grpc.html" class="sidebar-link">Grpc</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/app-custom.html" class="sidebar-link">自定义</a>
+            </li>
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/config.html" class="sidebar-link">配置</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/hook.html" class="sidebar-link">事件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/logger.html" class="sidebar-link">日志</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/router.html" class="sidebar-link">路由</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/view.html" class="sidebar-link">视图</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/db-join-query.html" class="sidebar-link">连表查询</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-cache.html" class="sidebar-link">缓存</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-storage.html" class="sidebar-link">存储</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-rpc.html" class="sidebar-link">RPC</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-email.html" class="sidebar-link">邮件</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-sms.html" class="sidebar-link">短信</a>
+            </li>
+          
+            
+            
+              
+              
+              
+              
+              
+              
+            
+            <li>
+              <a href="/doc/driver-other.html" class="sidebar-link">其它</a>
+            </li>
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar app-standard-doc">
+
+  
+    <h1>标准</h1>
+  
+  <h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//app/demo/public/index_standard.php</span></div><div class="line"></div><div class="line"><span class="keyword">include</span> <span class="string">'../../../framework/app.php'</span>;</div><div class="line"></div><div class="line">framework\App::start(<span class="string">'Standard'</span>, [</div><div class="line">    <span class="string">'default_dispatch_param_mode'</span> =&gt; <span class="number">1</span>,</div><div class="line">])-&gt;run();</div></pre></td></tr></table></figure>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 调度模式，支持default route组合</span></div><div class="line">    <span class="string">'dispatch_mode'</span> =&gt; [<span class="string">'default'</span>],</div><div class="line">    <span class="comment">// 控制器类namespace深度，0为不确定</span></div><div class="line">    <span class="string">'controller_depth'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="comment">// 控制器namespace</span></div><div class="line">    <span class="string">'controller_ns'</span> =&gt; <span class="string">'controller'</span>,</div><div class="line">    <span class="comment">// 控制器类名后缀</span></div><div class="line">    <span class="string">'controller_suffix'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 是否启用视图</span></div><div class="line">    <span class="string">'enable_view'</span> =&gt; <span class="keyword">false</span>,</div><div class="line">    <span class="comment">// 视图模版文件名是否转为下划线风格</span></div><div class="line">    <span class="string">'template_to_snake'</span> =&gt; <span class="keyword">true</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// request参数是否转为控制器方法参数</span></div><div class="line">    <span class="string">'bind_request_params'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">// 缺少的参数设为null值</span></div><div class="line">    <span class="string">'missing_params_to_null'</span> =&gt; <span class="keyword">false</span>,</div><div class="line">    </div><div class="line">    <span class="comment">/* 默认调度的参数模式</span></div><div class="line"><span class="comment">     * 0 无参数</span></div><div class="line"><span class="comment">     * 1 顺序参数</span></div><div class="line"><span class="comment">     * 2 键值参数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'default_dispatch_param_mode'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="comment">// 默认调度的缺省调度</span></div><div class="line">    <span class="string">'default_dispatch_index'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">// 默认调度的控制器缺省方法</span></div><div class="line">    <span class="string">'default_dispatch_default_action'</span> =&gt; <span class="string">'index'</span>,</div><div class="line">    <span class="comment">// 默认调度的路径转为驼峰风格</span></div><div class="line">    <span class="string">'default_dispatch_to_camel'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    </div><div class="line">    <span class="comment">/* 路由调度的参数模式</span></div><div class="line"><span class="comment">     * 0 无参数</span></div><div class="line"><span class="comment">     * 1 循序参数</span></div><div class="line"><span class="comment">     * 2 键值参数</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'route_dispatch_param_mode'</span> =&gt; <span class="number">1</span>,</div><div class="line">    <span class="comment">// 路由调度的路由表，如果值为字符串则作为PHP文件include</span></div><div class="line">    <span class="string">'route_dispatch_routes'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">// 路由调启是否用动作路由</span></div><div class="line">    <span class="string">'route_dispatch_action_route'</span> =&gt; <span class="keyword">false</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h2><p>standard模式下支持默认调度与路由调度组合调度。</p>
+<blockquote>
+<p><code>dispatch_mode</code>为<code>[&#39;default&#39;]</code>时 只使用默认调度</p>
+<p><code>dispatch_mode</code>为<code>[&#39;route&#39;]</code>时 只使用路由调度</p>
+<p><code>dispatch_mode</code>为<code>[&#39;default&#39;, &#39;route&#39;]</code>时 先默认调度，成功则返回，失败则继续路由调度</p>
+<p><code>dispatch_mode</code>为<code>[&#39;route&#39;, &#39;default&#39;]</code>时 先路由调度，成功则返回，失败则继续默认调度</p>
+</blockquote>
+<p>1 默认调度</p>
+<p>默认调度支持调用公有的控制器方法，并且方法不能以下划线开头（主要防止调用控制器类的魔术方法）。</p>
+<p>在默认调度模式下调度器会根据请求的<code>url_path</code>来自动调度控制器类和方法，调度器会用<code>/</code>符将<code>url_path</code>分割成多个单元。</p>
+<blockquote>
+<p>例如请求<code>/Foo/bar</code>会默认调度<code>app\controller\Foo::bar()</code></p>
+</blockquote>
+<p><code>controller_ns</code>配置（默认为<code>controller</code>）相当于是设置子控制器，如果不想用默认目录或者使用2级目录如<code>controller\standard</code>（通常是在一个应用中需要使用到不同的应用模式而导致不能共用一套控制器代码时用到），可以更改其值。</p>
+<blockquote>
+<p>例如<code>controller_ns</code>为<code>controller\standard</code>时，请求<code>/Foo/bar</code>会默认调度<code>app\controller\standard\Foo::bar()</code></p>
+</blockquote>
+<p><code>controller_depth</code>配置（默认为<code>1</code>）影响用<code>url_path</code>对控制器类的匹配（一般建议设为大于0的值，最好也不要大于3）,大于0时会取<code>url_path</code>的0至<code>controller_depth</code>值的单元匹配控制器类，第<code>controller_depth+1</code>的值匹配控制器方法，如果等于0时会用取<code>url_path</code>的0至倒数第2个单元匹配控制器类，最后1个单元匹配控制器方法。</p>
+<p>另外需要注意在配置值为0时，<code>default_dispatch_index</code> <code>default_dispatch_default_action</code> <code>route_dispatch_action_route</code>等配置皆无效，如果设置会触发异常。</p>
+<blockquote>
+<p><code>controller_depth</code>为1时，请求<code>/foo/bar/baz</code>会默认调度<code>app\controller\Foo::bar()</code>，后面的baz会在调度阶段忽略，并在调用控制器方法时根据参数模式的配置将值作为参数传给方法。</p>
+<p><code>controller_depth</code>为2时，请求<code>/foo/bar/baz</code>会默认调度<code>app\controller\foo\Bar::baz()</code>。</p>
+</blockquote>
+<p><code>controller_suffix</code>配置（默认为空），为了防止一些类命名冲突，可以使用<code>controller_suffix</code>配置给控制器类加上默认后缀</p>
+<blockquote>
+<p>例如<code>controller_suffix</code>为<code>Controller</code>时，请求<code>/Foo/bar</code>会默认调度<code>app\controller\FooController::bar()</code></p>
+</blockquote>
+<p><code>default_dispatch_index</code>配置（默认为空）,当直接访问域名时也就是<code>url_path</code>为空时，可以指定<code>default_dispatch_index</code>值作为其调度的方法。</p>
+<blockquote>
+<p>例如<code>default_dispatch_index</code>为<code>Home/index</code>，请求<code>/</code>会默认调度<code>app\controller\Home::index()</code></p>
+</blockquote>
+<p><code>default_dispatch_default_action</code>配置（默认为空）,当<code>url_path</code>刚好匹配到控制器类，而控制器方法缺失，设置<code>default_dispatch_default_action</code>可以调度默认控制器方法。</p>
+<blockquote>
+<p>例如<code>default_dispatch_default_action</code>为<code>index</code>，请求<code>/Home</code>会默认调度<code>app\controller\Home::index()</code></p>
+</blockquote>
+<p><code>default_dispatch_to_camel</code>配置（默认为空）,由于默认调度是使用<code>url_path</code>来匹配控制器类与方法，默认情况下url会出现大写字母不美观，使用<code>default_dispatch_to_camel</code>可以将使用中划线或下划线的url转换为驼峰风格去匹配控制器类与方法。</p>
+<blockquote>
+<p>例如<code>default_dispatch_to_camel</code>为<code>-</code>时，请求<code>/user/get-name</code>会默认调度<code>app\controller\User::getName()</code></p>
+</blockquote>
+<p>2 路由调度</p>
+<p><code>controller_ns</code> <code>controller_depth</code> <code>controller_suffix</code>等配置处理规则在路由调度下基本与默认调度一致。</p>
+<p>路由调度的基本语法规则可以参考核心路由章节，这里不做累述。</p>
+<p><code>route_dispatch_routes</code>配置（默认为空），其值可以是一个路由表数组，也可以是一个存放路由表数组的php文件路径字符串（如路由表较大建议放倒单独配置文件中）。</p>
+<blockquote>
+<p>例如有一条路由规则是<code>&#39;user/*/name&#39; =&gt; &#39;User::getName($1)&#39;</code>，请求<code>/user/1/name</code>会调度<code>app\controller\User::getName(&#39;1&#39;)</code></p>
+</blockquote>
+<p><code>route_dispatch_action_route</code>配置（默认为<code>false</code>），为<code>true</code>时会开启控制器方法层级的路由（<code>route_dispatch_routes</code>相当于全局层级的路由），调度器会根据<code>url_path</code>先匹配到对应的控制器类（默认调度规则），然后使用控制器类中的routes属性的值作为路由规则表匹配剩下的<code>url_path</code>单元。</p>
+<p>使用<code>route_dispatch_action_route</code>优点是分散路由规则表，提高调度效率。缺点是不支持控制器类的路由匹配（有计划先通过<code>route_dispatch_routes</code>匹配到类，在使用<code>route_dispatch_action_route</code>匹配方法）。</p>
+<blockquote>
+<p>例如示例代码，请求<code>/user/1/name</code>会调度<code>app\controller\User::getName(&#39;1&#39;)</code></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 示例代码</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controller</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">use</span> \<span class="title">Getter</span>;</div><div class="line"></div><div class="line">    <span class="keyword">protected</span> $routes = [</div><div class="line">        <span class="string">'*/name'</span> =&gt; <span class="string">'getName($1)'</span>,</div><div class="line">    ];</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">($id)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;db-&gt;user-&gt;select(<span class="string">'name'</span>)-&gt;get($id);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外注意standard模式下的路由调度支持<code>protected</code>受保护的控制器方法调用，目的是在某些情况下同时启用默认调度和路由调度，而又不想将默认调度调用某个控制器方法时，可以将这个控制器方法设为<code>protected</code>，不过默认调度和路由调度都不能调用私有方法。</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>默认调度（配置<code>default_dispatch_param_mode</code>）和路由调度（配置<code>route_dispatch_param_mode</code>）都支持3种参数模式（默认值为1），不为0时与<code>controller_depth</code>为0冲突触发异常。</p>
+<p>1 无参数模式</p>
+<p>控制器方法不需要任何参数。</p>
+<p>2 顺序list参数模式</p>
+<p>默认调度下，匹配完控制器类与方法后剩余<code>url_path</code>单元会作为list参数传给控制器方法</p>
+<blockquote>
+<p>如请求<code>/User/getNames/1/2/3/4</code>，会调度<code>app\controller\User::getNames(&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;)</code></p>
+</blockquote>
+<p>路由调度下，路由表规则必须是list参数形式。</p>
+<blockquote>
+<p>如路由规则 <code>&#39;user/names/*/*/*/*&#39;=&gt; &#39;User::getNames($1, $2, $3, $4)&#39;</code>，请求<code>/User/getNames/1/2/3/4</code>，会调度<code>app\controller\User::getNames(&#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;)</code></p>
+</blockquote>
+<p>3 键值kv参数模式</p>
+<p>默认调度下，匹配完控制器类与方法后剩余<code>url_path</code>单元会解析成键值对作为kv参数传给控制器方法。</p>
+<blockquote>
+<p>如请求<code>/Foo/bar/param1/1/param2/2</code>，会调度<code>app\controller\Foo:: bar(&#39;1&#39;, &#39;2&#39;)</code></p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 示例代码</span></div><div class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">controller</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span><span class="params">($param1, $param2)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> $param1 + $param2;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>路由调度下，路由表规则必须是kv参数形式。</p>
+<blockquote>
+<p>如路由规则 <code>&#39;foo/bar/*/*&#39;=&gt; &#39;Foo::bar(param1 = $1, param2 = $2)&#39;</code>，如请求<code>/Foo/bar/1/2</code>，会调度<code>app\controller\Foo:: bar(&#39;1&#39;, &#39;2&#39;)</code></p>
+</blockquote>
+<p><code>bind_request_params</code>配置（默认为空），支持将request get post等作为kv参数传给到控制器方法</p>
+<blockquote>
+<p>如<code>bind_request_params</code>为<code>[&#39;get&#39;]</code>时，请求<code>/User/getName?id=1</code>，<code>app\controller\User::getName(&#39;1&#39;)</code></p>
+</blockquote>
+<p><code>missing_params_to_null</code>配置（默认为<code>false</code>），当调用控制器方法时如果缺少参数，应用默认会返回一个错误响应，为了避免错误可以将其设为true，此时会默认将缺少的参数赋予null值传给控制器方法。</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>standard模式支持视图，但是默认情况下没有开启，开启需要将<code>enable_view</code>配置设为true。</p>
+<p><code>template_to_snake</code>配置（默认为false），由于standard模式下对视图文件和模版文件查找是根据控制器类与方法名，但是制器类与方法名一般是使用驼峰风格，而视图文件和模版文件一般是使用小写下划线，所以把<code>template_to_snake</code>设为true会将驼峰风格的控制器类与方法名映射到小写下划线风格视图和模版文件</p>
+<blockquote>
+<p>当<code>emplate_to_snake</code>为true时，请求<code>/User/getUser</code>会调用名为<code>user/get_user</code>的视图和模版文件</p>
+</blockquote>
+<p>视图的具体配置调用可以参考核心视图章节。</p>
+<h2 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h2><p>启用视图时输出对应html页面，不启用视图时默认输出<code>json_encode($return)</code></p>
+<p>所有模式的应用实例的run方法，都支持参数<code>$return_handler</code>用来过滤修改<code>$return</code>数据，也可以直接处理<code>$return</code>的输出。</p>
+<blockquote>
+<p>如使用<code>$app-&gt;run(&#39;dd&#39;)</code>，可以直接用<code>dd()</code>辅助函数打印<code>$return</code>数据，并跳过默认响应输出处理。</p>
+</blockquote>
+<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>启用视图时输出对应404 500等html错误页面，不启用视图时默认输出<code>json_encode([&#39;error&#39; =&gt; [&#39;code&#39; =&gt; $code, &#39;message&#39; =&gt; $message])</code></p>
+<p>所有模式的应用实例都支持<code>setErrorHandler</code>方法，可以设置自己的错误处理器。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$app-&gt;setErrorHandler(function ($code, $message) &#123;</div><div class="line">	</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+  
+    <div class="guide-links">
+      
+      
+        <span style="float: right;"><a href="/doc/app-rest.html">Rest</a> →</span>
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>
