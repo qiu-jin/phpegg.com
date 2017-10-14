@@ -446,16 +446,17 @@
 <h2 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h2><ul>
 <li><code>dispatch</code></li>
 </ul>
-<p>调度处理：需要从请求<code>Request</code>信息（通常在<code>Request</code>的<code>url</code>中）里获取请求需要调度应用代码的信息，并验证是否有效，如果调度成功返回含有调度信息的数组，否则返回false。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 应用调度方法，调度失败返回false</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<p>调度处理：需要从请求<code>Request</code>信息（通常在<code>Request</code>的<code>url</code>中）里获取请求需要调度应用代码的信息，并验证是否有效，如果调度成功返回含有调度信息的数组，否则返回false。</p>
 <ul>
 <li><code>call</code></li>
 </ul>
-<p>调用应用代码：在<code>dispatch</code>调度成功后，使用调度信息调用应用代码，并返回应用代码的<code>return</code>值.</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 调用应用</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
+<p>调用应用代码：在<code>dispatch</code>调度成功后，使用调度信息调用应用代码，并返回应用代码的<code>return</code>值.</p>
 <ul>
 <li><code>error</code></li>
 </ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 错误处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($code, $message)</span></span>;</div></pre></td></tr></table></figure>
 <p>错误处理：当应用出现错误时发送错误响应，通常有以下3种情况用到。</p>
 <ol>
 <li>在<code>dispatch</code>调度失败后，通常作为<code>404</code>处理。</li>
@@ -464,15 +465,59 @@
 </ol>
 <p class="tip">另外用户也可以自己使用<code>App::setErrorHandler()</code>注册错误处理器来覆盖默认的<code>error</code>方法</p>
 
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 错误处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($code, $message)</span></span>;</div></pre></td></tr></table></figure>
 <ul>
 <li><code>response</code></li>
+<li><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 响应处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">response</span><span class="params">($return)</span></span>;</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>响应处理：接收<code>call</code>方法的<code>return</code>值，处理成<code>json</code> <code>html</code>等格式内容，然后将内容响应给请求者。</p>
-<p class="tip">另外用户也可以自己设置<code>App::run($return_handler)</code>方法的<code>$return_handler</code>参数来设定一个return处理器，既可以用来处理修改return数据，也可以覆盖默认的<code>response</code>方法</p>
+<p class="tip">另外用户也可以自己设置<code>App::run($return_handler)</code>方法的<code>$return_handler</code>参数来设定一个<code>return</code>处理器，既可以用来处理修改<code>return</code>数据，也可以覆盖默认的<code>response</code>方法</p>
 
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 响应处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">response</span><span class="params">($return)</span></span>;</div></pre></td></tr></table></figure>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2>
+<h2 id="应用方法"><a href="#应用方法" class="headerlink" title="应用方法"></a>应用方法</h2><p>以下方法除了<code>run()</code>都是静态方法。</p>
+<ul>
+<li><p><code>App::boot()</code></p>
+<blockquote>
+<p>初始化应用环境，通常不需要直接调用，调用<code>App::start()</code>时也会间接调用此方法。</p>
+</blockquote>
+</li>
+<li><p><code>App::start($app = &#39;Standard&#39;, array $config = null)</code></p>
+<blockquote>
+<p>初始化应用环境并调用<code>dispatch()</code>接口，成返回一个应用实例，<code>否则调用abort()</code>终止应用。</p>
+<p>方法第1个参数设置应用模式，可以为内置应用模式名也可以为自定义应用模式类名,第2个参数设置应用模式的配置，为<code>null</code>时会使用<code>Config::get(&#39;app&#39;)</code>获取配置</p>
+</blockquote>
+</li>
+<li><p><code>App::run(callable $return_handler = null)</code></p>
+<blockquote>
+<p>运行应用，这是一个非静态方法，由<code>App::start()</code>生成的实例调用，执行调用应用代码并响应请求。</p>
+</blockquote>
+</li>
+<li><p><code>App::exit()</code></p>
+<blockquote>
+<p>退出应用</p>
+</blockquote>
+</li>
+<li><p><code>App::abort($code = null, $message = null)</code></p>
+<blockquote>
+<p>异常终止应用</p>
+</blockquote>
+</li>
+<li><p><code>App::instance()</code></p>
+<blockquote>
+<p>返回应用实例</p>
+</blockquote>
+</li>
+<li><p><code>App::getDispatch()</code></p>
+<blockquote>
+<p>获取调度信息</p>
+</blockquote>
+</li>
+<li><p><code>App::setErrorHandler()</code></p>
+<blockquote>
+<p>设置应用错误处理器，替代默认<code>error</code>方法</p>
+</blockquote>
+</li>
+</ul>
+
   
     <div class="guide-links">
       
