@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>视图 — PHPEGG</title>
+    <title>示例表 — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -434,7 +434,7 @@
             
             
               <li>
-                <a href="/doc/view.html" class="sidebar-link current">视图</a>
+                <a href="/doc/view.html" class="sidebar-link">视图</a>
               </li>
             
            
@@ -608,7 +608,7 @@
             
             
               <li>
-                <a href="/doc/db-sample.html" class="sidebar-link">示例表</a>
+                <a href="/doc/db-sample.html" class="sidebar-link current">示例表</a>
               </li>
             
            
@@ -723,39 +723,148 @@
 </div>
 
 
-<div class="content doc with-sidebar view-doc">
+<div class="content doc with-sidebar db-sample-doc">
 
   
-    <h1>视图</h1>
+    <h1>示例表</h1>
   
-  <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>视图有2种使用方式</p>
-<p>1 隐式调用</p>
-<p>在<code>Standard</code> <code>Inline</code>等默认支持视图的应用模式下，如启用了视图（<code>enable_view</code>为<code>true</code>），应用控制器的<code>return</code>数据会传递给默认的视图文件（不同应用模式下调用默认的视图文件的规则不一样，具体请参考各应用模式章节），然后输出html。</p>
-<blockquote>
-<p>隐式调用下，在控制器不用显示调用任何<code>view</code>方法，正常<code>return</code>数据即可。</p>
-</blockquote>
-<p>2 显式调用</p>
-<p>调用<code>view</code>方法，指定视图文件和数据</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用view()辅助函数</span></div><div class="line">view(<span class="string">'/home/index'</span>, $vars);</div><div class="line"></div><div class="line"><span class="comment">// 使用response</span></div><div class="line">Response::view(<span class="string">'/home/index'</span>, $vars);</div><div class="line"></div><div class="line"><span class="comment">// 使用视图魔术方法，下面会说明</span></div><div class="line">View::success();</div><div class="line"></div><div class="line"><span class="comment">// 输出错误页面</span></div><div class="line">View::error($code, $message)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意在<code>Standard</code> <code>Inline</code>等应用模式下也可以显式调用<code>view</code>方法，因为有时候可能默认调用的视图文件并不是想要的。</p>
-</blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 视图文件目录</span></div><div class="line">	<span class="string">'dir'</span> =&gt; APP_DIR.<span class="string">'view/'</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// （可选配置）视图主题</span></div><div class="line">    <span class="comment">//'theme' =&gt; '';</span></div><div class="line">    </div><div class="line">    <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">     * 自定义的错误页面文件路径</span></div><div class="line"><span class="comment">     * 如未设置，默认使用framework\extend\view\Error类方法</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'error'</span> =&gt; [</div><div class="line">        <span class="comment">//'404' =&gt; '/error/404',</span></div><div class="line">        <span class="comment">//'500' =&gt; '/error/500',</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="comment">// （可选配置）视图魔术方法的页面文件路径与默认参数</span></div><div class="line">    <span class="string">'methods'</span> =&gt; [</div><div class="line">        <span class="comment">//'success' =&gt; ['/method/success', 'message' =&gt; '操作成功', 'backto' =&gt; '/'],</span></div><div class="line">        <span class="comment">//'failure' =&gt; ['/method/failure', 'message' =&gt; '操作失败', 'backto' =&gt; '/'],</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">     * 启用视图模版</span></div><div class="line"><span class="comment">     * 此配置只要非null，即使是空数组也会启用模版（使用默认设置）</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'template'</span> =&gt; [</div><div class="line">        <span class="comment">/* （可选配置）</span></div><div class="line"><span class="comment">         * 模版文件文件目录</span></div><div class="line"><span class="comment">         * 如未设置，默认使用视图文件目录</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="string">'dir'</span> =&gt; APP_DIR.<span class="string">'storage/view/'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）模版文件后缀</span></div><div class="line">        <span class="string">'ext'</span> =&gt; <span class="string">'.htm'</span>, <span class="comment">//默认值</span></div><div class="line">    ]</div><div class="line">];</div></pre></td></tr></table></figure>
-<h2 id="错误页面"><a href="#错误页面" class="headerlink" title="错误页面"></a>错误页面</h2><p>用户可以制作更美观的404 500等错误提示页面来替代默认的页面</p>
-<p>error配置指定<code>error code</code>调用的页面文件路径</p>
-<h2 id="视图魔术方法"><a href="#视图魔术方法" class="headerlink" title="视图魔术方法"></a>视图魔术方法</h2><p>视图魔术方法提供调用View方法的方式来输出视图。</p>
-<p>调用<code>View::success()</code> 相当于调用<code>view(&#39;/method/success&#39;, [&#39;message&#39; =&gt; &#39;操作成功&#39;, &#39;backto&#39; =&gt; &#39;/&#39;])</code></p>
-<p>对一些常用的提示页面使用视图魔术方法会非常方便，当视图文件和默认参数需要改变时，修改配置文件即可，不用修改业务代码。</p>
-<h2 id="视图模版"><a href="#视图模版" class="headerlink" title="视图模版"></a>视图模版</h2><p>在启用视图模版配置的情况下，每次应用请求都会检查视图文件和模版文件的更新时间，当视图文件不存在或比模版文件旧时，会使用模版编译处理器将模版文件编译成视图文件保存到视图文件目录。</p>
-<p>模版编译处理器生成的视图文件不依赖模版类的任何方法，所以如果用户对性能比较敏感，可以在测试环境将模版文件先编译好，然后把生成的视图文件传到生产服务器，生产服务器不启用视图模版（可以避免由检查文件更新时间产生的多次文件IO）。</p>
+  <p>user 用户表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">自增主键</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">用户名</td>
+</tr>
+<tr>
+<td style="text-align:left">email</td>
+<td style="text-align:left">用户邮箱</td>
+</tr>
+<tr>
+<td style="text-align:left">time</td>
+<td style="text-align:left">注册时间</td>
+</tr>
+</tbody>
+</table>
+<p>account 积分帐号表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">自增主键</td>
+</tr>
+<tr>
+<td style="text-align:left">user_id</td>
+<td style="text-align:left">用户id（唯一）</td>
+</tr>
+<tr>
+<td style="text-align:left">score</td>
+<td style="text-align:left">用户积分</td>
+</tr>
+</tbody>
+</table>
+<p>post 主题表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">自增主键</td>
+</tr>
+<tr>
+<td style="text-align:left">user_id</td>
+<td style="text-align:left">发布者用户id</td>
+</tr>
+<tr>
+<td style="text-align:left">title</td>
+<td style="text-align:left">主题标题</td>
+</tr>
+<tr>
+<td style="text-align:left">content</td>
+<td style="text-align:left">主题内容</td>
+</tr>
+<tr>
+<td style="text-align:left">time</td>
+<td style="text-align:left">发布时间</td>
+</tr>
+</tbody>
+</table>
+<p>comment 评论表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">id</td>
+<td style="text-align:left">自增主键</td>
+</tr>
+<tr>
+<td style="text-align:left">user_id</td>
+<td style="text-align:left">发表者用户id</td>
+</tr>
+<tr>
+<td style="text-align:left">post_id</td>
+<td style="text-align:left">评论所属主题id</td>
+</tr>
+<tr>
+<td style="text-align:left">content</td>
+<td style="text-align:left">评论内容</td>
+</tr>
+<tr>
+<td style="text-align:left">time</td>
+<td style="text-align:left">发表时间</td>
+</tr>
+</tbody>
+</table>
+<p>bookmark 书签表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">user_id</td>
+<td style="text-align:left">书签收藏者用户id（组合主键）</td>
+</tr>
+<tr>
+<td style="text-align:left">post_id</td>
+<td style="text-align:left">书签被收藏主题id（组合主键）</td>
+</tr>
+</tbody>
+</table>
 
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/logger.html">日志</a></span>
+        <span>← <a href="/doc/db-join-query.html">连表查询</a></span>
       
-      
-        <span style="float: right;"><a href="/doc/template.html">模版</a> →</span>
       
     </div>
   

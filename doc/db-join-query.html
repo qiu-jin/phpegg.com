@@ -604,6 +604,23 @@
               
               
               
+              
+            
+            
+              <li>
+                <a href="/doc/db-sample.html" class="sidebar-link">示例表</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
                 <li><h3>驱动</h3></li>
               
               
@@ -695,7 +712,7 @@
             
             
               <li>
-                <a href="/doc/driver-other.html" class="sidebar-link">其它</a>
+                <a href="/doc/driver-other.html" class="sidebar-link">其它驱动</a>
               </li>
             
            
@@ -719,15 +736,15 @@
 <ul>
 <li>用常规写法，先查询所有的主题贴，再循环查询每个主题贴的回复评论 </li>
 </ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$posts = $db-&gt;post-&gt;where(<span class="string">'name'</span>, <span class="string">'qiujin'</span>)-&gt;find(); </div><div class="line"><span class="keyword">foreach</span> ($posts <span class="keyword">as</span> $i =&gt; $post) &#123; </div><div class="line">    $posts[$i][<span class="string">'post'</span>] = db-&gt;comment-&gt;where(<span class="string">'post_id'</span>, $post[<span class="string">'id'</span>])-&gt;find(); </div><div class="line">&#125; </div><div class="line"><span class="keyword">return</span> $posts;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$posts = $db-&gt;post-&gt;where(<span class="string">'name'</span>, <span class="string">'qiujin'</span>)-&gt;find(); </div><div class="line"><span class="keyword">foreach</span> ($posts <span class="keyword">as</span> $i =&gt; $post) &#123; </div><div class="line">    $posts[$i][<span class="string">'comment'</span>] = db-&gt;comment-&gt;where(<span class="string">'post_id'</span>, $post[<span class="string">'id'</span>])-&gt;find(); </div><div class="line">&#125; </div><div class="line"><span class="keyword">return</span> $posts;</div></pre></td></tr></table></figure>
 <ul>
 <li>使用<code>with</code>语句一行代码即可。 </li>
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> $db-&gt;post-&gt;where(<span class="string">'name'</span>, <span class="string">'qiujin'</span>)-&gt;with(<span class="string">'comment'</span>)-&gt;find();</div></pre></td></tr></table></figure>
 <p>对比就可以知道常规写法不仅啰嗦，而且低效，因为常规写法执行了<code>1+N</code>次<code>SQL</code>。 </p>
 <p>而<code>with</code>语句简洁明了，查询 <code>post</code> 数据后，在把 <code>post</code> 数据中的 <code>id</code> 抽出组成 <code>where in</code> 查询 <code>comment</code> 表数据，最后把 <code>comment</code> 数据组合分配给 <code>post</code> 返回，其中只执行了 <code>1+1</code> 次 <code>SQL</code>，比常规写法效率高很多。</p>
-<h2 id="Join方法"><a href="#Join方法" class="headerlink" title="Join方法"></a>Join方法</h2><p>生成原生SQL <code>JOIN</code>语句连表查询多表数据.</p>
-<p>通常用一对一和多对一表关系场合</p>
+<h2 id="Join方法"><a href="#Join方法" class="headerlink" title="Join方法"></a>Join方法</h2><p>生成原生<code>JOIN</code>语句<code>SQL</code>来联表查询多表数据.</p>
+<p>通常用于一对一和多对一联表场合</p>
 <p>一对一：查询用户信息与其帐号积分信息（一个用户只有一个积分帐号表）</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$db-&gt;user-&gt;join(<span class="string">'account'</span>)-&gt;select(<span class="string">'score'</span>)-&gt;get($user_id);</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">SELECT `user`.*,`account`.`score` AS `account_score` FROM `user` LEFT JOIN `account` ON `user`.`id` = `account`.`user_id` WHERE `user`.`id` = &apos;1&apos;</div></pre></td></tr></table></figure>
@@ -851,6 +868,8 @@
       
         <span>← <a href="/doc/db-query.html">数据操作</a></span>
       
+      
+        <span style="float: right;"><a href="/doc/db-sample.html">示例表</a> →</span>
       
     </div>
   
