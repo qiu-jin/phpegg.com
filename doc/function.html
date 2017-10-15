@@ -348,7 +348,7 @@
             
             
               <li>
-                <a href="#" class="sidebar-link">验证器（暂无）</a>
+                <a href="#" class="sidebar-link">验证器（暂空）</a>
               </li>
             
            
@@ -428,7 +428,7 @@
             
             
               <li>
-                <a href="#" class="sidebar-link">模版（暂无）</a>
+                <a href="#" class="sidebar-link">模版（暂空）</a>
               </li>
             
            
@@ -608,7 +608,52 @@
   
     <h1>辅助函数</h1>
   
-  
+  <h2 id="辅助函数"><a href="#辅助函数" class="headerlink" title="辅助函数"></a>辅助函数</h2><p>获取环境常量</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">env($name, $default = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取配置值</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">config($name, $default = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取日志处理器</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">logger($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取容器实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">make($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取数据库实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">db($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取RPC实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">rpc($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取缓存实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">cache($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取存储实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">storage($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取短信实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">sms($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取邮件实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">email($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取驱动实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">driver($type, $name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取模型实例</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">model($name = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>获取请求输出</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">input($name, ...$params);</div></pre></td></tr></table></figure>
+<p>设置响应输出</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">output($name, ...$params);</div></pre></td></tr></table></figure>
+<p>调用视图输出</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">view($tpl, <span class="keyword">array</span> $vars = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>打印调试信息</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">dd(...$vars);</div></pre></td></tr></table></figure>
+<p>终止应用</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">abort($code = <span class="keyword">null</span>, $message = <span class="keyword">null</span>);</div></pre></td></tr></table></figure>
+<p>设置一个错误</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">error($message, $limit = <span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>json编码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">jsonencode($data);</div></pre></td></tr></table></figure>
+<p>json解码</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">jsondecode($data);</div></pre></td></tr></table></figure>
+<p>检查php是否存在</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">is_php_file($file);</div></pre></td></tr></table></figure>
+<p>安全 include</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">__include($file);</div></pre></td></tr></table></figure>
+<p>安全 require</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">__require($file);</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
