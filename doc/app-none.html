@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>Grpc — PHPEGG</title>
+    <title>无模式 — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -203,7 +203,7 @@
               
             
             <li>
-              <a href="/doc/app-grpc.html" class="sidebar-link current">Grpc</a>
+              <a href="/doc/app-grpc.html" class="sidebar-link">Grpc</a>
             </li>
           
             
@@ -229,7 +229,7 @@
               
             
             <li>
-              <a href="/doc/app-none.html" class="sidebar-link">无模式</a>
+              <a href="/doc/app-none.html" class="sidebar-link current">无模式</a>
             </li>
           
             
@@ -504,50 +504,17 @@
 </div>
 
 
-<div class="content doc with-sidebar app-grpc-doc">
+<div class="content doc with-sidebar app-none-doc">
 
   
-    <h1>Grpc</h1>
+    <h1>无模式</h1>
   
-  <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>此应用模式目前在试验阶段，只支持简单（不支持流式请求与响应等）的<a href="https://grpc.io/" target="_blank" rel="external">grpc协议</a>，另外需要配合使用nginx的ngx_http_v2_module来支持http2（虽然在php层没强制要求http2，但是要使用grpc官方提供的各语言client的话则是需要支持http2的）</p>
-<p>实现grpc应用模式初衷是因为grpc官方没有提供php版的server，为了测试client自己模仿协议实现一个简单的grpc server（http2也是http，php实现也简单）。<br>但是后面考虑到grpc使用并不广泛，用php实现并没多大优势，甚至还可能有劣势（http2强制要求ssl），所以grpc模式考虑实现成一个简单兼容grpc协议但不强制要求http2的应用模式。</p>
-<h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">'../../../framework/app.php'</span>;</div><div class="line"></div><div class="line">framework\App::start(<span class="string">'Grpc'</span>, [</div><div class="line">    <span class="string">'service_schemes'</span>   =&gt; [</div><div class="line">        <span class="string">'prefix'</span>    =&gt; [</div><div class="line">            <span class="string">'TestGrpc'</span> =&gt; <span class="string">'../scheme/grpc/TestGrpc/'</span></div><div class="line">        ],</div><div class="line">        <span class="string">'map'</span>       =&gt; [</div><div class="line">            <span class="string">'GPBMetadata\User'</span> =&gt; <span class="string">'../scheme/grpc/GPBMetadata/User'</span></div><div class="line">        ]</div><div class="line">    ]</div><div class="line">])-&gt;run();</div></pre></td></tr></table></figure>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 控制器namespace</span></div><div class="line">    <span class="string">'controller_ns'</span>     =&gt; <span class="string">'controller'</span>,</div><div class="line">    <span class="comment">// 控制器类名后缀</span></div><div class="line">    <span class="string">'controller_suffix'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">/* 参数模式</span></div><div class="line"><span class="comment">     * 0 键值参数模式</span></div><div class="line"><span class="comment">     * 1 request response 参数模式</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'param_mode'</span>        =&gt; <span class="number">0</span>,</div><div class="line">    <span class="comment">// 服务定义文件</span></div><div class="line">    <span class="string">'service_schemes'</span>   =&gt; <span class="keyword">null</span>,</div><div class="line">    </div><div class="line">    <span class="string">'request_scheme_format'</span> =&gt; <span class="string">'&#123;service&#125;&#123;method&#125;Request'</span>,</div><div class="line">    </div><div class="line">    <span class="string">'response_scheme_format'</span> =&gt; <span class="string">'&#123;service&#125;&#123;method&#125;Response'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
-<h2 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h2><p>grpc应用调度规则较简单，仍以url_path来匹配控制类和方法，当grpc client发送一个请求时，它会向<code>/namespace.namespace.Class/method</code>形式的<code>url_path</code>发送一个protobuf message请求，此<code>url_path</code>的请求就会默认调用<code>app\controller\namespace\namespace\Class::method()</code>方法。</p>
-<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><p>支持2种参数模式</p>
-<p><code>service_schemes</code>配置定义grpc应用所需要服务描述文件（protoc自动生成的PHP文件）的加载方式。</p>
-<blockquote>
-<p>./protoc –proto_path=./  –php_out=./ –grpc_out=./  –plugin=protoc-gen-grpc=./grpc_php_plugin ./User.proto</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="string">'service_schemes'</span>   =&gt; [</div><div class="line">    <span class="string">'prefix'</span>    =&gt; [</div><div class="line">        <span class="string">'TestGrpc'</span> =&gt; <span class="string">'../scheme/grpc/TestGrpc/'</span></div><div class="line">    ],</div><div class="line">    <span class="string">'map'</span>       =&gt; [</div><div class="line">        <span class="string">'GPBMetadata\User'</span> =&gt; <span class="string">'../scheme/grpc/GPBMetadata/User'</span></div><div class="line">    ]</div><div class="line">]</div></pre></td></tr></table></figure>
-<p>proto文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">syntax = &quot;proto3&quot;;</div><div class="line"></div><div class="line">package TestGrpc;</div><div class="line"></div><div class="line">service User &#123;</div><div class="line">  rpc get (UserGetRequest) returns (UserGetResponse) &#123;&#125;</div><div class="line">  </div><div class="line">  rpc create (UserCreateRequest) returns (UserCreateResponse) &#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message UserGetRequest &#123;</div><div class="line">  int32 id = 1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message UserGetResponse &#123;</div><div class="line">  int32 id = 1;</div><div class="line">  string name = 2;</div><div class="line">  string email = 3;</div><div class="line">  string mobile = 4;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message UserCreateRequest &#123;</div><div class="line">  string name = 1;</div><div class="line">  string email = 2;</div><div class="line">  string mobile = 3;</div><div class="line">&#125;</div><div class="line"></div><div class="line">message UserCreateResponse &#123;</div><div class="line">  int32 id = 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>1 键值参数模式</p>
-<p>在键值参数模式下，<code>request_scheme_format</code>和<code>response_scheme_format</code>配置定义了<code>request message scheme</code>和<code>response message scheme</code>类名的格式，并将请求的protobuf数据绑定到r<code>equest message</code>类实例，然后从<code>request message</code>类实例抽取<code>field</code>值，以键值对形式传给控制器方法（比较讨厌protobuf官方php扩展实现的getXXX和 setXXX获取设置数据的方法，但是目前也没能力自己去实现一个，只好以这个种较别扭方式处理）。</p>
-<blockquote>
-<p>如request_scheme_format为{service}{method}Request时</p>
-<p>请求 /TestGrpc.User/get, 会将protobuf数据绑定到TestGrpc\UserGetRequest类实例</p>
-<p>UserGetRequest中有一个field id，从中抽取id的值</p>
-<p>然后传给app\controller\TestGrpc\User::get($id)方法</p>
-<p>方法return一个数组，处理器将数组绑定UserGetResponse类实例</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span> <span class="params">($id)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;db-&gt;user-&gt;get($id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2 request response参数模式</p>
-<p>在此参数模式下，控制器方法接收2个参数，参数分别为<code>request message</code>类实例和<code>response message</code>类实例，调用器会使用反射来获取<code>request message</code>和<code>response message</code>类名，然后实例化传给控制器方法，方法<code>return</code>返回<code>response message</code>类实例。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">get</span> <span class="params">(\TestGrpc\UserGetRequest $request, \TestGrpc\UserGetResponse $response)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	$id = $request-&gt;getId();</div><div class="line">	$user = <span class="keyword">$this</span>-&gt;db-&gt;user-&gt;get($id);</div><div class="line">	$response-&gt;setId($id);</div><div class="line">	$response-&gt;setName($user[<span class="string">'name'</span>]);</div><div class="line">	$response-&gt;setEmail($user[<span class="string">'email'</span>]);</div><div class="line">	$response-&gt;setMoblie($user[<span class="string">'moblie'</span>]);</div><div class="line">	<span class="keyword">return</span> $response;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h2><p>设置grpc-status header头值为0（0为成功）<br>将response message类实例数据编码为protobuf格式二进制数据放在body发送给请求者。</p>
-<blockquote>
-<p>注意grpc协议中request和response的二进制数据前5个字节用来描述protobuf数据，而不是protobuf数据本身的，这5个字节中第1个字节用来表示数据编码方式（默认为0），2-5字节用来表示protobuf数据大小（大端排序）</p>
-</blockquote>
-<h2 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h2><p>按照grpc协议把错误码<code>$code</code>通过grpc-status header头，错误信息<code>$message</code>通过grpc-message header头发送给请求者，body为空。</p>
-
+  
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/app-jsonrpc.html">Jsonrpc</a></span>
+        <span>← <a href="/doc/app-custom.html">自定义</a></span>
       
-      
-        <span style="float: right;"><a href="/doc/app-custom.html">自定义</a> →</span>
       
     </div>
   
