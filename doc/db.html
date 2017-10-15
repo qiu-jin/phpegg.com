@@ -761,7 +761,7 @@
 </ul>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">use</span> \<span class="title">Getter</span>;</div><div class="line">    </div><div class="line">    <span class="comment">// 配置getter providers，这里使用了别名配置</span></div><div class="line">    <span class="keyword">protected</span> $providers = [</div><div class="line">        <span class="string">'sqlite'</span> =&gt; <span class="string">'db.sqlite'</span>,</div><div class="line">    ];</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="comment">// 使用db驱动类的同名的关键字db，会默认取驱动配置的第一个实例mysqli</span></div><div class="line">        <span class="keyword">$this</span>-&gt;db-&gt;table-&gt;get($id);</div><div class="line">        <span class="comment">// 指定别名sqlite到驱动配置的sqlite实例</span></div><div class="line">        <span class="keyword">$this</span>-&gt;sqlite-&gt;table-&gt;get($id);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p></p><p class="tip"><br>其它驱动也可以使用同样的方式生成调用方式实例<br></p><p></p>
-<h2 id="使用原生SQL"><a href="#使用原生SQL" class="headerlink" title="使用原生SQL"></a>使用原生SQL</h2><ul>
+<h2 id="使用SQL"><a href="#使用SQL" class="headerlink" title="使用SQL"></a>使用SQL</h2><ul>
 <li><code>exec</code>方法</li>
 </ul>
 <blockquote>
@@ -779,6 +779,7 @@
 <p>执行一条SQL，返回<code>query</code>由后续方法处理结果，如<code>fetch</code> <code>fetchRow</code> <code>fetchAll</code> <code>numRows</code> <code>affectedRows</code> <code>insertId</code>等方法</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 执行一条SQL请求，并循环游标获取数据</span></div><div class="line">$query = $db-&gt;query(<span class="string">"SELECT * FROM `user`"</span>);</div><div class="line"><span class="keyword">while</span> ($user = $db-&gt;fetch($query)) &#123;</div><div class="line">	$users[] = $user;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h2>
   
     <div class="guide-links">
       
