@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>错误处理 — PHPEGG</title>
+    <title>辅助函数 — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -309,7 +309,7 @@
               
             
             <li>
-              <a href="/doc/error.html" class="sidebar-link current">错误处理</a>
+              <a href="/doc/error.html" class="sidebar-link">错误处理</a>
             </li>
           
             
@@ -361,7 +361,7 @@
               
             
             <li>
-              <a href="/doc/function.html" class="sidebar-link">辅助函数</a>
+              <a href="/doc/function.html" class="sidebar-link current">辅助函数</a>
             </li>
           
             
@@ -491,34 +491,17 @@
 </div>
 
 
-<div class="content doc with-sidebar error-doc">
+<div class="content doc with-sidebar function-doc">
 
   
-    <h1>错误处理</h1>
+    <h1>辅助函数</h1>
   
-  <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始会注册下列错误处理器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">set_error_handler </div><div class="line"></div><div class="line">set_exception_handler </div><div class="line"></div><div class="line">register_shutdown_function</div></pre></td></tr></table></figure>
-<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>设置环境常量<code>STRICT_ERROR_MODE</code>为<code>true</code>可开启严格错误模式</p>
-<p>此模式下触发任何等级的错误如<code>NOTICE</code> <code>WARNING</code>等都会抛出<code>ErrorException</code>异常。</p>
-<h2 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h2><p>当错误触发后，错误处理器除了纪录错误信息，还会将错误信息设置好等级发送给<code>logger</code>处理器，如果是致命错误 异常等 还会调用<code>App::abort()</code>方法中断应用。</p>
-<p><code>App::abort()</code>方法由各应用模式实现，处理方式各有不同。</p>
-<blockquote>
-<p>在关闭<code>APP_DEBUG</code>情况下，详细的错误信息不会传给<code>abort</code>方法（防止服务器信息泄露）</p>
-</blockquote>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>设置一个错误</p>
-<blockquote>
-<p>严格错误模式下会触发<code>ErrorException</code>异常，否则只会纪录信息。</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 辅助函数</span></div><div class="line">error($message, $limit = <span class="number">1</span>);</div><div class="line"></div><div class="line">Error::set($message, $code = E_USER_ERROR, $limit = <span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>获取错误信息</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// $all＝false时获取最后一条错误，否则获取所有错误信息。</span></div><div class="line">Error::get($all = <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+  
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/router.html">路由</a></span>
+        <span>← <a href="/doc/template.html">模版</a></span>
       
-      
-        <span style="float: right;"><a href="/doc/logger.html">日志</a> →</span>
       
     </div>
   
