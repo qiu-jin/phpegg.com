@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>日志 — PHPEGG</title>
+    <title>Client — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -417,7 +417,7 @@
             
             
               <li>
-                <a href="/doc/logger.html" class="sidebar-link current">日志</a>
+                <a href="/doc/logger.html" class="sidebar-link">日志</a>
               </li>
             
            
@@ -521,7 +521,7 @@
             
             
               <li>
-                <a href="/doc/http-client.html" class="sidebar-link">Client</a>
+                <a href="/doc/http-client.html" class="sidebar-link current">Client</a>
               </li>
             
            
@@ -706,34 +706,96 @@
 </div>
 
 
-<div class="content doc with-sidebar logger-doc">
+<div class="content doc with-sidebar http-client-doc">
 
   
-    <h1>日志</h1>
+    <h1>Client</h1>
   
-  <h2 id="等级"><a href="#等级" class="headerlink" title="等级"></a>等级</h2><p>日志处理配置支持多个日志处理器，每个处理器配置中的<code>level</code>项表示此处理器默认会接收哪些等级的<code>logger</code>，日志等级参考<code>PSR-3</code>，分为<code>emergency</code> <code>alert</code> <code>ritical</code> <code>error ``warning</code> <code>notice</code> <code>debug</code> <code>info</code> 8个等级</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>在日志信息中有大量公用信息如ip 时间，如果需要使用写的话会非常繁琐，所以在日志配置中加入了<code>format</code>项，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;format&apos;  =&gt; &quot;[&#123;date&#125;] [&#123;ip&#125;] [&#123;level&#125;] &#123;message&#125; in &#123;file&#125;: &#123;line&#125;&quot;</div></pre></td></tr></table></figure>
-<p>它定义了日志的格式date ip等信息会自动填充。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>1 不指定日志频道</p>
+  <h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>发送json数据请求，并获取decode后的响应json数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Client::post($url)-&gt;json($data)-&gt;json;</div></pre></td></tr></table></figure>
+<p>发起一个附带自定义header头的POST表单请求,并上传文件，获取响应的status状态码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Client::post($url)-&gt;headers($headers)-&gt;form($data)-&gt;file(&apos;file&apos;, $file)-&gt;status;</div></pre></td></tr></table></figure>
+<p>下载一个远程文件$url并保存到本地路径$path</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Client::get($url)-&gt;save($path);</div></pre></td></tr></table></figure>
+<p>发起一个PUT请求，并上传一个文件流，获取响应的body</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$client = new Client(&apos;PUT&apos;, $url);</div><div class="line">$client-&gt;stream(fopen($path, &apos;r&apos;))-&gt;body;</div></pre></td></tr></table></figure>
+<h2 id="生成实例"><a href="#生成实例" class="headerlink" title="生成实例"></a>生成实例</h2><p>new 实例，不限制method</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">new Client($method, $url)</div></pre></td></tr></table></figure>
+<p>使用静态方法生成实例</p>
 <blockquote>
-<p>不指定日志频道的情况下，日志由<code>Logger::write</code>方法统一接收，接收后再分配指定了日志等级的日志处理器实例</p>
+<p>只支持get和post方法，其它方法使用new实例</p>
 </blockquote>
-<p>如下有3个日志配置实例，指定纪录日志的等级都不同。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'log1'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>, <span class="string">'warning'</span>, <span class="string">'notice'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log1.log'</span>,</div><div class="line">    ],</div><div class="line">    <span class="string">'log2'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>, <span class="string">'warning'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log2.log'</span>,</div><div class="line">    ],</div><div class="line">    <span class="string">'log3'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log3.log'</span>,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
-<p>示例代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 会调用log1 log2 log3记录</span></div><div class="line">logger()-&gt;error($log);</div><div class="line"></div><div class="line"><span class="comment">// 会调用log1 log2记录</span></div><div class="line">logger()-&gt;warning($log);</div><div class="line"></div><div class="line"><span class="comment">// 会调用log1记录</span></div><div class="line">logger()-&gt;notice($log);</div><div class="line"></div><div class="line"><span class="comment">// 不调用任何处理器，日志会被丢弃。</span></div><div class="line">logger()-&gt;debug($log);</div></pre></td></tr></table></figure>
-<p>2 指定日志频道</p>
-<p>就是使用日志频道处理器来记录日志，不限日志等级（不受<code>level</code>配置影响）。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 会调用log1记录debug等级日志</span></div><div class="line">logger(<span class="string">'log1'</span>)-&gt;debug($log);</div></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Client::get($url)</div><div class="line">Client::post($url)</div></pre></td></tr></table></figure>
+<h2 id="请求设置成员方法（链式操作）"><a href="#请求设置成员方法（链式操作）" class="headerlink" title="请求设置成员方法（链式操作）"></a>请求设置成员方法（链式操作）</h2><p>设置请求的body内容</p>
+<blockquote>
+<p>可选参数$type为设置请求的Content-Type heaher头</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">body($body, $type = null)</div></pre></td></tr></table></figure>
+<p>设置请求的body内容为数组被json_encode后的字符串</p>
+<blockquote>
+<p>Content-Type heaher默认设置为application/json; charset=UTF-8</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">json(array $data)</div></pre></td></tr></table></figure>
+<p>发送一个表单请求</p>
+<blockquote>
+<p>数据默认为multipart/form-data格式否则为application/x-www-form-urlencoded</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">form(array $data, $x_www_form_urlencoded = false)</div></pre></td></tr></table></figure>
+<p>本地文件上传请求</p>
+<blockquote>
+<p>只支持post方法，通常在form方法后调用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">file($name, $content, $filename = null, $mimetype = null)</div></pre></td></tr></table></figure>
+<p>变量内容上传，与file方法相似</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">buffer($name, $content, $filename = null, $mimetype = null)</div></pre></td></tr></table></figure>
+<p>发送一个流</p>
+<blockquote>
+<p>只支持put方法，在put大文件时使用节约内存</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">stream($fp)</div></pre></td></tr></table></figure>
+<p>设置发送单个header</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">header($name, $value)</div></pre></td></tr></table></figure>
+<p>设置发送多个个header</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">headers(array $headers)</div></pre></td></tr></table></figure>
+<p>设置请求超时时间</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">timeout($timeout)</div></pre></td></tr></table></figure>
+<p>设置底层curl参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">curlopt($name, $value)</div></pre></td></tr></table></figure>
+<p>设置是否获取并解析请求响应的headers数据</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">returnHeaders($bool = true)</div></pre></td></tr></table></figure>
+<h2 id="获取请求结果方法"><a href="#获取请求结果方法" class="headerlink" title="获取请求结果方法"></a>获取请求结果方法</h2><p>获取请求结果</p>
+<blockquote>
+<p>如果$name = null返回一个数组，数组包含的字段有（也是$name可设置的参数）</p>
+<p>status：响应状态码如200 404等，</p>
+<p>headers：响应的headers数据，只有在调用returnHeaders()时返回，</p>
+<p>body：响应的主体原始内容，</p>
+<p>error：请求出现错误时。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">result($name = null)</div></pre></td></tr></table></figure>
+<p>获取请求结果魔术方法</p>
+<blockquote>
+<p>如$client-&gt;status获取响应状态码，$name为status headers body error时和result($name)方法一致，</p>
+<p>$client-&gt;json：返回json decode后的body数据，</p>
+<p>$client-&gt;xml：返回xml decode后的body数据。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">__get($name)//魔术方法</div></pre></td></tr></table></figure>
+<p>将请求的获得的body数据直接写入到本地文件</p>
+<blockquote>
+<p>在body内容过大时可节约内存</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">save($path)</div></pre></td></tr></table></figure>
+<h2 id="底层方法"><a href="#底层方法" class="headerlink" title="底层方法"></a>底层方法</h2><p>发送http请求</p>
+<blockquote>
+<p>所有请求通过其发送，不建议直接使用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">send($method, $url, $body = null, array $headers = null, array $curlopt = null, $return_status = false)</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/error.html">错误处理</a></span>
+        <span>← <a href="/doc/http-response.html">响应</a></span>
       
       
-        <span style="float: right;"><a href="/doc/view.html">视图</a> →</span>
+        <span style="float: right;"><a href="/doc/http-cookie-session.html">Cookie & Session</a> →</span>
       
     </div>
   

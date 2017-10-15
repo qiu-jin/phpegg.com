@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
-    <title>日志 — PHPEGG</title>
+    <title>请求 — PHPEGG</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -417,7 +417,7 @@
             
             
               <li>
-                <a href="/doc/logger.html" class="sidebar-link current">日志</a>
+                <a href="/doc/logger.html" class="sidebar-link">日志</a>
               </li>
             
            
@@ -487,7 +487,7 @@
             
             
               <li>
-                <a href="/doc/http-request.html" class="sidebar-link">请求</a>
+                <a href="/doc/http-request.html" class="sidebar-link current">请求</a>
               </li>
             
            
@@ -706,34 +706,63 @@
 </div>
 
 
-<div class="content doc with-sidebar logger-doc">
+<div class="content doc with-sidebar http-request-doc">
 
   
-    <h1>日志</h1>
+    <h1>请求</h1>
   
-  <h2 id="等级"><a href="#等级" class="headerlink" title="等级"></a>等级</h2><p>日志处理配置支持多个日志处理器，每个处理器配置中的<code>level</code>项表示此处理器默认会接收哪些等级的<code>logger</code>，日志等级参考<code>PSR-3</code>，分为<code>emergency</code> <code>alert</code> <code>ritical</code> <code>error ``warning</code> <code>notice</code> <code>debug</code> <code>info</code> 8个等级</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>在日志信息中有大量公用信息如ip 时间，如果需要使用写的话会非常繁琐，所以在日志配置中加入了<code>format</code>项，如</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;format&apos;  =&gt; &quot;[&#123;date&#125;] [&#123;ip&#125;] [&#123;level&#125;] &#123;message&#125; in &#123;file&#125;: &#123;line&#125;&quot;</div></pre></td></tr></table></figure>
-<p>它定义了日志的格式date ip等信息会自动填充。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>1 不指定日志频道</p>
+  <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 获取请求IP</span></div><div class="line">input(ip);</div><div class="line">Request::ip();</div><div class="line"></div><div class="line"><span class="comment">// 获取POST值</span></div><div class="line">input(post, <span class="string">'username'</span>);</div><div class="line">Request::post(<span class="string">'username'</span>);</div></pre></td></tr></table></figure>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>获取$_GET值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">get($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取$_POST值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">post($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取$_COOKIE值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cookie($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取$_SESSION值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">session($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取$_FILES值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">files($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取文件上传处理实例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">uploaded($name, $validate = null)</div></pre></td></tr></table></figure>
+<p>获取$_SERVER值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">server($name = null, $default = null)</div></pre></td></tr></table></figure>
+<p>获取请求header值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">header($name, $default = null)</div></pre></td></tr></table></figure>
+<p>获取请求url</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">url()</div></pre></td></tr></table></figure>
+<p>获取请求host</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">host()</div></pre></td></tr></table></figure>
+<p>获取请求方法</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">method()</div></pre></td></tr></table></figure>
+<p>获取请求语言</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">lang()</div></pre></td></tr></table></figure>
+<p>获取请求ip</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">ip($proxy = false)</div></pre></td></tr></table></figure>
+<p>返回请求路径信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">path()</div></pre></td></tr></table></figure>
+<p>返回请求body内容</p>
 <blockquote>
-<p>不指定日志频道的情况下，日志由<code>Logger::write</code>方法统一接收，接收后再分配指定了日志等级的日志处理器实例</p>
+<p>注意Content-Type为 multipart/form-data时无法正常获取</p>
 </blockquote>
-<p>如下有3个日志配置实例，指定纪录日志的等级都不同。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'log1'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>, <span class="string">'warning'</span>, <span class="string">'notice'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log1.log'</span>,</div><div class="line">    ],</div><div class="line">    <span class="string">'log2'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>, <span class="string">'warning'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log2.log'</span>,</div><div class="line">    ],</div><div class="line">    <span class="string">'log3'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>  =&gt; <span class="string">'file'</span>,</div><div class="line">        <span class="string">'level'</span>   =&gt; [<span class="string">'error'</span>],</div><div class="line">        <span class="string">'logfile'</span> =&gt; APP_DIR.<span class="string">'storage/log/log3.log'</span>,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
-<p>示例代码</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 会调用log1 log2 log3记录</span></div><div class="line">logger()-&gt;error($log);</div><div class="line"></div><div class="line"><span class="comment">// 会调用log1 log2记录</span></div><div class="line">logger()-&gt;warning($log);</div><div class="line"></div><div class="line"><span class="comment">// 会调用log1记录</span></div><div class="line">logger()-&gt;notice($log);</div><div class="line"></div><div class="line"><span class="comment">// 不调用任何处理器，日志会被丢弃。</span></div><div class="line">logger()-&gt;debug($log);</div></pre></td></tr></table></figure>
-<p>2 指定日志频道</p>
-<p>就是使用日志频道处理器来记录日志，不限日志等级（不受<code>level</code>配置影响）。</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 会调用log1记录debug等级日志</span></div><div class="line">logger(<span class="string">'log1'</span>)-&gt;debug($log);</div></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">body()</div></pre></td></tr></table></figure>
+<p>返回一个UserAgent对象</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">agent()</div></pre></td></tr></table></figure>
+<p>是否为POST请求</p>
+<blockquote>
+<p>注意没有isGet isPut方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">isPost()</div></pre></td></tr></table></figure>
+<p>是否为Ajax请求</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">isAjax()</div></pre></td></tr></table></figure>
+<p>是否为Pjax请求</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">isPjax()</div></pre></td></tr></table></figure>
+<p>是否为HTTPS请求</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">isHttps()</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
-        <span>← <a href="/doc/error.html">错误处理</a></span>
       
-      
-        <span style="float: right;"><a href="/doc/view.html">视图</a> →</span>
+        <span style="float: right;"><a href="/doc/http-response.html">响应</a> →</span>
       
     </div>
   
