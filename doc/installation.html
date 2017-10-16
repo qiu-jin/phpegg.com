@@ -769,8 +769,14 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/qiu-jin/phpegg.git</div></pre></td></tr></table></figure>
 <p><strong>服务器配置</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Apache</div><div class="line"></div><div class="line">&lt;Directory &quot;/your_app_path/public&quot;&gt;</div><div class="line">		Options +FollowSymLinks</div><div class="line">		RewriteEngine On</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</div><div class="line">		RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</div><div class="line">		RewriteRule ^ index.php [L]</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#Nginx</div><div class="line">server &#123;</div><div class="line">        listen 80;</div><div class="line">        root /your_app_path/public;</div><div class="line">        location / &#123;</div><div class="line">                try_files $uri $uri/ /index.php?$query_string;</div><div class="line">        &#125;</div><div class="line">        location ~ \.php$ &#123;</div><div class="line">                include /etc/nginx/fastcgi.conf;</div><div class="line">                fastcgi_pass unix:/run/php/php7.0-fpm.sock;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Apache</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;Directory &quot;/your_app_path/public&quot;&gt;</div><div class="line">    Options +FollowSymLinks</div><div class="line">    RewriteEngine On</div><div class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-d</div><div class="line">    RewriteCond %&#123;REQUEST_FILENAME&#125; !-f</div><div class="line">    RewriteRule ^ index.php [L]</div><div class="line">&lt;/Directory&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>Nginx</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    root /your_app_path/public;</div><div class="line">    location / &#123;</div><div class="line">        try_files $uri $uri/ /index.php?$query_string;</div><div class="line">    &#125;</div><div class="line">    location ~ \.php$ &#123;</div><div class="line">        include /etc/nginx/fastcgi.conf;</div><div class="line">        fastcgi_pass unix:/run/php/php7.0-fpm.sock;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
   
     <div class="guide-links">
