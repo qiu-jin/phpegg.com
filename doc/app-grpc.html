@@ -550,6 +550,23 @@
               
               
               
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-more.html" class="sidebar-link">更多</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
                 <li><h3>数据库</h3></li>
               
               
@@ -728,7 +745,7 @@
   
     <h1>Grpc</h1>
   
-  <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>此应用模式目前在试验阶段，只支持简单（不支持流式请求与响应等）的<a href="https://grpc.io/" target="_blank" rel="external">grpc协议</a>，另外需要配合使用nginx的ngx_http_v2_module来支持http2（虽然在php层没强制要求http2，但是要使用grpc官方提供的各语言client的话则是需要支持http2的）</p>
+  <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>此应用模式目前在试验阶段，只支持简单（不支持流式请求与响应等）的<a href="https://grpc.io/" target="_blank" rel="external"><code>grpc</code></a>协议，另外需要配合使用nginx的<code>ngx_http_v2_module</code>来支持http2（虽然在PHP层没强制要求http2，但是要使用grpc官方提供的各语言client的话则是需要支持http2的）</p>
 <p>实现grpc应用模式初衷是因为grpc官方没有提供php版的server，为了测试client自己模仿协议实现一个简单的grpc server（http2也是http，php实现也简单）。<br>但是后面考虑到grpc使用并不广泛，用php实现并没多大优势，甚至还可能有劣势（http2强制要求ssl），所以grpc模式考虑实现成一个简单兼容grpc协议但不强制要求http2的应用模式。</p>
 <h2 id="入口"><a href="#入口" class="headerlink" title="入口"></a>入口</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">'../../../framework/app.php'</span>;</div><div class="line"></div><div class="line">framework\App::start(<span class="string">'Grpc'</span>, [</div><div class="line">    <span class="string">'service_schemes'</span>   =&gt; [</div><div class="line">        <span class="string">'prefix'</span>    =&gt; [</div><div class="line">            <span class="string">'TestGrpc'</span> =&gt; <span class="string">'../scheme/grpc/TestGrpc/'</span></div><div class="line">        ],</div><div class="line">        <span class="string">'map'</span>       =&gt; [</div><div class="line">            <span class="string">'GPBMetadata\User'</span> =&gt; <span class="string">'../scheme/grpc/GPBMetadata/User'</span></div><div class="line">        ]</div><div class="line">    ]</div><div class="line">])-&gt;run();</div></pre></td></tr></table></figure>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="comment">// 控制器namespace</span></div><div class="line">    <span class="string">'controller_ns'</span>     =&gt; <span class="string">'controller'</span>,</div><div class="line">    <span class="comment">// 控制器类名后缀</span></div><div class="line">    <span class="string">'controller_suffix'</span> =&gt; <span class="keyword">null</span>,</div><div class="line">    <span class="comment">/* 参数模式</span></div><div class="line"><span class="comment">     * 0 键值参数模式</span></div><div class="line"><span class="comment">     * 1 request response 参数模式</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="string">'param_mode'</span>        =&gt; <span class="number">0</span>,</div><div class="line">    <span class="comment">// 服务定义文件</span></div><div class="line">    <span class="string">'service_schemes'</span>   =&gt; <span class="keyword">null</span>,</div><div class="line">    </div><div class="line">    <span class="string">'request_scheme_format'</span> =&gt; <span class="string">'&#123;service&#125;&#123;method&#125;Request'</span>,</div><div class="line">    </div><div class="line">    <span class="string">'response_scheme_format'</span> =&gt; <span class="string">'&#123;service&#125;&#123;method&#125;Response'</span>,</div><div class="line">]</div></pre></td></tr></table></figure>
