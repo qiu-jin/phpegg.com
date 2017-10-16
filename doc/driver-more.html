@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>更多驱动 — PHPEGG</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'> -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- main page styles -->
+    <link rel="stylesheet" href="/css/page.css">
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+    <script>window.PAGE_TYPE = "doc"</script>
+
+  </head>
+  <body class="docs">    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div id="header">
+  <a id="logo" href="/">
+    <span>PHPEGG</span>
+  </a>
+  <ul id="nav">
+    
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+  </ul>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+        
+          
+  <div class="sidebar">
+  <div class="sidebar-inner">
+    <ul class="main-menu">
+      
+
+<li><a href="https://github.com/qiu-jin/phpegg" target="_blank" class="nav-link contribute">Github</a></li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+          
+            
+            
+              
+                <li><h3>开始</h3></li>
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/index.html" class="sidebar-link">介绍</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/installation.html" class="sidebar-link">安装</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/structure.html" class="sidebar-link">目录结构</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/quickstart.html" class="sidebar-link">开始应用</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+                <li><h3>应用</h3></li>
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app.html" class="sidebar-link">综述</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-standard.html" class="sidebar-link">标准</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-rest.html" class="sidebar-link">Rest</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-micro.html" class="sidebar-link">微应用</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-inline.html" class="sidebar-link">inline</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-jsonrpc.html" class="sidebar-link">Jsonrpc</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-grpc.html" class="sidebar-link">Grpc</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/app-custom.html" class="sidebar-link">自定义</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="#" class="sidebar-link">无模式（暂空）</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+                <li><h3>核心</h3></li>
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/config.html" class="sidebar-link">配置</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/loader.html" class="sidebar-link">类加载</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="#" class="sidebar-link">容器（暂空）</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/hook.html" class="sidebar-link">事件</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="#" class="sidebar-link">验证器（暂空）</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/router.html" class="sidebar-link">路由</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/error.html" class="sidebar-link">错误处理</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/logger.html" class="sidebar-link">日志</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/view.html" class="sidebar-link">视图</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="#" class="sidebar-link">模版（暂空）</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/function.html" class="sidebar-link">辅助函数</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+                <li><h3>HTTP层</h3></li>
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-request.html" class="sidebar-link">请求</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-response.html" class="sidebar-link">响应</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-client.html" class="sidebar-link">Client</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-cookie-session.html" class="sidebar-link">Cookie & Session</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/http-more.html" class="sidebar-link">更多</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+                <li><h3>数据库</h3></li>
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/db.html" class="sidebar-link">基本使用</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/db-query.html" class="sidebar-link">数据操作</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/db-join-query.html" class="sidebar-link">连表查询</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/db-sample.html" class="sidebar-link">示例表</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+                <li><h3>驱动</h3></li>
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-cache.html" class="sidebar-link">缓存</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-storage.html" class="sidebar-link">存储</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-rpc.html" class="sidebar-link">RPC</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-email.html" class="sidebar-link">邮件</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-sms.html" class="sidebar-link">短信</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
+                <a href="/doc/driver-more.html" class="sidebar-link current">更多驱动</a>
+              </li>
+            
+           
+          
+        </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="content doc with-sidebar driver-more-doc">
+
+  
+    <h1>更多驱动</h1>
+  
+  <h2 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Openssl</td>
+<td>基于php openssl扩展 </td>
+</tr>
+<tr>
+<td>Sodium</td>
+<td>基于php libsodium扩展 </td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'openssl'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'openssl'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 设置加密key</span></div><div class="line">        <span class="string">'key'</span>		=&gt; <span class="string">'your_key'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 设置加密iv</span></div><div class="line">        <span class="comment">//'iv'	=&gt; 	'your_iv',</span></div><div class="line">        </div><div class="line">        <span class="comment">// 加密算法</span></div><div class="line">        <span class="string">'method'</span> =&gt; <span class="string">'AES-128-CBC'</span> <span class="comment">//默认</span></div><div class="line">        </div><div class="line">        <span class="comment">/*（可选配置）默认为空</span></div><div class="line"><span class="comment">         * 设置加密值的序列化和反序列化处理器</span></div><div class="line"><span class="comment">         * 如果缓存值没有数组等复合类型只有字符串等，也可以不设置此项</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="comment">//'serializer' =&gt; ['jsonencode', 'jsondecode']</span></div><div class="line">    ],</div><div class="line">        </div><div class="line">    <span class="string">'sodium'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'sodium'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 设置加密key</span></div><div class="line">        <span class="string">'key'</span>		=&gt; <span class="string">'your_key'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 设置加密nonce</span></div><div class="line">        <span class="comment">//'nonce'	=&gt; 	'your_nonce',</span></div><div class="line">        </div><div class="line">        <span class="comment">//'serializer' =&gt; ['jsonencode', 'jsondecode']</span></div><div class="line">    ]</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">//加密</span></div><div class="line">$crypt-&gt;encrypt(<span class="string">'hello world'</span>);</div><div class="line"><span class="comment">//解密</span></div><div class="line">$crypt-&gt;decrypt(<span class="string">'ia3E14cmVxkJhhP0YWPBvA=='</span>);</div></pre></td></tr></table></figure>
+<h2 id="IP定位"><a href="#IP定位" class="headerlink" title="IP定位"></a>IP定位</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image</td>
+<td>使用gregwar/captcha包</td>
+</tr>
+<tr>
+<td>Recaptcha</td>
+<td>google recaptcha     </td>
+</tr>
+<tr>
+<td>Geetest</td>
+<td>极验验证</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'baidu'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span> =&gt; <span class="string">'baidu'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 申请的 acckey</span></div><div class="line">        <span class="string">'acckey'</span> =&gt; <span class="string">'your_acckey'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'ipip'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span> =&gt; <span class="string">'ipip'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// IP数据库文件路径，本地数据库与在线接口二者同一实例只能使用其一</span></div><div class="line">        <span class="string">'database'</span> =&gt; APP_DIR.<span class="string">'resource/ipdata/17monipdb.dat'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 申请的在线接口付费账户token</span></div><div class="line">        <span class="string">'token'</span> =&gt; <span class="string">'your_token'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'maxmind'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span> =&gt; <span class="string">'maxmind'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// IP数据库文件路径，</span></div><div class="line">        <span class="string">'database'</span> =&gt; APP_DIR.<span class="string">'resource/ipdata/GeoLite2-Country.mmdb'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 申请的在线接口付费账户acckey</span></div><div class="line">        <span class="string">'acckey'</span> =&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 申请的在线接口付费账户seckey</span></div><div class="line">        <span class="string">'seckey'</span> =&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// （可选配置）接口类型</span></div><div class="line">        <span class="string">'apitype'</span> =&gt; <span class="string">'country'</span>,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$geoip-&gt;locate(<span class="string">'8.8.8.8'</span>);</div></pre></td></tr></table></figure>
+<h2 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image</td>
+<td>使用gregwar/captcha包</td>
+</tr>
+<tr>
+<td>Recaptcha</td>
+<td>google recaptcha     </td>
+</tr>
+<tr>
+<td>Geetest</td>
+<td>极验验证</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'image'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'image'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 验证码图片src</span></div><div class="line">        <span class="string">'src'</span>       =&gt; <span class="string">'/captcha.php'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 提交表单post name，用来验证信息</span></div><div class="line">        <span class="string">'name'</span>      =&gt; <span class="string">'image-captcha'</span> <span class="comment">//默认</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'recaptcha'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'recaptcha'</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 帐号 sitekey</span></div><div class="line">        <span class="string">'acckey'</span>	=&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 secret key</span></div><div class="line">        <span class="string">'seckey'</span>	=&gt; <span class="string">'your_seckey'</span>,</div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'geetest'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>	=&gt; <span class="string">'geetest'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 captchaid</span></div><div class="line">        <span class="string">'acckey'</span>	=&gt; <span class="string">'your_acckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 帐号 secret key</span></div><div class="line">        <span class="string">'seckey'</span>	=&gt; <span class="string">'your_seckey'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// script 脚本访问地址</span></div><div class="line">        <span class="string">'script'</span>    =&gt; <span class="string">'https://static.geetest.com/static/tools/gt.js'</span> <span class="comment">//默认</span></div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">$captcha-&gt;verify();</div></pre></td></tr></table></figure>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elastic</td>
+<td>基于Elastic rest接口 （待完善）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">	<span class="string">'elastic'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'elastic'</span>,</div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span></div><div class="line">	]</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 使用id获取一条数据</span></div><div class="line">$search-&gt;index-&gt;get($id);</div><div class="line"><span class="comment">// 使用elastic原生query语法搜索</span></div><div class="line">$search-&gt;index-&gt;search($query);</div><div class="line"><span class="comment">// 更新设置指定id数据</span></div><div class="line">$search-&gt;index-&gt;put($id, $data);</div><div class="line"><span class="comment">// 添加索引数据</span></div><div class="line">$search-&gt;index-&gt;index($data);</div><div class="line"><span class="comment">// 更新数据，使用query语法</span></div><div class="line">$search-&gt;index-&gt;update($query, $data);</div><div class="line"><span class="comment">// 使用query语法删除</span></div><div class="line">$search-&gt;index-&gt;delete($query);</div></pre></td></tr></table></figure>
+<h2 id="非关系数据库"><a href="#非关系数据库" class="headerlink" title="非关系数据库"></a>非关系数据库</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cassandra</td>
+<td>使用datastax扩展（坑）</td>
+</tr>
+<tr>
+<td>Mongo</td>
+<td>使用MongoDB扩展（待完善）</td>
+</tr>
+<tr>
+<td>Hbase</td>
+<td>使用Thrift Rpc客户端（坑）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'mongo'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'mongo'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器uri</span></div><div class="line">        <span class="string">'uri'</span>       =&gt; <span class="string">'mongodb://127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 数据库名</span></div><div class="line">        <span class="string">'dbname'</span>    =&gt; <span class="string">'test'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'hbase'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'hbase'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器地址</span></div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务器端口</span></div><div class="line">        <span class="string">'port'</span>      =&gt;  <span class="number">9090</span>,</div><div class="line">        </div><div class="line">        <span class="comment">// 服务scheme文件（thrift）</span></div><div class="line">        <span class="string">'service_schemes'</span>  =&gt; [</div><div class="line">            <span class="string">'prefix'</span>    =&gt; [</div><div class="line">                <span class="string">'Hbase'</span> =&gt; APP_DIR.<span class="string">'scheme/thrift/Hbase/'</span></div><div class="line">            ],</div><div class="line">            <span class="string">'files'</span>     =&gt; [</div><div class="line">                APP_DIR.<span class="string">'scheme/thrift/Hbase/Types'</span></div><div class="line">            ]</div><div class="line">        ]</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// mongodb</span></div><div class="line"><span class="comment">// 使用id获取一条数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;get($id);</div><div class="line"><span class="comment">// 查找数据，使用mongodb原生filter options语法</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;find($filter, $options);</div><div class="line"><span class="comment">// 获取数据记录数</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;count($filter, $options);</div><div class="line"><span class="comment">// 插入数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;insert($data);</div><div class="line"><span class="comment">// 更新数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;update($data, $filter, $options);</div><div class="line"><span class="comment">// 更新指定id数据</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;upsert($id, $data);</div><div class="line"><span class="comment">// 删除</span></div><div class="line">$mongo-&gt;db-&gt;collection-&gt;delete($filter, $options);</div></pre></td></tr></table></figure>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>驱动类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>驱动</th>
+<th>描述         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Redis</td>
+<td>使用redis list类型实现简单队列（坑）</td>
+</tr>
+<tr>
+<td>Amqp</td>
+<td>基于Amqp协议RabbitMQ服务（坑）</td>
+</tr>
+<tr>
+<td>Beanstalkd</td>
+<td>pda/pheanstalk包（坑）</td>
+</tr>
+<tr>
+<td>Kafka</td>
+<td>php-rdkafka扩展（坑）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    <span class="string">'redis'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'redis'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="comment">//'port'    =&gt; '',</span></div><div class="line">        <span class="string">'database'</span>  =&gt; <span class="number">9</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'beanstalkd'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'beanstalkd'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="comment">//'port'    =&gt; '',</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'amqp'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'amqp'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'host'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="string">'5672'</span>,</div><div class="line">        <span class="string">'vhost'</span>     =&gt; <span class="string">'/'</span>,</div><div class="line">        <span class="string">'login'</span>     =&gt; <span class="string">'guest'</span>,</div><div class="line">        <span class="string">'password'</span>  =&gt; <span class="string">'guest'</span></div><div class="line">    ],</div><div class="line">    </div><div class="line">    <span class="string">'kafka'</span> =&gt; [</div><div class="line">        <span class="string">'driver'</span>    =&gt; <span class="string">'kafka'</span>,</div><div class="line">        <span class="comment">//'serialize' =&gt; '',</span></div><div class="line">        <span class="comment">//'unserialize' =&gt; '',</span></div><div class="line">        </div><div class="line">        <span class="string">'hosts'</span>      =&gt; <span class="string">'127.0.0.1'</span>,</div><div class="line">        <span class="string">'port'</span>      =&gt; <span class="string">'9092'</span>,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<p><strong>使用示例</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 生产者推送一条信息</span></div><div class="line">$queue-&gt;producer($job)-&gt;push($message);</div><div class="line"><span class="comment">// 消费者拉取一条信息</span></div><div class="line">$queue-&gt;consumer($job)-&gt;pull();</div></pre></td></tr></table></figure>
+  
+    <div class="guide-links">
+      
+        <span>← <a href="/doc/driver-sms.html">短信</a></span>
+      
+      
+    </div>
+  
+  <div class="footer">
+  </div>
+</div>
+
+        
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- fastclick -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      FastClick.attach(document.body)
+    }, false)
+    </script>
+  </body>
+</html>
