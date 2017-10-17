@@ -747,25 +747,25 @@
   
   <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>PHPEGG是一个轻量但功能丰富的PHP框架，支持<code>Standard</code> <code>Rest</code> <code>Micro</code> <code>Inline</code> <code>Jsonrpc</code> <code>Grpc</code>等应用模式，包含<code>配置</code> <code>类加载</code> <code>事件</code> <code>容器</code> <code>路由</code> <code>日志</code> <code>错误处理</code>等核心功能，并集成了<code>数据库</code> <code>缓存</code> <code>存储</code> <code>RPC</code> <code>邮件</code> <code>短信</code>等多种功能驱动，而且框架耦合度低，模块之间依赖低，框架初始化只加载少量核心PHP文件，用户完全可以根据自己的需求定制一个灵活 高性能 并且功能丰富的应用框架。</p>
 <h2 id="应用模式"><a href="#应用模式" class="headerlink" title="应用模式"></a>应用模式</h2><ul>
-<li><p><strong>Standard</strong> 默认推荐的标准<code>MVC</code>应用模式，适用于网站页面开发，同时也适用于少量接口开发。</p>
+<li><p><strong>Standard</strong> 默认推荐的标准<code>MVC</code>应用模式，适用于网页和接口开发。</p>
 </li>
-<li><p><strong>Rest</strong> <code>RESTful</code>风格模式，适用于开发<code>RESTful</code>风格的<code>API</code>接口，常用于对外的服务。</p>
+<li><p><strong>Rest</strong> <code>RESTful</code>风格模式，适用于开发<code>RESTful</code>风格的<code>API</code>接口。</p>
 </li>
-<li><p><strong>Inline</strong> 调用过程式控制器代码，适用于开发简单应用，即可用于网站页面开发也可用于接口开发。</p>
+<li><p><strong>Inline</strong> 面向过程开发方式，简单快捷的调用面向过程式控制器代码。</p>
 </li>
-<li><p><strong>Jsonrpc</strong> <code>jsonrpc</code>协议模式，常用于开发对内的服务接口，相较于<code>Rest</code>灵活高效。</p>
+<li><p><strong>Micro</strong> 微框架模式，提供基本接口方法，灵活高效。</p>
 </li>
-<li><p><strong>Micro</strong> 微框架模式，高度灵活，自由组合功能，适用于开发一些小应用。</p>
+<li><p><strong>Jsonrpc</strong> 基于<code>jsonrpc</code>协议的无<code>scheme</code>RPC应用。</p>
 </li>
-<li><p><strong>Grpc</strong> <code>grpc</code>协议模式（实验性），适用于开发使用<code>protobuf scheme</code>规范的接口。</p>
+<li><p><strong>Grpc</strong> 基于<code>grpc</code>协议，使用<code>protobuf</code>定义<code>scheme</code>的有<code>scheme</code>RPC应用。</p>
 </li>
 <li><p><strong>View</strong> 视图驱动模式（未完成）</p>
 </li>
 <li><p><strong>Cli</strong> 命令行模式（未完成）</p>
 </li>
-<li><p><strong>自定义应用</strong> 继承<code>framework\App</code>基类，实现<code>dispatch</code> <code>call</code> <code>error</code> <code>response</code>等接口方法，创建一个自定义应用模式。</p>
+<li><p><strong>自定义应用</strong> 继承<code>App</code>基类，实现约定接口方法，创建自定义应用模式类。</p>
 </li>
-<li><p><strong>无模式应用</strong> 不使用任何应用模式，只需调用<code>App::boot()</code>初始化环境，就可以开始编写应用代码。</p>
+<li><p><strong>无模式应用</strong> 不使用任何应用模式的应用。</p>
 </li>
 </ul>
 <blockquote>
@@ -941,7 +941,7 @@
 <tbody>
 <tr>
 <td>WebConsole</td>
-<td>日志发送到浏览器控制台，Firefox可直接使用Chrome需安装<a href="https://github.com/qiu-jin/chromelogger" target="_blank" rel="external">chromelogger</a>插件</td>
+<td>日志发送到浏览器控制台，支持Firefox，Chrome（需安装<a href="https://github.com/qiu-jin/chromelogger" target="_blank" rel="external">chromelogger</a>插件）</td>
 </tr>
 <tr>
 <td>Email</td>
