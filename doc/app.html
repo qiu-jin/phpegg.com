@@ -746,28 +746,9 @@
     <h1>综述</h1>
   
   <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>所谓应用模式就是总结常用的应用需求与开发习惯，实现一套从接收请求到调用应用代码最后响应请求的开发流程规范。<br>然而应用需求总是各不相同：从网页应用到REST API再到各种特有协议的RPC，我们无法实现一套代码来满足所有应用需求。<br>为了解决这个问题我们在应用基类<code>framework\App</code>定义了一套接口：<code>dispatch</code> <code>call</code> <code>error</code> <code>response</code>，所有应用模式类都继承基类并实现了这些接口方法，然后由框架调用这些接口方法，实现整个应用流程。<br>框架本身也并遵循这些接口实现了<code>Standard</code> <code>Rest</code> <code>Micro</code> <code>Inline</code> <code>Jsonrpc</code> <code>Grpc</code>等常用内置应用模式，用户可以根据需求选择合适应用模式（如无特殊需求建议使用<code>Standard</code>模式）开发应用。</p>
-<h2 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h2><p>各应用模式需要实现以下接口方法，这些方法由框架内部调用。</p>
-<ul>
-<li><strong>dispatch</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 应用调度方法，调度失败返回false</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
-<p>调度处理：需要从请求<code>Request</code>信息（通常在<code>Request</code>的<code>url</code>中）里获取请求需要调度应用代码的信息，并验证是否有效，如果调度成功返回含有调度信息的数组，否则返回false。</p>
-<ul>
-<li><strong>call</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 调用应用</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure>
-<p>调用应用代码：在<code>dispatch</code>调度成功后，使用调度信息调用应用代码，并返回应用代码的<code>return</code>值.</p>
-<ul>
-<li><strong>error</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 错误处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($code, $message)</span></span>;</div></pre></td></tr></table></figure>
-<p>错误处理：当应用出现错误时发送错误响应，通常有以下3种情况用到。</p>
-<ol>
-<li>在<code>dispatch</code>调度失败后，通常作为<code>404</code>处理。</li>
-<li>在触发致命错误或异常后（由<a href="error.html">Error</a>核心类调用），通常作为<code>500</code>处理。</li>
-<li>用户使用<code>App::abort()</code>方法主动终止应用。</li>
-</ol>
-<p class="tip">另外用户也可以自己使用<code>App::setErrorHandler()</code>注册错误处理器来覆盖默认的<code>error</code>方法</p>
+<p class="tip">入门阶段可跳先过此章节，只阅读<a href="app-standard.hmtl">标准模式</a>快速开发实现一个简单应用。</p><p><br><br>接口定义<br>—-<br><br>各应用模式需要实现以下接口方法，这些方法由框架内部调用。<br><br><em>  <strong>dispatch</strong><br><br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 应用调度方法，调度失败返回false</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure><br><br>调度处理：需要从请求<code>Request</code>信息（通常在<code>Request</code>的<code>url</code>中）里获取请求需要调度应用代码的信息，并验证是否有效，如果调度成功返回含有调度信息的数组，否则返回false。
+
+</em> <strong>call</strong><br><br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 调用应用</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">call</span><span class="params">()</span></span>;</div></pre></td></tr></table></figure><br><br>调用应用代码：在<code>dispatch</code>调度成功后，使用调度信息调用应用代码，并返回应用代码的<code>return</code>值.<br><br><em> <em>*error</em></em><br><br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"> * 错误处理</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">error</span><span class="params">($code, $message)</span></span>;</div></pre></td></tr></table></figure><br><br>错误处理：当应用出现错误时发送错误响应，通常有以下3种情况用到。<br><br>1. 在<code>dispatch</code>调度失败后，通常作为<code>404</code>处理。<br>2. 在触发致命错误或异常后（由<a href="error.html">Error</a>核心类调用），通常作为<code>500</code>处理。<br>3. 用户使用<code>App::abort()</code>方法主动终止应用。<br><br></p><p class="tip">另外用户也可以自己使用<code>App::setErrorHandler()</code>注册错误处理器来覆盖默认的<code>error</code>方法</p>
 
 <ul>
 <li><strong>response</strong></li>
