@@ -745,7 +745,30 @@
   
     <h1>模版</h1>
   
-  
+  <h2 id="1-变量输出"><a href="#1-变量输出" class="headerlink" title="1 变量输出"></a>1 变量输出</h2><p>在模版中写入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;name&#125;&#125;！</div></pre></td></tr></table></figure>
+<p>其中<code></code>是输出变量<code>name</code>的左右边界符号，也可以通过配置项<code>inter_text_sign</code>自定义插值边界符。</p>
+<p>编译成的PHP文件为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo htmlentities($name);?&gt;！</div></pre></td></tr></table></figure>
+<p>如示例变量会被默认转义，转义html可以防止xss攻击，也可以通过配置项<code>defalut_escape_text</code>开启或关闭默认转义。</p>
+<p>另外也可以通过转义符<code>&amp;</code>和反转义符<code>!</code>来手动转义变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;!name&#125;&#125;！</div></pre></td></tr></table></figure>
+<p>编译成的PHP文件为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo $name;?&gt;！</div></pre></td></tr></table></figure>
+<h2 id="2-控制结构"><a href="#2-控制结构" class="headerlink" title="2 控制结构"></a>2 控制结构</h2><p>控制结构以html标签内使用前缀符<code>@</code>开头的属性标识</p>
+<ol>
+<li>判断语句</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<p>编译成的PHP文件为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div><div class="line">&lt;?php else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>循环语句</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>编译成的PHP文件为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user) &#123; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<h2 id="3-模版继承"><a href="#3-模版继承" class="headerlink" title="3 模版继承"></a>3 模版继承</h2><h2 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3 内置函数"></a>3 内置函数</h2>
   
     <div class="guide-links">
       
