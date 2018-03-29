@@ -745,30 +745,44 @@
   
     <h1>模版</h1>
   
-  <h2 id="1-变量输出"><a href="#1-变量输出" class="headerlink" title="1 变量输出"></a>1 变量输出</h2><p>在模版中写入：</p>
+  <h2 id="变量输出"><a href="#变量输出" class="headerlink" title="变量输出"></a>变量输出</h2><p>在模版中写入：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;name&#125;&#125;！</div></pre></td></tr></table></figure>
 <p>其左右边界符号可以通过配置项<code>inter_text_sign</code>自定义插值边界符。</p>
-<p>编译成的PHP文件为：</p>
+<p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo htmlentities($name);?&gt;！</div></pre></td></tr></table></figure>
 <p>如示例变量会被默认转义，转义html可以防止xss攻击，也可以通过配置项<code>defalut_escape_text</code>开启或关闭默认转义。</p>
 <p>另外也可以通过转义符<code>&amp;</code>和反转义符<code>!</code>来手动转义变量</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;!name&#125;&#125;！</div></pre></td></tr></table></figure>
-<p>编译成的PHP文件为：</p>
+<p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo $name;?&gt;！</div></pre></td></tr></table></figure>
-<h2 id="2-控制结构"><a href="#2-控制结构" class="headerlink" title="2 控制结构"></a>2 控制结构</h2><p>控制结构以html标签内使用前缀符<code>@</code>开头的属性标识</p>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><p>控制结构以html标签内使用前缀符<code>@</code>开头的属性标识</p>
 <ol>
 <li>判断语句</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<p>编译成的PHP文件为：</p>
+<p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div><div class="line">&lt;?php else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
 <ol>
 <li>循环语句</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
-<p>编译成的PHP文件为：</p>
+<p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user) &#123; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
-<h2 id="3-模版继承"><a href="#3-模版继承" class="headerlink" title="3 模版继承"></a>3 模版继承</h2><h2 id="3-内置函数"><a href="#3-内置函数" class="headerlink" title="3 内置函数"></a>3 内置函数</h2>
+<h2 id="模版继承"><a href="#模版继承" class="headerlink" title="模版继承"></a>模版继承</h2><p>父模版product.htm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang=&quot;zh-CN&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;&#123;&#123;product.name&#125;&#125;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h1&gt;&#123;&#123;product.name&#125;&#125;&lt;/h1&gt;        </div><div class="line">&lt;block name=&quot;product_summary&quot;&gt;</div><div class="line">&#123;&#123;product.summary&#125;&#125;</div><div class="line">&lt;/block&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>子模版dvd_copy.htm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;php @extends=&quot;&apos;loayout/product&apos;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang=&quot;zh-CN&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/h1&gt;        </div><div class="line">&lt;?php echo htmlentities($product[&apos;product.summary&apos;]); ?&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>子模版dvd_ripper.htm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;php @extends=&quot;&apos;loayout/product&apos;&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;product_summary&quot;&gt;</div><div class="line">&lt;p&gt;&#123;&#123;product.summary&#125;&#125;&lt;/p&gt;</div><div class="line">&lt;/block&gt;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang=&quot;zh-CN&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/h1&gt;        </div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($product[&apos;product.summary&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;is&apos;        =&gt; &apos;&#123;&quot;is_$1&quot;&#125;($0)&apos;,</div><div class="line">&apos;has&apos;       =&gt; &apos;isset($0)&apos;,</div><div class="line">&apos;default&apos;   =&gt; &apos;$0 ?? $1&apos;,</div><div class="line"></div><div class="line">&apos;str&apos;       =&gt; &apos;strval($0)&apos;,</div><div class="line">&apos;num&apos;       =&gt; &apos;($0+0)&apos;,</div><div class="line">&apos;replace&apos;   =&gt; &apos;str_replace($1, $2, $0)&apos;,</div><div class="line">&apos;substr&apos;    =&gt; &apos;substr($0, $1, $2)&apos;,</div><div class="line">&apos;length&apos;    =&gt; &apos;strlen($0)&apos;,</div><div class="line">&apos;count&apos;     =&gt; &apos;count($0)&apos;,</div><div class="line">&apos;lower&apos;     =&gt; &apos;strtolower($0)&apos;,</div><div class="line">&apos;upper&apos;     =&gt; &apos;strtoupper($0)&apos;,</div><div class="line">&apos;ucfirst&apos;   =&gt; &apos;ucfirst($0)&apos;,</div><div class="line">&apos;trim&apos;      =&gt; &apos;trim($0)&apos;,</div><div class="line">&apos;index&apos;     =&gt; &apos;strpos($1, $0)&apos;,</div><div class="line">&apos;char&apos;      =&gt; &apos;$0&#123;$1&#125;&apos;,</div><div class="line">&apos;escape&apos;    =&gt; &apos;htmlspecialchars($0)&apos;,</div><div class="line">&apos;unescape&apos;  =&gt; &apos;htmlspecialchars_decode($0)&apos;,</div><div class="line">&apos;urlencode&apos; =&gt; &apos;urlencode($0)&apos;,</div><div class="line">&apos;urldecode&apos; =&gt; &apos;urldecode($0)&apos;,</div><div class="line"></div><div class="line">&apos;split&apos;     =&gt; &apos;explode($1, $0)&apos;,</div><div class="line">&apos;join&apos;      =&gt; &apos;implode($1, $0)&apos;,</div><div class="line">&apos;keys&apos;      =&gt; &apos;array_keys($0)&apos;,</div><div class="line">&apos;values&apos;    =&gt; &apos;array_values($0)&apos;,</div><div class="line"></div><div class="line">&apos;abs&apos;       =&gt; &apos;abs($0)&apos;,</div><div class="line">&apos;floor&apos;     =&gt; &apos;floor($0)&apos;,</div><div class="line">&apos;round&apos;     =&gt; &apos;round($0)&apos;,</div><div class="line">&apos;ceil&apos;      =&gt; &apos;ceil($0)&apos;,</div><div class="line">&apos;rand&apos;      =&gt; &apos;rand($0, $1)&apos;,</div><div class="line">&apos;number&apos;    =&gt; &apos;number_format($0)&apos;,</div><div class="line"></div><div class="line">&apos;time&apos;      =&gt; &apos;time()&apos;,</div><div class="line">&apos;date&apos;      =&gt; &apos;date($1, $0)&apos;,</div></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;name.ucfirst()&#125;&#125;！</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo htmlentities(ucfirst($name));?&gt;！</div></pre></td></tr></table></figure>
   
     <div class="guide-links">
       
