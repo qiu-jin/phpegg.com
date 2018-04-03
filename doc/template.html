@@ -788,9 +788,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if (View::extends(&quot;layout/product&quot;, __FILE__, true)) return include __FILE__; ?&gt;</div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang=&quot;zh-CN&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($product[&apos;name&apos;]); ?&gt;&lt;/h1&gt;        </div><div class="line">&lt;?php echo htmlentities($product[&apos;product.summary&apos;]); ?&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p>子模版dvd_ripper.htm</p>
 <blockquote>
-<blockquote>
-<p>自模版中定义的block替换父模版中的block</p>
-</blockquote>
+<p>子模版中定义的block替换父模版中的block</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout/product&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;product_summary&quot;&gt;</div><div class="line">&lt;p&gt;DVD Ripper&lt;/p&gt;</div><div class="line">&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
