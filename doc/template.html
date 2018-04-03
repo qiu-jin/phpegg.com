@@ -751,8 +751,9 @@
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&lt;?php echo htmlentities($name);?&gt;！</div></pre></td></tr></table></figure>
 <p>其左右边界符号可以通过配置项<code>text_border_sign</code>自定义插值边界符。</p>
-<p>如设为<code>text_border_sign =&gt; [&#39;&#39;]</code>，模版应写为:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;#name#&#125;！</div></pre></td></tr></table></figure>
+<p>如设为<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">text_border_sign =&gt; [&apos;&#123;%&apos;, &apos;%&#125;&apos;]</div></pre></td></tr></table></figure></p>
+<p>模版应写为:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;%name%&#125;！</div></pre></td></tr></table></figure>
 <p>输出数组值：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Hello,&#123;&#123;user.name&#125;&#125;！</div></pre></td></tr></table></figure>
 <p>编译后：</p>
