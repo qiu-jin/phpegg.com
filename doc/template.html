@@ -808,7 +808,15 @@
 <p>2 易用，过滤器可以简写命名，另外由于历史原因，一些原生PHP函数的命名和参数顺序也有些混乱，使用内置过滤器可以调整这些问题。</p>
 <p>3 易读，过滤器使用链式调用语法，阅读起来更加自然顺畅。</p>
 </blockquote>
-<h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>数学运算符 <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></p>
+<h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><p>除了使用内置过滤器，用户也可以在业务代码中定义自定义过滤器供模版使用。</p>
+<p>定义一个自定义过滤器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">View::filter(&apos;my_filter&apos;, function ($content, $tag) &#123;</div><div class="line">	return &quot;&lt;$tag&gt;$content&lt;/$tag&gt;&quot;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在模版中调用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;content.my_filter(tag)&#125;&#125;</div></pre></td></tr></table></figure>
+<p class="tip">注意自定义过滤器命名不要于内置过滤器冲突，同名内置过滤器调用优先级大于自定义过滤器</p>
+
+
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>数学运算符 <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></p>
 <p>比较运算符  <code>==</code> <code>===</code> <code>!=</code> <code>!==</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></p>
 <p>逻辑运算符  <code>||</code> <code>&amp;&amp;</code> <code>!</code></p>
 <p>三元运算符 <code>a ? b : c</code> <code>a ?: b</code> <code>a ?? b</code></p>
