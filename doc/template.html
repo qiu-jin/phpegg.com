@@ -793,10 +793,12 @@
 <p>括号 <code>(a + b) * c</code></p>
 <p>数组 <code>[1, 2 ,3]</code> <code>{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}</code></p>
 <h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><p>控制结构以<code>html</code>标签内使用前缀符<code>@</code>开头的属性标识，支持<code>if</code> <code>elseif</code> <code>else</code> <code>each</code> <code>for</code> <code>while</code>等</p>
-<h3 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<h3 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @elseif=&quot;title2&quot;&gt;&#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p><code>each</code>语句使用<code>key:val in array</code>的格式遍历数组的键值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; elseif ($title2) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title2); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<p class="tip">联合使用<code>if</code> <code>elseif</code> <code>else</code>时，其标签之间不能其它非空内容，否则会出现异常编译失败。</p> 
+
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><h5 id="each语句"><a href="#each语句" class="headerlink" title="each语句"></a><code>each</code>语句</h5><p>使用<code>key:val in array</code>的格式遍历数组的键值</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;id:user in users&quot; id=&quot;item_&#123;&#123;id&#125;&#125;&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user =&gt; $id) &#123; ?&gt;</div><div class="line">&lt;p id=&quot;item_&lt;?php echo htmlentities($id); ?&gt;&quot;&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
@@ -807,6 +809,12 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;id: in users&quot;</div></pre></td></tr></table></figure>
 <p>忽略键值（此情况下默认可以使用<code>key</code>和<code>val</code>来获取键值）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;users&quot;</div></pre></td></tr></table></figure>
+<h5 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a><code>for</code>语句</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @ for=&quot;i=0; i&lt;9; i++&quot;&gt;&#123;&#123;i&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php for ($i=0; $i&lt;9; $i++) &#123; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($i); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<h5 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a><code>while</code>语句</h5><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p $i=&quot;9&quot; @while=&quot;i&gt;0&quot; $i=&quot;i-1&quot;&gt;&#123;&#123;i&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php $i = 9; ?&gt;</div><div class="line">&lt;?php while ($i &gt; 0) &#123; ?&gt;</div><div class="line">&lt;?php $i = $i - 1; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($i); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
 <h2 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h2><p>模版支持在标签内使用以<code>$</code>开头的属性语法赋值变量</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p $name=&quot;user.name&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
