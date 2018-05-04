@@ -820,7 +820,14 @@
 <p>判断变量<code>footer</code>模版是否存在，存在则引用变量<code>footer</code>模版，并传递变量<code>$some=&quot;data&quot;</code></p>
 <p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会和当前模版合并编译。</p>
 
-
+<h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
+<p>当前模版</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;menu&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;content&quot;&gt;&#123;&#123;@parent()&#125;&#125;  &#123;&#123;content&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
+<p>要插入的模版</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;menu&quot;&gt;&#123;&#123;menu&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
+<p>合并为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;menu&quot;&gt;&#123;&#123;menu&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;content&quot;&gt;&#123;&#123;@parent()&#125;&#125;  &#123;&#123;content&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
+<p class="tip"><code>insert</code>标签类似于有不同于<code>include</code>标签，前者会合并后编译，后者会分别独立编译。</p>
 
 <h2 id="模版继承"><a href="#模版继承" class="headerlink" title="模版继承"></a>模版继承</h2><p>父模版<code>layout</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;</div><div class="line">    &lt;block name=&quot;title&quot;&gt; 标题 &lt;/block&gt;</div><div class="line">&lt;/title&gt;</div><div class="line">&lt;include name=&quot;header&quot; /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;block name=&quot;menu&quot;&gt; 菜单 &lt;/block&gt;</div><div class="line">    &lt;block name=&quot;content&quot;&gt; 正文 &lt;/block&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;include name=&quot;footer&quot; /&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
