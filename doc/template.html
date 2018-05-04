@@ -782,7 +782,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;name.trim()&#125;&#125;</div></pre></td></tr></table></figure>
 <p>另外也可以使用下面写法调用过滤器</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;trim(name)&#125;&#125;</div></pre></td></tr></table></figure>
-<p>第一种写法相当于<code>.</code>前面内容作为过滤器第一个参数，从语法上更符合人的阅读习惯。</p>
+<p>第一种写法相当于<code>.</code>前面内容作为过滤器第一个参数，语法更符合人的阅读习惯。</p>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo htmlentities(trim($name));?&gt;</div></pre></td></tr></table></figure>
 <h3 id="内置过滤器"><a href="#内置过滤器" class="headerlink" title="内置过滤器"></a>内置过滤器</h3><p>模版内置了大量过滤器，主要是处理字符串。</p>
@@ -803,9 +803,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;filters&apos; =&gt; [</div><div class="line">	// 反转字符串</div><div class="line">	&apos;strrev&apos; =&gt; &apos;strrev($0)&apos;,</div><div class="line">	// 计算数组的差集</div><div class="line">	&apos;diff&apos;   =&gt; &apos;array_diff($0, $1)&apos;,</div><div class="line">],</div></pre></td></tr></table></figure>
 <blockquote>
 <p>有些PHP开发者会有疑问：竟然内置过滤器基本都是原生PHP函数的马甲为什么不直接用原生PHP函数。</p>
-<p>我觉得用模版过滤器有3点优势：</p>
+<p>用模版过滤器有3点优势：</p>
 <p>1 安全，只允许使用过滤器，可以防止不熟悉PHP的设计人员使用有些危险的PHP函数如<code>eavl</code>等。</p>
-<p>2 易用，过滤器可以简写命名，另外由于历史原因，一些原生PHP函数的命名和参数顺序也有些混乱，使用内置过滤器可以调整这些问题。</p>
+<p>2 易用，过滤器定义可以借鉴javascript语法及其流行框架和其它语言的流行模版引擎，使其更适合设计人员使用，另外由于历史原因，一些原生PHP函数的命名和参数顺序也有些混乱，使用内置过滤器可以调整这些问题。</p>
 <p>3 易读，过滤器使用链式调用语法，阅读起来更加自然顺畅。</p>
 </blockquote>
 <h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><p>除了使用内置过滤器，用户也可以在业务代码中定义自定义过滤器供模版使用。</p>
