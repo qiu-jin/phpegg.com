@@ -770,7 +770,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo htmlentities(trim($name));?&gt;</div></pre></td></tr></table></figure>
 <h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>模版引擎默认开启自动转义，输出的内容使用<code>htmlentities</code>函数处理，这样可以有效的防止<code>xss</code>攻击。</p>
 <p>不过在有些使用场景下（如<code>CMS</code>类应用，内容通常是第一方生产的）并不需要转义，这种情况下可以通过设置配置<code>&#39;auto_escape_text&#39; =&gt; false</code>来关闭自动转义。</p>
-<p>除了设置自动转义外，用户也手动强制输出转义或不转义。</p>
+<p>除了设置自动转义外，用户也可以手动强制输出转义或不转义。</p>
 <p>在右定界符后使用<code>:</code>符号强制输出转义</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;:name&#125;&#125;</div></pre></td></tr></table></figure>
 <p>在右定界符后使用<code>!</code>符号强制输出不转义</p>
@@ -796,9 +796,17 @@
 <h3 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo htmlentities($title); ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p><code>each</code>语句使用<code>key:val in array</code>的格式遍历数组的键值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;id:user in users&quot; id=&quot;item_&#123;&#123;id&#125;&#125;&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user) &#123; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user =&gt; $id) &#123; ?&gt;</div><div class="line">&lt;p id=&quot;item_&lt;?php echo htmlentities($id); ?&gt;&quot;&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
+<p>也可以使用忽略键值的语法</p>
+<p>忽略键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;user in users&quot;</div></pre></td></tr></table></figure>
+<p>忽略值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;id: in users&quot;</div></pre></td></tr></table></figure>
+<p>忽略键值（此情况下默认可以使用<code>key</code>和<code>val</code>来获取键值）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;users&quot;</div></pre></td></tr></table></figure>
 <h2 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h2><p>模版支持在标签内使用以<code>$</code>开头的属性语法赋值变量</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p $name=&quot;user.name&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
@@ -823,11 +831,11 @@
 <h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;menu&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;content&quot;&gt;&#123;&#123;@parent()&#125;&#125;  &#123;&#123;content&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
-<p>要插入的模版</p>
+<p>要插入的模版<code>menu</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;menu&quot;&gt;&#123;&#123;menu&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;menu&quot;&gt;&#123;&#123;menu&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;content&quot;&gt;&#123;&#123;@parent()&#125;&#125;  &#123;&#123;content&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
-<p class="tip"><code>insert</code>标签类似于有不同于<code>include</code>标签，前者会合并后编译，后者会分别独立编译。</p>
+<p class="tip"><code>insert</code>标签类似于而又不同于<code>include</code>标签，前者会合并后编译，后者会分别独立编译。</p>
 
 <h2 id="模版继承"><a href="#模版继承" class="headerlink" title="模版继承"></a>模版继承</h2><p>父模版<code>layout</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;</div><div class="line">    &lt;block name=&quot;title&quot;&gt; 标题 &lt;/block&gt;</div><div class="line">&lt;/title&gt;</div><div class="line">&lt;include name=&quot;header&quot; /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;block name=&quot;menu&quot;&gt; 菜单 &lt;/block&gt;</div><div class="line">    &lt;block name=&quot;content&quot;&gt; 正文 &lt;/block&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;include name=&quot;footer&quot; /&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
