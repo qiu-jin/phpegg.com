@@ -785,9 +785,9 @@
 <p>第一种写法相当于<code>.</code>前面内容作为过滤器第一个参数，语法更符合人的阅读习惯。</p>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo htmlentities(trim($name));?&gt;</div></pre></td></tr></table></figure>
-<h3 id="内置过滤器"><a href="#内置过滤器" class="headerlink" title="内置过滤器"></a>内置过滤器</h3><p>模版内置了大量过滤器，主要是处理字符串。</p>
+<h3 id="内置过滤器"><a href="#内置过滤器" class="headerlink" title="内置过滤器"></a>内置过滤器</h3><p>模版内置过滤器主要是用来处理字符串。</p>
 <p>这些内置过滤器通常编译后会被替换成PHP函数。</p>
-<p>如内置过滤器<code>split</code>定义如下，功能是把字符串分割成数组，是使用PHP函数<code>explode</code>，并且其使用<code>$</code>加数字调整参数位置。</p>
+<p>如内置字符串分割过滤器<code>split</code>定义如下例，使用PHP函数<code>explode</code>实现，并且其使用<code>$</code>加数字调整参数位置。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;split&apos; =&gt; &apos;explode($1, $0)&apos;,</div></pre></td></tr></table></figure>
 <p>调用示例：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a.split(b)&#125;&#125;</div></pre></td></tr></table></figure>
@@ -802,11 +802,13 @@
 <p>用户也可以通过配置<code>filters</code>增加或替换内置过滤器，如下例增加了一个字符串反转过滤器<code>strrev</code>和数组差集过滤器<code>diff</code>。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;filters&apos; =&gt; [</div><div class="line">	// 反转字符串</div><div class="line">	&apos;strrev&apos; =&gt; &apos;strrev($0)&apos;,</div><div class="line">	// 计算数组的差集</div><div class="line">	&apos;diff&apos;   =&gt; &apos;array_diff($0, $1)&apos;,</div><div class="line">],</div></pre></td></tr></table></figure>
 <blockquote>
-<p>有些PHP开发者会有疑问：竟然内置过滤器基本都是原生PHP函数的马甲为什么不直接用原生PHP函数。</p>
+<p>有些PHP开发者会有疑问：既然内置过滤器基本都是原生PHP函数的马甲为什么不直接用原生PHP函数。</p>
 <p>用模版过滤器有3点优势：</p>
-<p>1 安全，只允许使用过滤器，可以防止不熟悉PHP的设计人员使用有些危险的PHP函数如<code>eavl</code>等。</p>
-<p>2 易用，过滤器定义可以借鉴javascript语法及其流行框架和其它语言的流行模版引擎，使其更适合设计人员使用，另外由于历史原因，一些原生PHP函数的命名和参数顺序也有些混乱，使用内置过滤器可以调整这些问题。</p>
-<p>3 易读，过滤器使用链式调用语法，阅读起来更加自然顺畅。</p>
+<ul>
+<li>安全：只允许使用过滤器，可以防止不熟悉PHP的设计人员使用有些危险的PHP函数如<code>eavl</code>等。</li>
+<li>易用：内置过滤器借鉴了javascript语法及其流行框架和其它语言的流行模版引擎，使其更适合设计人员使用，另外由于历史原因，一些原生PHP函数的命名和参数顺序也有些混乱，使用内置过滤器可以调整这些问题。</li>
+<li>易读：过滤器使用链式调用语法，阅读起来更加自然顺畅。</li>
+</ul>
 </blockquote>
 <h3 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h3><p>除了使用内置过滤器，用户也可以在业务代码中定义自定义过滤器供模版使用。</p>
 <p>定义一个自定义过滤器</p>
@@ -835,11 +837,11 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php foreach ($users as $user =&gt; $id) &#123; ?&gt;</div><div class="line">&lt;p id=&quot;item_&lt;?php echo htmlentities($id); ?&gt;&quot;&gt;&lt;?php echo htmlentities($user[&apos;name&apos;]); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
 <p>也可以使用忽略键值的语法</p>
 <p>忽略键</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;user in users&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;val in array&quot;</div></pre></td></tr></table></figure>
 <p>忽略值</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;id: in users&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;key: in array&quot;</div></pre></td></tr></table></figure>
 <p>忽略键值（此情况下默认可以使用<code>key</code>和<code>val</code>来获取键值）</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;users&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">@each=&quot;array&quot;</div></pre></td></tr></table></figure>
 <h4 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a><code>for</code>语句</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @for=&quot;i=0; i&lt;9; i++&quot;&gt;&#123;&#123;i&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php for ($i=0; $i&lt;9; $i++) &#123; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($i); ?&gt;&lt;/p&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
@@ -850,7 +852,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p $name=&quot;user.name&quot;&gt;&#123;&#123;name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php $name = $user[&apos;name&apos;]; ?&gt;</div><div class="line">&lt;p&gt;&lt;?php echo htmlentities($name); ?&gt;&lt;/p&gt;</div></pre></td></tr></table></figure>
-<h2 id="双引号字符"><a href="#双引号字符" class="headerlink" title="双引号字符"></a>双引号字符</h2><p>模版支持在标签内以<code>*</code>开头的属性值使用原生的PHP双引号字符串语法，在字符串中嵌入多个变量时更加便捷。</p>
+<h2 id="双引号字符"><a href="#双引号字符" class="headerlink" title="双引号字符"></a>双引号字符</h2><p>模版支持在标签内以<code>*</code>开头的属性的值使用原生的PHP双引号字符串语法，在字符串中嵌入多个变量时更加便捷。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a *href=&quot;$a/$b/$c&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href =&quot;&lt;?php echo htmlentities(&quot;$a/$b/$c&quot;); ?&gt;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
