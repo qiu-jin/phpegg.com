@@ -796,7 +796,7 @@
 <p>另外如果有多个可选参数时，可以用<code>...</code>符号省略，如：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;format&apos; =&gt; &apos;sprintf($0, $1, ...)&apos;,</div></pre></td></tr></table></figure>
 <p>调用示例：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;&apos;%s, %s, %s&apos;. format(a, b, c)&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;&apos;%s, %s, %s&apos;.format(a, b, c)&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo htmlentities(sprintf(&apos;%s, %s, %s&apos;, $a, $b, $c));?&gt;</div></pre></td></tr></table></figure>
 <p>用户也可以通过配置<code>filters</code>增加或替换内置过滤器，如下例增加了一个字符串反转过滤器<code>strrev</code>和数组差集过滤器<code>diff</code>。</p>
@@ -815,7 +815,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">View::filter(&apos;my_filter&apos;, function ($content, $tag) &#123;</div><div class="line">	return &quot;&lt;$tag&gt;$content&lt;/$tag&gt;&quot;;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>在模版中调用</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;content.my_filter(tag)&#125;&#125;</div></pre></td></tr></table></figure>
-<p class="tip">注意自定义过滤器命名不要于内置过滤器冲突，同名内置过滤器调用优先级大于自定义过滤器</p>
+<p class="tip">注意自定义过滤器命名不要与内置过滤器冲突，同名内置过滤器调用优先级大于自定义过滤器</p>
 
 
 <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>数学运算符 <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></p>
@@ -887,6 +887,8 @@
 <p>子模版中定义的<code>block</code>替换同名父模版中的<code>block</code>，子模版中未定义的<code>block</code>默认使用父模版中的<code>block</code>。</p>
 <p>子模版<code>block</code>中使用<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;@parent()&#125;&#125;</div></pre></td></tr></table></figure></p>
 <p>可把同名父模版<code>block</code>的内容插入到其中。</p>
+<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。</p>
+
 <h2 id="空标签"><a href="#空标签" class="headerlink" title="空标签"></a>空标签</h2><p>有些情况下，模版语法不需要嵌入到实体<code>html</code>标签中时，可使用空标签<code>tag</code>，编译后空标签会被去除只保留逻辑部分。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;tag @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/tag&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
