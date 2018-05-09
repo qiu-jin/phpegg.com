@@ -865,8 +865,8 @@
 <p>也可以动态引用模版，<code>:name</code>为动态参数语法，其传递是一个变量，而<code>name</code>传递是一个字符串。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include :name=&quot;header&quot; /&gt;</div></pre></td></tr></table></figure>
 <p>在<code>include</code>标签中也可以使用判断循环语句</p>
+<p>循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include @each=&quot;view in views&quot; @if=&quot;view_exists(view)&quot; :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
-<p>判断变量<code>footer</code>模版是否存在，存在则引用变量<code>footer</code>模版</p>
 <p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会和当前模版合并编译。</p>
 
 <h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
