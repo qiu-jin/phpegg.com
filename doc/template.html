@@ -817,7 +817,6 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;content.my_filter(tag)&#125;&#125;</div></pre></td></tr></table></figure>
 <p class="tip">注意自定义过滤器命名不要与内置过滤器冲突，同名内置过滤器调用优先级大于自定义过滤器</p>
 
-
 <h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>数学运算符 <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code></p>
 <p>比较运算符  <code>==</code> <code>===</code> <code>!=</code> <code>!==</code> <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></p>
 <p>逻辑运算符  <code>||</code> <code>&amp;&amp;</code> <code>!</code></p>
@@ -867,7 +866,7 @@
 <p>在<code>include</code>标签中也可以使用判断循环语句</p>
 <p>循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include @each=&quot;view in views&quot; @if=&quot;view_exists(view)&quot; :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
-<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会和当前模版合并编译。</p>
+<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译。</p>
 
 <h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
 <p>当前模版</p>
@@ -882,21 +881,21 @@
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;title&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;@slot()&#125;&#125;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot/&gt;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <h4 id="多个slot"><a href="#多个slot" class="headerlink" title="多个slot"></a>多个<code>slot</code></h4><p>一个<code>insert</code>内可以指定多个<code>slot</code>，多个<code>slot</code>使用<code>slot</code>标签包含。</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;</div><div class="line">	&lt;slot name=&quot;slot1&quot;&gt;title1&lt;/slot&gt;</div><div class="line">	&lt;slot name=&quot;slot2&quot;&gt;title2&lt;/slot&gt;</div><div class="line">&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;@slot(&quot;slot1&quot;)&#125;&#125;: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1&gt;&#123;&#123;@slot(&quot;slot2&quot;)&#125;&#125;: &#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot name=&quot;slot1&quot;/&gt;: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1&gt;&lt;slot name=&quot;slot2&quot;/&gt;: &#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title1: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1&gt;title2: &#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <h3 id="插入块block"><a href="#插入块block" class="headerlink" title="插入块block"></a>插入块<code>block</code></h3><p><code>insert</code>不仅支持插入整个模版文件内容，也支持插入其中的一个模版块<code>block</code>，语法为使用<code>.</code>连接模版名与<code>block</code>名。</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title.title1&quot;/&gt;</div><div class="line">&lt;insert name=&quot;title.title2&quot;&gt;title2&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;title1&quot;&gt;&lt;h1&gt;&#123;&#123;title1&#125;&#125;&lt;/h1&gt;&lt;/block&gt;</div><div class="line">&lt;block name=&quot;title1&quot;&gt;&lt;h1&gt;&#123;&#123;@slot()&#125;&#125;: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;&lt;/block&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;title1&quot;&gt;&lt;h1&gt;&#123;&#123;title1&#125;&#125;&lt;/h1&gt;&lt;/block&gt;</div><div class="line">&lt;block name=&quot;title1&quot;&gt;&lt;h1&gt;&lt;slot/&gt;: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;title1&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1&gt;title2: &#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <h2 id="模版继承"><a href="#模版继承" class="headerlink" title="模版继承"></a>模版继承</h2><p>当前模版</p>
