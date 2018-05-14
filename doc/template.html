@@ -969,6 +969,11 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;heredoc&gt;</div><div class="line">My name is &quot;$name&quot;. I am printing some $foo-&gt;foo.</div><div class="line">Now, I am printing some &#123;$foo-&gt;bar[1]&#125;.</div><div class="line">&lt;/heredoc&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php print &lt;&lt;&lt;EOT</div><div class="line">My name is &quot;$name&quot;. I am printing some $foo-&gt;foo.</div><div class="line">Now, I am printing some &#123;$foo-&gt;bar[1]&#125;.</div><div class="line">EOT; ?&gt;</div></pre></td></tr></table></figure>
+<p>另外也可以使用<code>name</code>指定<code>heredoc</code>标识符来替换默认的标识符<code>EOT</code></p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;heredoc name=&quot;TESTEOT&quot;&gt;...&lt;/heredoc&gt;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php print &lt;&lt;&lt;TESTEOT</div><div class="line">...</div><div class="line">TESTEOT; ?&gt;</div></pre></td></tr></table></figure>
 <p class="tip"><code>heredoc</code>标签中无法使用模版语法。</p>
 
 <h2 id="原生PHP"><a href="#原生PHP" class="headerlink" title="原生PHP"></a>原生PHP</h2><p>在需要使用原生PHP代码时可以<code>php</code>标签来包裹PHP代码，但是一般不建议这么做，可以设置配置<code>php_tag =&gt; false</code>禁止<code>php</code>标签使用。</p>
