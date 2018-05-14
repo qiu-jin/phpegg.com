@@ -751,7 +751,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p&gt;&#123;&#123;name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p&gt;&lt;?php echo htmlentities($name);?&gt;&lt;/p&gt;</div></pre></td></tr></table></figure>
+<p>数据变量可以通过视图<code>View</code>的相关方法传递过来。</p>
+<blockquote>
 <p>定界符号可以通过配置项<code>text_border_sign</code>自定义。</p>
+</blockquote>
 <h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>模版引擎默认开启自动转义，输出的内容使用<code>htmlentities</code>函数处理，这样可以有效的防止<code>xss</code>攻击。</p>
 <p>不过在有些使用场景下（如<code>CMS</code>类应用，内容通常是第一方生产的）并不需要转义，这种情况下可以通过设置配置<code>&#39;auto_escape_text&#39; =&gt; false</code>来关闭自动转义。</p>
 <p>除了设置自动转义外，用户也可以手动强制输出转义或不转义。</p>
