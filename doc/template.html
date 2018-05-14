@@ -868,9 +868,8 @@
 <p>在<code>include</code>标签中也可以使用判断循环语句</p>
 <p>循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include @each=&quot;view in views&quot; @if=&quot;view_exists(view)&quot; :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
-<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译。</p>
-
-<p class="tip">除了<code>include</code>标签，下面的<code>insert</code>和<code>extends</code>标签不支持动态调用，因为它们是先合并后再编译。</p>
+<p class="tip"><br><em> <code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译。
+</em> 除了<code>include</code>标签，下面的<code>insert</code>和<code>extends</code>标签不支持动态调用，因为它们是先合并后再编译。<br></p>
 
 <h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
 <p>当前模版</p>
