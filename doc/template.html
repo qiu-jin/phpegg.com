@@ -750,12 +750,6 @@
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p&gt;&lt;?php echo htmlentities($name);?&gt;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p>其左右定界符号可以通过配置项<code>text_border_sign</code>自定义插值边界符。</p>
-<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>使用<code>.</code>符号</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user.name&#125;&#125;</div></pre></td></tr></table></figure>
-<p>另一种数组写法，使用<code>[]</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user[&apos;name&apos;]&#125;&#125;</div></pre></td></tr></table></figure>
-<p>编译后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo htmlentities($user[&apos;name&apos;]);?&gt;</div></pre></td></tr></table></figure>
 <h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>模版引擎默认开启自动转义，输出的内容使用<code>htmlentities</code>函数处理，这样可以有效的防止<code>xss</code>攻击。</p>
 <p>不过在有些使用场景下（如<code>CMS</code>类应用，内容通常是第一方生产的）并不需要转义，这种情况下可以通过设置配置<code>&#39;auto_escape_text&#39; =&gt; false</code>来关闭自动转义。</p>
 <p>除了设置自动转义外，用户也可以手动强制输出转义或不转义。</p>
@@ -767,6 +761,12 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo $name;?&gt;</div></pre></td></tr></table></figure>
 <p class="tip">为了简化示例，后面的示例设为默认不转义，省略<code>htmlentities</code>的使用。</p>
 
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>使用<code>.</code>符号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user.name&#125;&#125;</div></pre></td></tr></table></figure>
+<p>另一种数组写法，使用<code>[]</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user[&apos;name&apos;]&#125;&#125;</div></pre></td></tr></table></figure>
+<p>编译后：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo $user[&apos;name&apos;];?&gt;</div></pre></td></tr></table></figure>
 <h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>调用对象方法或属性使用<code>-&gt;</code>符号</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user-&gt;name&#125;&#125;</div><div class="line">&#123;&#123;user-&gt;name()&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
