@@ -909,8 +909,6 @@
 <blockquote>
 <p>子模版<code>block</code>中使用<code>&lt;parent/&gt;</code>标签可把父模版同名<code>block</code>的内容插入到其中。</p>
 </blockquote>
-<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。</p>
-
 <h3 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h3><p>模版支持多重继承，如<code>a</code>继承<code>b</code>，<code>b</code>继承<code>c</code>，<code>c</code>继承<code>d</code>，<code>a b c</code>3个模版会合并<code>block</code>，同名<code>block</code>覆盖，优先级为<code>a &gt; b &gt; c</code>。</p>
 <p><code>d</code>为基础<code>layout</code>父模版，<code>a b c</code>合并的<code>block</code>与<code>d</code>合并成最终模版。</p>
 <p>模版<code>a</code></p>
@@ -934,7 +932,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;a&quot;/&gt;</div><div class="line">&lt;block name=&quot;b&quot;/&gt;</div><div class="line">&lt;block name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>合并为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a&#125;&#125;</div><div class="line">&#123;&#123;b&#125;&#125;</div><div class="line">&#123;&#123;c&#125;&#125;</div></pre></td></tr></table></figure>
-<p class="tip">联合使用时<code>insert</code>不能指定插入单个<code>block</code>，因为<code>block</code>不允许嵌套使用。</p>
+<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。</p><br><p class="tip">联合使用时<code>insert</code>不能指定插入单个<code>block</code>，因为<code>block</code>不允许嵌套使用。</p>
 
 <h2 id="空标签"><a href="#空标签" class="headerlink" title="空标签"></a>空标签</h2><p>有些情况下，模版语法不需要嵌入到实体<code>html</code>标签中时，可使用空标签<code>tag</code>，编译后空标签会被去除只保留逻辑部分。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;tag @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/tag&gt;</div></pre></td></tr></table></figure>
