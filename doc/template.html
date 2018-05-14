@@ -861,15 +861,16 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href=&quot;&#123;&#123;a&#125;&#125;/&#123;&#123;b&#125;&#125;/&#123;&#123;c&#125;&#125;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href =&quot;&lt;?php echo $a; ?&gt;/&lt;?php echo $b; ?&gt;/&lt;?php echo $c; ?&gt;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h2 id="模版引用"><a href="#模版引用" class="headerlink" title="模版引用"></a>模版引用</h2><p>在模版中引用其它模版使用<code>include</code>标签</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include name=&quot;header&quot; /&gt;</div></pre></td></tr></table></figure>
-<p>也可以动态引用模版，<code>:name</code>为动态参数语法，其传递是一个变量，而<code>name</code>传递是一个字符串。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include :name=&quot;header&quot; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="模版引用"><a href="#模版引用" class="headerlink" title="模版引用"></a>模版引用</h2><p>使用模版引用标签<code>include</code>标签在模版中引用其它模版</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include name=&quot;header&quot; /&gt;</div><div class="line">&#123;&#123;content&#125;&#125;</div><div class="line">&lt;include name=&quot;footer&quot; /&gt;</div></pre></td></tr></table></figure>
+<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译</p>
+
+<h3 id="动态引用"><a href="#动态引用" class="headerlink" title="动态引用"></a>动态引用</h3><p>使用<code>:name</code>属性动态引用模版，因为其传递是一个变量，而<code>name</code>传递是一个字符串。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
 <p>在<code>include</code>标签中也可以使用判断循环语句</p>
-<p>循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
+<p>如例：循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include @each=&quot;view in views&quot; @if=&quot;view_exists(view)&quot; :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
-<p class="tip"><em> <code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译。
-</em> 除了<code>include</code>标签，下面的<code>insert</code>和<code>extends</code>标签不支持动态调用，因为它们是先合并后再编译。</p>
+<p class="tip">除了<code>include</code>标签，下面的<code>insert</code>和<code>extends</code>标签不支持动态调用，因为它们是先合并后再编译。</p>
 
 <h2 id="模版插入"><a href="#模版插入" class="headerlink" title="模版插入"></a>模版插入</h2><p>使用模版插入<code>insert</code>标签可以将要插入的模版读取合并到当前模版，然后再编译。</p>
 <p>当前模版</p>
@@ -880,7 +881,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;p&gt;&#123;&#123;content&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p class="tip"><code>insert</code>标签类似于而又不同于<code>include</code>标签，前者会合并后编译，后者会分别独立编译。</p>
 
-<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>使用<code>slot</code>可以将内容注入到要插入模版内，如</p>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>使用插槽标签<code>slot</code>可以将<code>insert</code>的<code>text</code>注入到要插入模版内，如</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;title&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
@@ -953,8 +954,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;a&quot;/&gt;</div><div class="line">&lt;block name=&quot;b&quot;/&gt;</div><div class="line">&lt;block name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>合并为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a&#125;&#125;</div><div class="line">&#123;&#123;b&#125;&#125;</div><div class="line">&#123;&#123;c&#125;&#125;</div></pre></td></tr></table></figure>
-<p class="tip"><em> <code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。
-</em> 另外<code>insert</code>不能指定插入单个<code>block</code>，因为<code>block</code>不允许嵌套使用。</p>
+<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。另外<code>insert</code>不能指定插入单个<code>block</code>，因为<code>block</code>不允许嵌套使用。</p>
 
 <h2 id="空标签"><a href="#空标签" class="headerlink" title="空标签"></a>空标签</h2><p>有些情况下，模版语法不需要嵌入到实体<code>html</code>标签中时，可使用空标签<code>tag</code>，编译后空标签会被去除只保留逻辑部分。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;tag @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/tag&gt;</div></pre></td></tr></table></figure>
