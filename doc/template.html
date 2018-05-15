@@ -775,13 +775,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user-&gt;name&#125;&#125;</div><div class="line">&#123;&#123;user-&gt;name()&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo $user-&gt;name;?&gt;</div><div class="line">&lt;?php echo $user-&gt;name();?&gt;</div></pre></td></tr></table></figure>
-<h3 id="不输出"><a href="#不输出" class="headerlink" title="不输出"></a>不输出</h3><p>在右定界符后使用<code>＃</code>符号表示不调用<code>echo</code>输出内容，通常可以使用这种方法做赋值操作</p>
+<h3 id="不输出"><a href="#不输出" class="headerlink" title="不输出"></a>不输出</h3><p>在右定界符后使用<code>＃</code>符号表示不调用<code>echo</code>输出内容，通常可以使用这种方法做赋值操作。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;#name = &apos;your name&apos;&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php $name = &apos;your name&apos;;?&gt;</div></pre></td></tr></table></figure>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在右定界符前使用<code>#</code>符号可注释内容，被注释内容编译后会被去掉</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在右定界符前使用<code>#</code>符号可注释内容，被注释内容编译后会被去掉。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#&#123;&#123;注释内容&#125;&#125;</div></pre></td></tr></table></figure>
-<h3 id="原样输出"><a href="#原样输出" class="headerlink" title="原样输出"></a>原样输出</h3><p>在右定界符前使用<code>!</code>符号可原样输出内容，不解析编译原样输出模版内容</p>
+<h3 id="原样输出"><a href="#原样输出" class="headerlink" title="原样输出"></a>原样输出</h3><p>在右定界符前使用<code>!</code>符号可原样输出内容，不解析编译原样输出模版内容。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">!&#123;&#123;原样输出&#125;&#125;</div></pre></td></tr></table></figure>
 <h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>过滤器用来处理输出。</p>
 <p>在模版使用过滤器可用<code>.</code>连接过滤器名调用过滤器</p>
@@ -828,11 +828,11 @@
 <p>赋值 <code>=</code></p>
 <p>括号 <code>(a + b) * c</code></p>
 <p>数组 <code>[1, 2 ,3]</code> <code>{&quot;a&quot;: 1, &quot;b&quot;: 2, &quot;c&quot;: 3}</code></p>
-<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><p>控制结构以<code>html</code>标签内使用前缀符<code>@</code>开头的属性标识，支持<code>if</code> <code>elseif</code> <code>else</code> <code>each</code> <code>for</code> <code>while</code>等</p>
+<h2 id="控制结构"><a href="#控制结构" class="headerlink" title="控制结构"></a>控制结构</h2><p>控制结构以标签内使用前缀符<code>@</code>开头的属性标识，支持<code>if</code> <code>elseif</code> <code>else</code> <code>each</code> <code>for</code> <code>while</code>等</p>
 <h3 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1 @if=&quot;title&quot;&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @elseif=&quot;title2&quot;&gt;&#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1 @else&gt;标题&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php if ($title) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; elseif ($title2) &#123; ?&gt;</div><div class="line">&lt;h1&gt;&lt;?php echo $title2; ?&gt;&lt;/h1&gt;</div><div class="line">&lt;?php &#125; else &#123; ?&gt;</div><div class="line">&lt;h1&gt;标题&lt;/h1&gt;</div><div class="line">&lt;?php &#125; ?&gt;</div></pre></td></tr></table></figure>
-<p class="tip">联合使用<code>if</code> <code>elseif</code> <code>else</code>时，其标签之间不能其它非空内容，否则会出现异常编译失败。</p> 
+<p class="tip">联合使用<code>if</code> <code>elseif</code> <code>else</code>时，其标签之间不能有其它非空内容，否则会出现异常编译失败。</p> 
 
 <h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><h4 id="each语句"><a href="#each语句" class="headerlink" title="each语句"></a><code>each</code>语句</h4><p>使用<code>key:val in array</code>的格式遍历数组的键值</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;p @each=&quot;id:user in users&quot; id=&quot;item_&#123;&#123;id&#125;&#125;&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
@@ -859,13 +859,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a *href=&quot;$a/$b/$c&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href =&quot;&lt;?php echo &quot;$a/$b/$c&quot;; ?&gt;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
-<p>也可以使用插值语法替代</p>
+<p>相近的插值语法写法：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href=&quot;&#123;&#123;a&#125;&#125;/&#123;&#123;b&#125;&#125;/&#123;&#123;c&#125;&#125;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;a href =&quot;&lt;?php echo $a; ?&gt;/&lt;?php echo $b; ?&gt;/&lt;?php echo $c; ?&gt;&quot;&gt;&lt;/a&gt;</div></pre></td></tr></table></figure>
 <h2 id="模版引用"><a href="#模版引用" class="headerlink" title="模版引用"></a>模版引用</h2><p>使用模版引用标签<code>include</code>在当前模版中引用其它模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include name=&quot;header&quot; /&gt;</div><div class="line">&#123;&#123;content&#125;&#125;</div><div class="line">&lt;include name=&quot;footer&quot; /&gt;</div></pre></td></tr></table></figure>
-<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取引用模版内容的，也不会合并到当前模版一起编译</p>
+<p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取被引用模版内容的，也不会合并到当前模版一起编译</p>
 
 <h3 id="动态引用"><a href="#动态引用" class="headerlink" title="动态引用"></a>动态引用</h3><p>使用<code>:name</code>属性动态引用模版，因为其传递是一个变量，而<code>name</code>传递是一个字符串。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
@@ -883,21 +883,21 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;p&gt;&#123;&#123;content&#125;&#125;&lt;/p&gt;</div></pre></td></tr></table></figure>
 <p class="tip"><code>insert</code>标签类似于而又不同于<code>include</code>标签，前者会合并后编译，后者会分别独立编译。</p>
 
-<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>使用插槽标签<code>slot</code>可以将<code>insert</code>的<code>text</code>注入到要插入模版内，如</p>
+<h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>使用插槽标签<code>slot</code>可以将<code>insert</code>标签包裹的内容注入到要插入的模版内，如</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;title&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot/&gt;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<h4 id="slot默认值"><a href="#slot默认值" class="headerlink" title="slot默认值"></a><code>slot</code>默认值</h4><p>可以使用<code>slot</code>标签<code>text</code>设置默认值，如果被插入模版<code>insert</code>标签没有定义<code>text</code>则使用默认值，有则覆盖默认值。如</p>
+<h4 id="slot默认值"><a href="#slot默认值" class="headerlink" title="slot默认值"></a><code>slot</code>默认值</h4><p>可以使用<code>slot</code>标签包裹内容设为默认值，如果被插入模版<code>insert</code>标签没有包裹内容则使用默认值，有则覆盖默认值。如</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot&gt;title&lt;/slot&gt;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<h4 id="多个slot"><a href="#多个slot" class="headerlink" title="多个slot"></a>多个<code>slot</code></h4><p>一个<code>insert</code>内可以指定多个<code>slot</code>，多个<code>slot</code>使用<code>slot</code>标签包含。</p>
+<h4 id="多个slot"><a href="#多个slot" class="headerlink" title="多个slot"></a>多个<code>slot</code></h4><p>一个<code>insert</code>内可以指定多个<code>slot</code>，使用多个<code>slot</code>标签包裹内容。</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;</div><div class="line">	&lt;slot name=&quot;slot1&quot;&gt;title1&lt;/slot&gt;</div><div class="line">	&lt;slot name=&quot;slot2&quot;&gt;title2&lt;/slot&gt;</div><div class="line">&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
