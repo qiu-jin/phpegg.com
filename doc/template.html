@@ -804,8 +804,8 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;&apos;%s, %s, %s&apos;.format(a, b, c)&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo sprintf(&apos;%s, %s, %s&apos;, $a, $b, $c);?&gt;</div></pre></td></tr></table></figure>
-<p>用户也可以通过配置<code>filters</code>增加或替换内置过滤器，如下例增加了一个字符串反转过滤器<code>strrev</code>和数组差集过滤器<code>diff</code>。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;filters&apos; =&gt; [</div><div class="line">	// 反转字符串</div><div class="line">	&apos;strrev&apos; =&gt; &apos;strrev($0)&apos;,</div><div class="line">	// 计算数组的差集</div><div class="line">	&apos;diff&apos;   =&gt; &apos;array_diff($0, $1)&apos;,</div><div class="line">],</div></pre></td></tr></table></figure>
+<p>用户也可以通过配置<code>filters</code>增加或替换内置过滤器，如下例增加了一个字符串反转过滤器<code>strrev</code>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;filters&apos; =&gt; [</div><div class="line">    // 反转字符串</div><div class="line">    &apos;strrev&apos; =&gt; &apos;strrev($0)&apos;</div><div class="line">],</div></pre></td></tr></table></figure>
 <blockquote>
 <p>既然内置过滤器基本都是原生PHP函数的马甲为什么不直接用原生PHP函数？</p>
 <ul>
@@ -868,6 +868,9 @@
 <p class="tip"><code>include</code>标签最终会被编译成PHP原生<code>include</code>语句来引用加载其它模版，所以在编译当前模版时是不读取被引用模版内容的，也不会合并到当前模版一起编译</p>
 
 <h3 id="动态引用"><a href="#动态引用" class="headerlink" title="动态引用"></a>动态引用</h3><p>使用<code>:name</code>属性动态引用模版，因为其传递是一个变量，而<code>name</code>传递是一个字符串。</p>
+<blockquote>
+<p>标签内以<code>:</code>开头的属性为动态属性参数，其值使用模版语法解析。</p>
+</blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;include :name=&quot;view&quot; /&gt;</div></pre></td></tr></table></figure>
 <p>在<code>include</code>标签中也可以使用判断循环语句</p>
 <p>如例：循环<code>views</code>并判断模版是否存在，存在则引用模版。</p>
@@ -890,16 +893,16 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot/&gt;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<h4 id="slot默认值"><a href="#slot默认值" class="headerlink" title="slot默认值"></a><code>slot</code>默认值</h4><p>可以使用<code>slot</code>标签包裹内容设为默认值，如果被插入模版<code>insert</code>标签没有包裹内容则使用默认值，有则覆盖默认值。如</p>
+<h4 id="slot默认值"><a href="#slot默认值" class="headerlink" title="slot默认值"></a><code>slot</code>默认值</h4><p>可以在要插入的模版中使用<code>slot</code>标签包裹设置默认内容，如果当前模版中<code>insert</code>标签没有包裹内容则使用默认内容，有则覆盖默认内容。如</p>
 <p>当前模版</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot&gt;title&lt;/slot&gt;: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;title: &#123;&#123;title&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
-<h4 id="多个slot"><a href="#多个slot" class="headerlink" title="多个slot"></a>多个<code>slot</code></h4><p>一个<code>insert</code>内可以指定多个<code>slot</code>，使用多个<code>slot</code>标签包裹内容。</p>
+<h4 id="多个slot"><a href="#多个slot" class="headerlink" title="多个slot"></a>多个<code>slot</code></h4><p>一个<code>insert</code>标签内可以指定多个<code>slot</code>，使用方法为用多个<code>slot</code>标签包裹内容。</p>
 <p>当前模版</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;</div><div class="line">	&lt;slot name=&quot;slot1&quot;&gt;title1&lt;/slot&gt;</div><div class="line">	&lt;slot name=&quot;slot2&quot;&gt;title2&lt;/slot&gt;</div><div class="line">&lt;/insert&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;insert name=&quot;title&quot;&gt;</div><div class="line">    &lt;slot name=&quot;slot1&quot;&gt;title1&lt;/slot&gt;</div><div class="line">    &lt;slot name=&quot;slot2&quot;&gt;title2&lt;/slot&gt;</div><div class="line">&lt;/insert&gt;</div></pre></td></tr></table></figure>
 <p>要插入的模版<code>title</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;h1&gt;&lt;slot name=&quot;slot1&quot;/&gt;: &#123;&#123;title1&#125;&#125;&lt;/h1&gt;</div><div class="line">&lt;h1&gt;&lt;slot name=&quot;slot2&quot;/&gt;: &#123;&#123;title2&#125;&#125;&lt;/h1&gt;</div></pre></td></tr></table></figure>
 <p>合并为</p>
@@ -947,16 +950,18 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a&#125;&#125;</div><div class="line">&#123;&#123;b&#125;&#125;</div><div class="line">&#123;&#123;c&#125;&#125;</div></pre></td></tr></table></figure>
 <p class="tip">多重继承不能大于9层，防止相互继承死循环。</p>
 
-<h3 id="插入与继承"><a href="#插入与继承" class="headerlink" title="插入与继承"></a>插入与继承</h3><p>模版插入<code>insert</code>可以与模版继承<code>extends</code>联合使用，使用<code>insert</code>在当前模版插入<code>block</code>。</p>
+<h3 id="插入与继承"><a href="#插入与继承" class="headerlink" title="插入与继承"></a>插入与继承</h3><p>模版插入<code>insert</code>可以与模版继承<code>extends</code>联合使用。</p>
 <p>当前模版</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;other&quot;/&gt;</div></pre></td></tr></table></figure>
-<p>模版<code>other</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;b&quot;&gt;&#123;&#123;b&#125;&#125;&lt;/block&gt;</div><div class="line">&lt;block name=&quot;c&quot;&gt;&#123;&#123;c&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;b&quot;&gt;&lt;insert name=&quot;b&quot;/&gt;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>模版<code>b</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;b&#125;&#125;</div></pre></td></tr></table></figure>
+<p>模版<code>c</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;c&quot;&gt;&#123;&#123;c&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>模版<code>layout</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;a&quot;/&gt;</div><div class="line">&lt;block name=&quot;b&quot;/&gt;</div><div class="line">&lt;block name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
 <p>合并为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a&#125;&#125;</div><div class="line">&#123;&#123;b&#125;&#125;</div><div class="line">&#123;&#123;c&#125;&#125;</div></pre></td></tr></table></figure>
-<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并编译。另外<code>insert</code>不能指定插入单个<code>block</code>，因为<code>block</code>不允许嵌套使用。</p>
+<p class="tip"><code>extends</code>继承标签和<code>insert</code>插入标签同时使用时，<code>insert</code>标签先于<code>extends</code>标签合并。注意<code>block</code>不要出现嵌套使用。</p>
 
 <h2 id="空标签"><a href="#空标签" class="headerlink" title="空标签"></a>空标签</h2><p>有些情况下，模版语法不需要嵌入到实体<code>html</code>标签中时，可使用空标签<code>tag</code>，编译后空标签会被去除只保留逻辑部分。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;tag @each=&quot;user in users&quot;&gt;&#123;&#123;user.name&#125;&#125;&lt;/tag&gt;</div></pre></td></tr></table></figure>
