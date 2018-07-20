@@ -952,9 +952,11 @@
 
 <h3 id="插入与继承"><a href="#插入与继承" class="headerlink" title="插入与继承"></a>插入与继承</h3><p>模版插入<code>insert</code>可以与模版继承<code>extends</code>联合使用。</p>
 <p>当前模版</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;a&quot;&gt;&#123;&#123;a&#125;&#125;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;b&quot;&gt;&lt;insert name=&quot;b&quot;/&gt;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;extends name=&quot;layout&quot; /&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;a&quot;&gt;&lt;insert name=&quot;a&quot;/&gt;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;block name=&quot;b&quot;&gt;&lt;insert name=&quot;b.b&quot;/&gt;&lt;/block&gt;</div><div class="line"></div><div class="line">&lt;insert name=&quot;c&quot;/&gt;</div></pre></td></tr></table></figure>
+<p>模版<code>a</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;a&#125;&#125;</div></pre></td></tr></table></figure>
 <p>模版<code>b</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;b&#125;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;b&quot;&gt;&#123;&#123;b&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>模版<code>c</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;block name=&quot;c&quot;&gt;&#123;&#123;c&#125;&#125;&lt;/block&gt;</div></pre></td></tr></table></figure>
 <p>模版<code>layout</code></p>
