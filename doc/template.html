@@ -775,14 +775,20 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;user-&gt;name&#125;&#125;</div><div class="line">&#123;&#123;user-&gt;name()&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php echo $user-&gt;name;?&gt;</div><div class="line">&lt;?php echo $user-&gt;name();?&gt;</div></pre></td></tr></table></figure>
-<h3 id="不输出"><a href="#不输出" class="headerlink" title="不输出"></a>不输出</h3><p>在右定界符后使用<code>＃</code>符号表示不调用<code>echo</code>输出内容，通常可以使用这种方法做赋值操作。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;#name = &apos;your name&apos;&#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="不输出"><a href="#不输出" class="headerlink" title="不输出"></a>不输出</h3><p>在右定界符后使用<code>％</code>符号表示不调用<code>echo</code>输出内容，通常可以使用这种方法做赋值操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;％name = &apos;your name&apos;&#125;&#125;</div></pre></td></tr></table></figure>
 <p>编译后：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php $name = &apos;your name&apos;;?&gt;</div></pre></td></tr></table></figure>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在右定界符前使用<code>#</code>符号可注释内容，被注释内容编译后会被去掉。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">#&#123;&#123;注释内容&#125;&#125;</div></pre></td></tr></table></figure>
-<h3 id="原样输出"><a href="#原样输出" class="headerlink" title="原样输出"></a>原样输出</h3><p>在右定界符前使用<code>!</code>符号可原样输出内容，不解析编译原样输出模版内容。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">!&#123;&#123;原样输出&#125;&#125;</div></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>在右定界符前使用<code>#</code>符号可注释单行内容，被注释内容编译后会被去掉。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;#注释内容&#125;&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注释多行内容使用<a href="#注释标签"><code>&lt;note&gt;</code></a>标签</p>
+</blockquote>
+<h3 id="原样输出"><a href="#原样输出" class="headerlink" title="原样输出"></a>原样输出</h3><p>在右定界符前使用<code>*</code>符号可原样输出单行内容，不解析编译原样输出模版内容。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;*原样输出&#125;&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>原样输出多行内容使用<a href="#原样输出-1"><code>&lt;raw&gt;</code></a>标签</p>
+</blockquote>
 <h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>过滤器用来处理输出。</p>
 <p>在模版使用过滤器可用<code>.</code>连接过滤器名调用过滤器</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;name.trim()&#125;&#125;</div></pre></td></tr></table></figure>
@@ -823,8 +829,8 @@
 
 <h2 id="函数-容器-静态方法"><a href="#函数-容器-静态方法" class="headerlink" title="函数 容器 静态方法"></a>函数 容器 静态方法</h2><p>在模版语法中可以用<code>@</code>符号标记语句调用PHP函数、静态类方法、容器实例方法（依赖框架实现）</p>
 <h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>默认不允许调用任何函数，用户可通过配置项<code>allow_php_functions</code>来设置允许调用的函数。</p>
-<p><code>&#39;allow_php_functions&#39; =&gt; true</code> 表示允许调用所有函数。</p>
-<p><code>&#39;allow_php_functions&#39; =&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, ...]</code> 表示只允许调用配置数组用的函数。</p>
+<p><code>&#39;allow_php_functions&#39; =&gt; true</code> 表示允许调用所有可用函数。</p>
+<p><code>&#39;allow_php_functions&#39; =&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, ...]</code> 表示只允许调用配置数组内的函数。</p>
 <p>模版调用规则<code>@函数名()</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;@foo()&#125;&#125;</div></pre></td></tr></table></figure>
 <h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>要调用静态类方法，用户必须设置配置项<code>allow_static_classes</code>来设置允许调用的静态类。</p>
@@ -832,8 +838,8 @@
 <p>模版调用规则<code>@类别名::方法名()</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;@foo.bar::baz()&#125;&#125;</div></pre></td></tr></table></figure>
 <h3 id="容器方法"><a href="#容器方法" class="headerlink" title="容器方法"></a>容器方法</h3><p>默认不允许调用任何容器，用户可通过配置项<code>allow_container_providers</code>来设置允许调用的容器。</p>
-<p><code>&#39;allow_container_providers&#39; =&gt; true</code> 表示允许调用所有容器。</p>
-<p><code>&#39;allow_container_providers&#39; =&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, ...]</code> 表示只允许调用配置数组用的容器。</p>
+<p><code>&#39;allow_container_providers&#39; =&gt; true</code> 表示允许调用所有可用容器。</p>
+<p><code>&#39;allow_container_providers&#39; =&gt; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, ...]</code> 表示只允许调用配置数组内的容器。</p>
 <p>模版调用规则<code>@容器名-&gt;方法名()</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;&#123;@foo-&gt;bar()&#125;&#125;</div></pre></td></tr></table></figure>
 <blockquote>
