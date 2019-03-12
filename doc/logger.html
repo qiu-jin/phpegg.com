@@ -349,7 +349,7 @@
             
             
               <li>
-                <a href="/doc/hook.html" class="sidebar-link">事件</a>
+                <a href="/doc/event.html" class="sidebar-link">事件</a>
               </li>
             
            
@@ -746,10 +746,10 @@
     <h1>日志</h1>
   
   <h2 id="等级"><a href="#等级" class="headerlink" title="等级"></a>等级</h2><p>日志处理配置支持多个日志处理器，每个处理器配置中的<code>level</code>项表示此处理器默认会接收哪些等级的<code>logger</code>，日志等级参考<code>PSR-3</code>，分为<code>emergency</code> <code>alert</code> <code>ritical</code> <code>error ``warning</code> <code>notice</code> <code>debug</code> <code>info</code> 8个等级</p>
-<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>在日志信息中有大量公用信息如ip 时间，如果需要使用写的话会非常繁琐，所以在日志配置中加入了<code>format</code>项，如</p>
+<h2 id="处理器"><a href="#处理器" class="headerlink" title="处理器"></a>处理器</h2><h2 id="分级处理"><a href="#分级处理" class="headerlink" title="分级处理"></a>分级处理</h2><h2 id="分组处理"><a href="#分组处理" class="headerlink" title="分组处理"></a>分组处理</h2><h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p>在日志信息中有大量公用信息如ip 时间，如果需要使用写的话会非常繁琐，所以在日志配置中加入了<code>format</code>项，如</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&apos;format&apos;  =&gt; &quot;[&#123;date&#125;] [&#123;ip&#125;] [&#123;level&#125;] &#123;message&#125; in &#123;file&#125;: &#123;line&#125;&quot;</div></pre></td></tr></table></figure>
 <p>它定义了日志的格式date ip等信息会自动填充。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>1 不指定日志频道</p>
+<h2 id="驱动实例调试"><a href="#驱动实例调试" class="headerlink" title="驱动实例调试"></a>驱动实例调试</h2><p>1 不指定日志频道</p>
 <blockquote>
 <p>不指定日志频道的情况下，日志由<code>Logger::write</code>方法统一接收，接收后再分配指定了日志等级的日志处理器实例</p>
 </blockquote>
