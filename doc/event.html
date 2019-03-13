@@ -745,44 +745,50 @@
   
     <h1>事件</h1>
   
-  <p>事件提供将用户代码注入到请求生命周期各个阶段的方法。</p>
-<p>####基本使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 注册事件，$name标签名，$call执行方法，$priority优先级。</div><div class="line">Event::on($name, $call, $priority = 10);</div><div class="line"></div><div class="line">// 触发事件</div><div class="line">Event::trigger($name, ...$params);</div><div class="line"></div><div class="line">// 检查事件</div><div class="line">Event::has($name);</div><div class="line"></div><div class="line">// 删除事件</div><div class="line">Event::clean($name);</div><div class="line"></div><div class="line">// 清理事件</div><div class="line">Event::clean();</div></pre></td></tr></table></figure>
+  <p>事件可以将用户代码注入到请求生命周期各个阶段触发执行。</p>
+<p>事件类初始化时默认读取<code>event</code>配置项，并注册配置事件。</p>
+<h4 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">return [</div><div class="line">    &apos;boot&apos; =&gt; [</div><div class="line">		&apos;app\event\Bootstrap::run&apos;</div><div class="line">    ],</div><div class="line">    &apos;start&apos; =&gt; [</div><div class="line">		&apos;app\event\Csrf::run&apos;,</div><div class="line">		&apos;framework\core\Auth::run&apos;</div><div class="line">    ],</div><div class="line">    &apos;request&apos; =&gt; [</div><div class="line">		&apos;app\event\RequestTrim::run&apos;,</div><div class="line">    ],</div><div class="line">];</div></pre></td></tr></table></figure>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 注册事件</div><div class="line">event($name, $call, $priority);</div><div class="line">Event::on($name, $call, $priority);</div><div class="line"></div><div class="line">// 触发事件</div><div class="line">Event::trigger($name, ...$params);</div><div class="line"></div><div class="line">// 检查事件</div><div class="line">Event::has($name);</div><div class="line"></div><div class="line">// 删除事件</div><div class="line">Event::delete($name);</div><div class="line"></div><div class="line">// 清理事件</div><div class="line">Event::clean();</div></pre></td></tr></table></figure>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p class="tip">同一事件标签下注册了多个优先级相同执行方法时，系统不能保证方法按注册先后顺序执行。</p>
+
+<h2 id="中断执行"><a href="#中断执行" class="headerlink" title="中断执行"></a>中断执行</h2><p>在同一事件标签注册了多个执行方法时，多个方法会按优先级依次执行，如果需要其中方法执行后中断后续其他方法执行，则只需此方法返回<code>false</code>。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Event::on(&apos;test&apos;, function () &#123;</div><div class="line">	echo 1;</div><div class="line">&#125;, 1);</div><div class="line"></div><div class="line">Event::on(&apos;test&apos;, function () &#123;</div><div class="line">	echo 2;</div><div class="line">	return false;</div><div class="line">&#125;, 2);</div><div class="line"></div><div class="line">Event::on(&apos;test&apos;, function () &#123;</div><div class="line">	echo 3;</div><div class="line">&#125;, 3);</div><div class="line"></div><div class="line">// 输出3和2</div><div class="line">Event::trigger(&apos;test&apos;);</div></pre></td></tr></table></figure>
 <h2 id="内置事件"><a href="#内置事件" class="headerlink" title="内置事件"></a>内置事件</h2><p>框架已内置7个事件标签，这些事件将在请求生命周期的不同阶段触发。</p>
 <ul>
 <li><p><code>boot</code></p>
 <blockquote>
-<p>触发在应用初始化后，App::boot()后，可以用于添加一些环境初始化代码，如时区设置等。</p>
+<p>触发在应用初始化<code>App::boot()</code>后，可以用于添加一些环境初始化代码，如时区设置等。</p>
 </blockquote>
 </li>
 <li><p><code>start</code></p>
 <blockquote>
-<p>触发在应用实例化后，App::start()后，可以用于添加一些dispatch代码，例如权限验证，Csrf检查。</p>
+<p>触发在应用实例化<code>App::start()</code>后，可以用于添加一些<code>dispatch</code>功能代码，例如权限验证，CSRF。</p>
 </blockquote>
 </li>
 <li><p><code>request</code></p>
 <blockquote>
-<p>触发在获取request时，可以用于初始化一些request信息，例如trim所有post的空白字符。</p>
+<p>触发在获取<code>request</code>时，可以用于初始化一些<code>request</code>信息，例如<code>trim</code>所有<code>POST</code>数据的空白字符。</p>
 </blockquote>
 </li>
 <li><p><code>exit</code></p>
 <blockquote>
-<p>触发在发送应用结束阶段，也就是register_shutdown_function后，在这阶段框架会释放一些资源，优化内存使用。</p>
+<p>触发在发送应用结束阶段，也就是<code>register_shutdown_function()</code>后，在这阶段框架会释放一些资源，优化内存使用。</p>
 </blockquote>
 </li>
 <li><p><code>flush</code></p>
 <blockquote>
-<p>触发<code>exit</code>事件之后，输出视图页面或序列化的数据。</p>
+<p>触发在<code>exit</code>事件之后，用于输出视图页面或序列化的数据（默认在<code>Response</code>类初始化时注册）。</p>
 </blockquote>
 </li>
 <li><p><code>response</code></p>
 <blockquote>
-<p>默认在<code>flush</code>事件之后触发，可以用于修改response数据，比如添加一个公共的response header头，或压缩数据等。</p>
+<p>默认在执行<code>flush</code>事件方法时触发，用于修改<code>response</code>数据，比如添加一个公共的<code>response header</code>头，或压缩数据等。</p>
 </blockquote>
 </li>
 <li><p><code>close</code></p>
 <blockquote>
-<p>触发在网络连接断开后，也就是执行fastcgi_finish_request()后，在此阶段客户端已经接收到了响应并断开了连接，可以将一些比较耗时的操作如 发送邮件 日志处理 等放在此阶段执行。</p>
+<p>触发在连接断开后，也就是执行<code>fastcgi_finish_request()</code>后，在此阶段客户端已经接收到了响应并断开了连接，可以将一些比较耗时的操作如 发送邮件 日志处理 等放在此阶段执行。</p>
 </blockquote>
 </li>
 </ul>

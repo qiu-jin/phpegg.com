@@ -745,7 +745,7 @@
   
     <h1>类加载</h1>
   
-  <p>加载器初始化时默认读取<code>loader</code>配置项，并加载其提供的加载规则。</p>
+  <p>加载器类初始化时默认读取<code>loader</code>配置项，并加载其提供的加载规则。</p>
 <p>除此之外，用户也可以通过<code>Loader::add($type, $rules)</code>方法添加规则</p>
 <h2 id="规则类型"><a href="#规则类型" class="headerlink" title="规则类型"></a>规则类型</h2><h4 id="prefix"><a href="#prefix" class="headerlink" title="prefix"></a><code>prefix</code></h4><p><code>prefix</code>规则是以类名的<code>namespace</code>的第一级对应的目录的数组集合。类加载时只要找到其<code>prefix</code>对应的目录，除<code>prefix</code>外的<code>namespace</code>部分和基础类名部分则自动对应到子目录和文件名。</p>
 <p>示例</p>
@@ -760,7 +760,7 @@
 <h4 id="map"><a href="#map" class="headerlink" title="map"></a><code>map</code></h4><p><code>map</code>规则是以<code>类名</code>对应<code>文件名</code>的数组集合，通常在少数类名不规律时使用。</p>
 <h4 id="file"><a href="#file" class="headerlink" title="file"></a><code>file</code></h4><p>直接加载的PHP文件名集合数组（非类加载），文件名忽略<code>.php</code>后缀。</p>
 <h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>框架支持<code>composer</code>并默认开启，可以方便的引用第三方扩展。不过框架核心并不依赖<code>composer</code>，所以在不需要使用时可以设置关闭。</p>
-<p><code>composer</code>的<code>vendor</code>目录通过<a href="config.html#环境配置">环境常量</a><code>app\env\VENDOR_DIR</code>来设置，如果不设置此常量配置或设为<code>null</code>可以关闭<code>composer</code>使用。</p>
+<p><code>composer</code>的<code>vendor</code>目录通过<a href="config.html#环境配置">环境常量</a><code>app\env\VENDOR_DIR</code>来设置，如果不设置此常量或设为<code>null</code>可以关闭<code>composer</code>使用。</p>
 <p class="tip"><code>composer</code>加载规则的优先级小于框架内置的加载规则。</p>
 
 
