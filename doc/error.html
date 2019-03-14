@@ -745,22 +745,85 @@
   
     <h1>错误处理</h1>
   
-  <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>初始会注册下列错误处理器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">set_error_handler </div><div class="line"></div><div class="line">set_exception_handler </div><div class="line"></div><div class="line">register_shutdown_function</div></pre></td></tr></table></figure>
-<h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>设置环境常量<code>STRICT_ERROR_MODE</code>为<code>true</code>可开启严格错误模式</p>
-<p>此模式下触发任何等级的错误如<code>NOTICE</code> <code>WARNING</code>等都会抛出<code>ErrorException</code>异常。</p>
-<h2 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h2><p>当错误触发后，错误处理器除了纪录错误信息，还会将错误信息设置好等级发送给<code>logger</code>处理器，如果是致命错误 异常等 还会调用<code>App::abort()</code>方法中断应用。</p>
-<p><code>App::abort()</code>方法由各应用模式实现，处理方式各有不同。</p>
-<blockquote>
-<p>在关闭<code>APP_DEBUG</code>情况下，详细的错误信息不会传给<code>abort</code>方法（防止服务器信息泄露）</p>
-</blockquote>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>设置一个错误</p>
-<blockquote>
-<p>严格错误模式下会触发<code>ErrorException</code>异常，否则只会纪录信息。</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 辅助函数</span></div><div class="line">error($message, $limit = <span class="number">1</span>);</div><div class="line"></div><div class="line">Error::set($message, $code = E_USER_ERROR, $limit = <span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>获取错误信息</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="comment">// $all＝false时获取最后一条错误，否则获取所有错误信息。</span></div><div class="line">Error::get($all = <span class="keyword">false</span>);</div></pre></td></tr></table></figure>
+  <h2 id="错误触发"><a href="#错误触发" class="headerlink" title="错误触发"></a>错误触发</h2><p>当错误或异常触发后，错误处理器会调用日志处理器记录对应等级日志，并触发对应错误事件，最后输出错误响应（如输出错误页面）中断应用。</p>
+<h4 id="系统触发"><a href="#系统触发" class="headerlink" title="系统触发"></a>系统触发</h4><p>框架在初始化时，会默认注册一些错误或异常处理器（包含：<code>set_error_handler</code> <code>set_exception_handler</code> <code>register_shutdown_function</code>），当应用出现错误或异常时会触发调用这些处理器。</p>
+<h4 id="手动触发"><a href="#手动触发" class="headerlink" title="手动触发"></a>手动触发</h4><p>使用<code>error()</code> <code>warn()</code> <code>Error::trigger()</code>等方法手动触发错误。</p>
+<p>手动触发错误的等级只有<code>Error::ERROR</code> <code>Error::WARNING</code> <code>Error::NOTICE</code>3种。</p>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式默认开启，其通过环境常量<code>app\env\STRICT_ERROR_MODE</code>设置。</p>
+<p>开启严格模式后系统<code>WARNING</code>和<code>NOTICE</code>等级的错误（如变量名未定义）也会触发异常中断应用。</p>
+<h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><p>错误触发后会调用日志处理器（使用<code>Logger::write()</code>方法）记录错误日志，对应错误等级的日志会被对应<code>level</code>设置的处理器处理记录，具体详情可参考<a href="logger.html#日志等级">日志等级</a>一节。</p>
+<h4 id="错误等级与日志等级对照表"><a href="#错误等级与日志等级对照表" class="headerlink" title="错误等级与日志等级对照表"></a>错误等级与日志等级对照表</h4><table>
+<thead>
+<tr>
+<th>错误等级</th>
+<th>日志等级         </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E_ERROR</td>
+<td>Logger::CRITICAL</td>
+</tr>
+<tr>
+<td>E_WARNING</td>
+<td>Logger::WARNING</td>
+</tr>
+<tr>
+<td>E_PARSE</td>
+<td>Logger::ALERT</td>
+</tr>
+<tr>
+<td>E_NOTICE</td>
+<td>Logger::NOTICE</td>
+</tr>
+<tr>
+<td>E_CORE_ERROR</td>
+<td>Logger::CRITICAL</td>
+</tr>
+<tr>
+<td>E_CORE_WARNING</td>
+<td>Logger::WARNING</td>
+</tr>
+<tr>
+<td>E_COMPILE_ERROR</td>
+<td>Logger::CRITICAL</td>
+</tr>
+<tr>
+<td>E_COMPILE_WARNING</td>
+<td>Logger::WARNING</td>
+</tr>
+<tr>
+<td>E_USER_ERROR</td>
+<td>Logger::ERROR</td>
+</tr>
+<tr>
+<td>E_USER_WARNING</td>
+<td>Logger::WARNING</td>
+</tr>
+<tr>
+<td>E_USER_NOTICE</td>
+<td>Logger::NOTICE</td>
+</tr>
+<tr>
+<td>E_STRICT</td>
+<td>Logger::NOTICE</td>
+</tr>
+<tr>
+<td>E_RECOVERABLE_ERROR</td>
+<td>Logger::ERROR</td>
+</tr>
+<tr>
+<td>E_DEPRECATED</td>
+<td>Logger::NOTICE</td>
+</tr>
+<tr>
+<td>E_USER_DEPRECATED</td>
+<td>Logger::NOTICE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="错误响应"><a href="#错误响应" class="headerlink" title="错误响应"></a>错误响应</h2><p>错误触发后会调用应用模式实例的<code>error()</code>方法输出错误信息，不同应用模式的处理方式不一样，例如在支持视图的的应用中会输出<a href="view.html#错误页面">错误页面</a>，在rpc应用中会输出错误码和信息（如<code>jsonrpc</code>应用会输出<code>{&quot;code&quot;:-32000, &quot;message&quot;:&quot;Server error&quot;}</code>）</p>
+
   
     <div class="guide-links">
       
