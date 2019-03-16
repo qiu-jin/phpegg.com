@@ -262,6 +262,23 @@
             
             
               <li>
+                <a href="/doc/app-cli.html" class="sidebar-link">命令行</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
                 <a href="/doc/app-custom.html" class="sidebar-link">自定义</a>
               </li>
             
@@ -745,22 +762,15 @@
   
     <h1>路由</h1>
   
-  <h2 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h2><p> <code>Url Path</code>匹配规则</p>
-<ul>
-<li>匹配规则和URL路径以<code>/</code>分隔为多个单元，循环匹配</li>
-<li>规则单元为<code>*</code> ：匹配一个URL单元所有字符串，记录匹配内容为整个路径单元。</li>
-<li>规则单元为<code>～</code> ：匹配所有URL单元字符串并结束匹配，记录匹配内容所有单元字符串。</li>
-<li>规则单元首字符为<code>:</code> ：自定义的匹配规则，其后的字符串对应一个函数或静态方法，回调处理返回<code>true</code>为匹配成功，记录匹配内容为整个URL路径单元。</li>
-<li>规则单元首尾字符为<code>()</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</li>
-<li>规则单元为其他字符串 ：匹配规则单元和URL路径单元必须完全相同，不记录匹配内容。</li>
-<li>匹配结果以 <code>$1 $2 $3</code> 等变量按序调用，顺序为从左到右的匹配单元循环匹配递加记录（如果正则匹配中有多个()匹配，则此单元递加记录多个匹配内容）</li>
-</ul>
-<p>如下面的路由规则表</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><div class="line">[</div><div class="line">    <span class="string">'User'</span> =&gt; <span class="string">'User::index()'</span>,</div><div class="line">    </div><div class="line">    <span class="comment">// 参数规则有2种，同时只能用一种</span></div><div class="line">    <span class="comment">// 顺序参数</span></div><div class="line">    <span class="string">'User/*/name'</span> =&gt; <span class="string">'User::getName($1)'</span>,</div><div class="line">    <span class="comment">// 键值参数</span></div><div class="line">    <span class="comment">//'User/*/name' =&gt; 'User::getName(id = $1)',</span></div><div class="line">]</div></pre></td></tr></table></figure>
-<p>如请求 <code>/User/1/name</code> 被<code>User/*/name</code>匹配。</p>
-<p>匹配成功后，对应规则表值<code>User::getName($1)</code>如有参数部分<code>($1)</code>，匹配命中内容以 <code>$1 $2 $3</code> 等变量形式将参数值抽出（这里<code>$1</code>值为<code>1</code>）。</p>
-<p>然后将参数和匹配规则表的值一起返回给各应用模式的调度器处理（示例返回<code>[&#39;User::getName&#39;, [1]]</code>）。</p>
-
+  <h2 id="路由语法"><a href="#路由语法" class="headerlink" title="路由语法"></a>路由语法</h2><h4 id="通配"><a href="#通配" class="headerlink" title="通配"></a>通配</h4><p>规则单元为<code>*</code> ：匹配一个URL单元所有字符串，记录匹配内容为整个路径单元。</p>
+<h4 id="自定义正则"><a href="#自定义正则" class="headerlink" title="自定义正则"></a>自定义正则</h4><p>规则单元首尾字符为<code>()</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</p>
+<h4 id="内置正则"><a href="#内置正则" class="headerlink" title="内置正则"></a>内置正则</h4><p>规则单元首尾字符为<code>[]</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</p>
+<h4 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h4><p>规则单元首尾字符为<code>{}</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</p>
+<h4 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h4><p>规则单元首尾字符为<code>:</code> ：正则表达式规则，匹配成功后，递加记录()的匹配URL路径内容。</p>
+<h4 id="余部"><a href="#余部" class="headerlink" title="余部"></a>余部</h4><p>规则单元为<code>～</code> ：匹配所有URL单元字符串并结束匹配，记录匹配内容所有单元字符串。</p>
+<h4 id="原义"><a href="#原义" class="headerlink" title="原义"></a>原义</h4><p>规则单元为其他字符串 ：匹配规则单元和URL路径单元必须完全相同，不记录匹配内容。</p>
+<h2 id="路由与调度"><a href="#路由与调度" class="headerlink" title="路由与调度"></a>路由与调度</h2><h3 id="调度控制器"><a href="#调度控制器" class="headerlink" title="调度控制器"></a>调度控制器</h3><h3 id="调度参数"><a href="#调度参数" class="headerlink" title="调度参数"></a>调度参数</h3><p>匹配结果以 <code>$1 $2 $3</code> 等变量按序调用，顺序为从左到右的匹配单元循环匹配递加记录（如果正则匹配中有多个()匹配，则此单元递加记录多个匹配内容）</p>
+<h3 id="动态调度"><a href="#动态调度" class="headerlink" title="动态调度"></a>动态调度</h3><h2 id="路由与应用"><a href="#路由与应用" class="headerlink" title="路由与应用"></a>路由与应用</h2><h3 id="二级路由"><a href="#二级路由" class="headerlink" title="二级路由"></a>二级路由</h3>
   
     <div class="guide-links">
       

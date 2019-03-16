@@ -262,6 +262,23 @@
             
             
               <li>
+                <a href="/doc/app-cli.html" class="sidebar-link">命令行</a>
+              </li>
+            
+           
+          
+            
+            
+              
+              
+              
+              
+              
+              
+              
+            
+            
+              <li>
                 <a href="/doc/app-custom.html" class="sidebar-link">自定义</a>
               </li>
             
@@ -749,8 +766,10 @@
 <h4 id="系统触发"><a href="#系统触发" class="headerlink" title="系统触发"></a>系统触发</h4><p>框架在初始化时，会默认注册一些错误或异常处理器（包含：<code>set_error_handler</code> <code>set_exception_handler</code> <code>register_shutdown_function</code>），当应用出现错误或异常时会触发调用这些处理器。</p>
 <h4 id="手动触发"><a href="#手动触发" class="headerlink" title="手动触发"></a>手动触发</h4><p>使用<code>error()</code> <code>warn()</code> <code>Error::trigger()</code>等方法手动触发错误。</p>
 <p>手动触发错误的等级只有<code>Error::ERROR</code> <code>Error::WARNING</code> <code>Error::NOTICE</code>3种。</p>
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式默认开启，其通过环境常量<code>app\env\STRICT_ERROR_MODE</code>设置。</p>
-<p>开启严格模式后系统<code>WARNING</code>和<code>NOTICE</code>等级的错误（如变量名未定义）也会触发异常中断应用。</p>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>严格模式通过环境常量<code>app\env\STRICT_ERROR_MODE</code>设置，默认开启。</p>
+<p>开启严格模式后<code>set_error_handler</code>捕获到的系统错误(包含<code>WARNING</code>和<code>NOTICE</code>等级的错误，如变量名未定义)，都会触发<code>ErrorException</code>异常。</p>
+<p>示例</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// $b未定义</div><div class="line">// 打印：[E_NOTICE] Undefined variable: b</div><div class="line">try &#123;</div><div class="line">	$a = $b;</div><div class="line">&#125; catch (\ErrorException $e) &#123;</div><div class="line">	echo $e-&gt;getMessage();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h2><p>错误触发后会调用日志处理器（使用<code>Logger::write()</code>方法）记录错误日志，对应错误等级的日志会被对应<code>level</code>设置的处理器处理记录，具体详情可参考<a href="logger.html#日志等级">日志等级</a>一节。</p>
 <h4 id="错误等级与日志等级对照表"><a href="#错误等级与日志等级对照表" class="headerlink" title="错误等级与日志等级对照表"></a>错误等级与日志等级对照表</h4><table>
 <thead>
@@ -822,7 +841,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="错误响应"><a href="#错误响应" class="headerlink" title="错误响应"></a>错误响应</h2><p>错误触发后会调用应用模式实例的<code>error()</code>方法输出错误信息，不同应用模式的处理方式不一样，例如在支持视图的的应用中会输出<a href="view.html#错误页面">错误页面</a>，在rpc应用中会输出错误码和信息（如<code>jsonrpc</code>应用会输出<code>{&quot;code&quot;:-32000, &quot;message&quot;:&quot;Server error&quot;}</code>）</p>
+<h2 id="错误响应"><a href="#错误响应" class="headerlink" title="错误响应"></a>错误响应</h2><p>错误触发后会调用应用模式实例的<code>error()</code>方法输出错误信息，不同应用模式的处理方式不一样，例如在支持视图的的应用中会输出<a href="view.html#错误页面">错误页面</a>，在rpc应用中会输出错误码和信息（如<code>jsonrpc</code>应用会输出<code>{&quot;code&quot;:-32000, &quot;message&quot;:&quot;Server error&quot;}</code>），具体错误输出细节参考个应用模式章节。</p>
 
   
     <div class="guide-links">
